@@ -1,0 +1,1260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charlotte Mädler — About</title>
+  <meta name="description" content="About Charlotte Mädler — cybersecurity + product + strategy, with a soft spot for bouldering and poetry." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg0:#05070b;
+      --bg1:#070b12;
+      --ink:#eaf4ff;
+      --muted:#9bb2c9;
+      --muted2:#6f88a6;
+
+      --glass:rgba(16, 26, 40, .55);
+      --glass2:rgba(16, 26, 40, .35);
+      --border:rgba(124, 211, 255, .18);
+      --border2:rgba(124, 211, 255, .35);
+
+      --accent:#7cd3ff;
+      --accent2:#b79bff;
+      --accent3:#6cffb6;
+
+      --shadow:0 20px 80px rgba(0,0,0,.45);
+      --radius:22px;
+      --max:1120px;
+
+      /* Scroll-linked background vars */
+      --p: 0;           /* 0..1 scroll progress */
+      --bgY: 0px;       /* subtle vertical drift */
+      --a1: .12;        /* opacity knobs */
+      --a2: .10;
+      --a3: .08;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    html{ scroll-behavior:smooth; }
+
+    body{
+      margin:0;
+      color:var(--ink);
+      background: linear-gradient(180deg, var(--bg1), var(--bg0));
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    /* Scroll-linked continuous background layer */
+    .bg-scroll{
+      position:fixed;
+      inset:-12vh 0 -12vh 0;
+      pointer-events:none;
+      z-index:0;
+      transform: translateY(var(--bgY));
+      transition: transform .10s linear; /* keeps it smooth but not “laggy” */
+      background:
+        radial-gradient(1000px 900px at calc(15% + (var(--p) * 8%)) calc(10% + (var(--p) * 18%)),
+          rgba(124,211,255,var(--a1)), transparent 60%),
+        radial-gradient(900px 900px at calc(85% - (var(--p) * 10%)) calc(25% + (var(--p) * 8%)),
+          rgba(183,155,255,var(--a2)), transparent 55%),
+        radial-gradient(900px 900px at calc(55% + (var(--p) * 6%)) calc(90% - (var(--p) * 14%)),
+          rgba(108,255,182,var(--a3)), transparent 50%);
+      filter: saturate(1.02);
+    }
+
+    /* Ambient grain (subtle) */
+    .noise{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:1;
+      opacity:.05;
+      mix-blend-mode:overlay;
+      background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3" stitchTiles="stitch"/></filter><rect width="220" height="220" filter="url(%23n)" opacity=".65"/></svg>');
+      background-size:220px 220px;
+    }
+
+    /* Cursor glow (kept, but calmer) */
+    .cursor-glow{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:2;
+      opacity:.75;
+    }
+    .cursor-glow::before{
+      content:"";
+      position:absolute;
+      width:320px;
+      height:320px;
+      left:var(--mx, -999px);
+      top:var(--my, -999px);
+      transform:translate(-50%,-50%);
+      background:radial-gradient(circle, rgba(124,211,255,.12), rgba(183,155,255,.05), transparent 65%);
+      filter:blur(6px);
+    }
+
+    /* Layout */
+    .wrap{ max-width:var(--max); margin:0 auto; padding:24px; position:relative; z-index:3; }
+
+    header{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      z-index:2000;
+      background:linear-gradient(180deg, rgba(5,7,11,.86), rgba(5,7,11,.38), rgba(5,7,11,0));
+      backdrop-filter: blur(10px);
+      transform: translateY(0);
+      transition: transform .26s ease;
+    }
+    header.is-hidden{ transform: translateY(-110%); }
+
+    .nav{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      display:flex;
+      align-items:baseline;
+      gap:10px;
+      letter-spacing:.2px;
+      min-width: 220px;
+    }
+    .brand .name{ font-weight:700; }
+    .brand .tag{ color:var(--muted2); font-weight:500; font-size:12px; }
+
+    .navlinks{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .pill{
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(16,26,40,.18);
+      backdrop-filter: blur(10px);
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color:var(--border2);
+      background:rgba(16,26,40,.35);
+      color:var(--ink);
+      text-decoration:none;
+    }
+
+    /* Scroll progress (right edge) */
+    .progress{
+      position:fixed;
+      top:86px;
+      right:16px;
+      width:10px;
+      height:calc(100vh - 140px);
+      border-radius:999px;
+      border:1px solid rgba(124,211,255,.16);
+      background: rgba(16,26,40,.14);
+      z-index:1500;
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+    .progress > i{
+      display:block;
+      width:100%;
+      height:0;
+      background: linear-gradient(180deg, rgba(124,211,255,.55), rgba(183,155,255,.38));
+      border-radius:999px;
+    }
+    @media (max-width: 900px){ .progress{ display:none; } }
+
+    main{ padding-top:86px; position:relative; z-index:3; }
+
+    section{ padding:80px 0; position:relative; }
+
+    .section-title{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      margin:0 0 18px 0;
+    }
+    .section-title h2{
+      margin:0;
+      font-family: Fraunces, serif;
+      font-weight:700;
+      letter-spacing:-.2px;
+      font-size:34px;
+      line-height:1.15;
+    }
+    .section-title .hint{
+      margin:0;
+      color:var(--muted2);
+      font-size:13px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:start;
+    }
+    @media (max-width: 920px){
+      .grid{ grid-template-columns: 1fr; }
+      .section-title{ flex-direction:column; align-items:flex-start; }
+    }
+
+    /* Cards */
+    .card{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(16,26,40,.55), rgba(16,26,40,.30));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      padding:20px;
+      position:relative;
+      overflow:hidden;
+      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(124,211,255,.32);
+      background: linear-gradient(180deg, rgba(16,26,40,.62), rgba(16,26,40,.34));
+    }
+
+    .kicker{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      font-size:12px;
+      color:var(--muted2);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+
+    /* HERO */
+    .hero{
+      min-height: calc(100vh - 86px);
+      display:flex;
+      align-items:center;
+      padding:54px 0 26px;
+    }
+    .hero h1{
+      font-family: Fraunces, serif;
+      font-size:56px;
+      line-height:1.0;
+      letter-spacing:-.8px;
+      margin:10px 0 12px;
+    }
+    @media (max-width: 520px){ .hero h1{ font-size:42px; } }
+    .hero p{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.65;
+      max-width:64ch;
+    }
+
+    .btnrow{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background: rgba(16,26,40,.30);
+      color:var(--ink);
+      font-weight:600;
+      font-size:14px;
+      cursor:pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); border-color:var(--border2); background: rgba(16,26,40,.46); text-decoration:none; }
+    .btn.primary{
+      border-color: rgba(124,211,255,.45);
+      background: linear-gradient(180deg, rgba(124,211,255,.16), rgba(16,26,40,.32));
+    }
+
+    .scrollcue{
+      margin-top:20px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--muted2);
+      font-size:13px;
+      user-select:none;
+      cursor:pointer;
+    }
+    .chev{
+      width:10px; height:42px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      display:grid; place-items:center;
+      overflow:hidden;
+    }
+    .chev::before{
+      content:"";
+      width:1px;
+      height:100%;
+      background: linear-gradient(180deg, transparent, rgba(234,244,255,.85), transparent);
+      transform-origin: 50% 0%;
+      animation: scan 1.9s cubic-bezier(.8,0,.2,1) infinite;
+    }
+    @keyframes scan{
+      0%{ transform: scaleY(0); transform-origin: 50% 0%; }
+      50%{ transform: scaleY(1); transform-origin: 50% 0%; }
+      50.001%{ transform: scaleY(1); transform-origin: 50% 100%; }
+      100%{ transform: scaleY(0); transform-origin: 50% 100%; }
+    }
+
+    .divider{ height:1px; background: linear-gradient(90deg, transparent, rgba(124,211,255,.25), transparent); margin: 18px 0 0; }
+    .mini{ color:var(--muted2); font-size:12px; margin-top: 10px; }
+
+    /* Work: clean timeline */
+    .work-layout{ display:grid; grid-template-columns: 220px 1fr; gap:18px; align-items:start; }
+    @media (max-width: 920px){ .work-layout{ grid-template-columns: 1fr; } }
+
+    .time-rail{
+      position:sticky;
+      top:110px;
+      align-self:start;
+      border-radius: 18px;
+      border:1px solid rgba(124,211,255,.12);
+      background: rgba(16,26,40,.14);
+      backdrop-filter: blur(12px);
+      padding:14px;
+    }
+    .time-links{ display:flex; flex-direction:column; gap:8px; }
+    .time-link{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(124,211,255,.12);
+      background: rgba(16,26,40,.10);
+      color:var(--muted);
+      font-size:13px;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+      cursor:pointer;
+    }
+    .time-link:hover{ transform: translateY(-1px); border-color: rgba(124,211,255,.25); background: rgba(16,26,40,.18); text-decoration:none; color:var(--ink); }
+    .time-link.is-active{ border-color: rgba(124,211,255,.36); background: rgba(16,26,40,.24); color: var(--ink); }
+    .time-link small{ color:var(--muted2); font-size:11px; letter-spacing:.08em; text-transform:uppercase; }
+
+    .timeline{ display:grid; gap:14px; position:relative; }
+    .role{
+      display:grid;
+      grid-template-columns: 160px 1fr;
+      gap:16px;
+      padding:16px;
+      border-radius: 18px;
+      background: rgba(16,26,40,.18);
+      border:1px solid rgba(124,211,255,.12);
+      transition: border-color .2s ease, background .2s ease, transform .2s ease;
+      position:relative;
+    }
+    .role:hover{ border-color:rgba(124,211,255,.26); background: rgba(16,26,40,.24); transform: translateY(-1px); }
+    .when{ color:var(--muted2); font-size:12px; letter-spacing:.08em; text-transform:uppercase; line-height:1.4; }
+    .who{ font-weight:700; }
+    .what{ color:var(--muted); font-size:14px; line-height:1.6; }
+    .bul{ margin:10px 0 0; padding-left:18px; color:var(--muted); }
+    .bul li{ margin:6px 0; }
+    @media (max-width: 720px){
+      .role{ grid-template-columns: 1fr; }
+    }
+
+    /* Projects */
+    .projects{ display:grid; grid-template-columns: repeat(12, 1fr); gap:14px; }
+    .proj{ grid-column: span 6; }
+    .proj.wide{ grid-column: span 8; }
+    .proj.narrow{ grid-column: span 4; }
+    @media (max-width: 920px){
+      .proj, .proj.wide, .proj.narrow{ grid-column: span 12; }
+    }
+    .proj h3{ margin: 0 0 8px; font-size:18px; letter-spacing:-.2px; }
+    .proj p{ margin:0 0 10px; color:var(--muted); line-height:1.6; }
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+    .chip{
+      border:1px solid rgba(124,211,255,.18);
+      background: rgba(16,26,40,.18);
+      padding:7px 10px;
+      border-radius: 999px;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    /* Skills */
+    .skills-note{ color:var(--muted2); font-size:13px; margin: 0 0 16px; }
+    .skillbox{ display:grid; gap:14px; }
+    .skillgroup{ padding:16px; border-radius: 18px; border:1px solid rgba(124,211,255,.12); background: rgba(16,26,40,.16); }
+    .skillgroup h3{ margin:0 0 10px; font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted2); }
+
+    .skill{
+      position:relative;
+      display:grid;
+      grid-template-columns: 160px 1fr;
+      gap:12px;
+      align-items:center;
+      padding:10px 0;
+    }
+    @media (max-width: 520px){ .skill{ grid-template-columns: 1fr; gap:8px; } }
+    .skill .label{ font-weight:600; font-size:13px; }
+
+    .bar{
+      position:relative;
+      height:12px;
+      border-radius:999px;
+      border:1px solid rgba(124,211,255,.18);
+      background: rgba(5,7,11,.45);
+      overflow:hidden;
+    }
+    .bar > i{
+      display:block;
+      height:100%;
+      width:0;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(124,211,255,.70), rgba(183,155,255,.50));
+      box-shadow: 0 0 18px rgba(124,211,255,.14);
+      transition: width 1.2s cubic-bezier(.2,.9,.2,1);
+    }
+
+    .tip{
+      position:absolute;
+      right:0;
+      top:-10px;
+      transform: translateY(-100%);
+      background: rgba(5,7,11,.72);
+      border:1px solid rgba(124,211,255,.22);
+      border-radius: 12px;
+      padding:10px 12px;
+      width:min(340px, 80vw);
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.45;
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .16s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 14px 50px rgba(0,0,0,.45);
+      z-index:5;
+    }
+    .skill:hover .tip{ opacity:1; }
+
+    /* Hobbies/About: clean + links */
+    .linklist{ display:grid; gap:10px; margin-top:10px; }
+    .linkrow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(124,211,255,.12);
+      background: rgba(16,26,40,.14);
+      color:var(--muted);
+    }
+    .badge{
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--muted2);
+      border:1px solid rgba(124,211,255,.18);
+      background: rgba(16,26,40,.12);
+      padding:6px 10px;
+      border-radius: 999px;
+      white-space:nowrap;
+    }
+
+    /* Contact: terminal easter egg */
+    .terminal{
+      margin-top:14px;
+      background: rgba(5,7,11,.55);
+      border-radius: 16px;
+      border: 1px solid rgba(124,211,255,.18);
+      padding: 12px 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+      color: rgba(234,244,255,.88);
+      overflow:hidden;
+    }
+    .term-line{ margin-bottom: 6px; white-space: nowrap; overflow-x:auto; }
+    .term-line::-webkit-scrollbar{ height:0; width:0; }
+    .term-prompt{ color: rgba(124,211,255,.95); }
+    .term-command{ color: rgba(183,155,255,.92); cursor:pointer; text-decoration: none; }
+    .term-command:hover{ text-decoration: underline; }
+    .term-output{ color: rgba(155,178,201,.9); }
+
+    /* Questionnaire */
+    .formgrid{ display:grid; gap:12px; }
+    .field{
+      display:grid;
+      gap:6px;
+    }
+    label{
+      color: var(--muted2);
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    input, select{
+      width:100%;
+      border-radius: 14px;
+      border:1px solid rgba(124,211,255,.16);
+      background: rgba(5,7,11,.35);
+      color: var(--ink);
+      padding: 12px 12px;
+      font-size: 14px;
+      outline: none;
+    }
+    input::placeholder{ color: rgba(155,178,201,.55); }
+    input:focus, select:focus{ border-color: rgba(124,211,255,.36); }
+
+    .row2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 720px){
+      .row2{ grid-template-columns: 1fr; }
+    }
+
+    /* Reveal */
+    .reveal{ opacity:0; transform: translateY(10px); }
+    .reveal.is-in{ opacity:1; transform: translateY(0); transition: opacity .65s ease, transform .65s ease; }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+      .reveal{ opacity:1; transform:none; }
+      .bg-scroll{ transition:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-scroll" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><i id="progFill"></i></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <header>
+    <nav class="nav" aria-label="Primary">
+      <div class="brand">
+        <span class="name">Charlotte Mädler</span>
+        <span class="tag">security · product · strategy</span>
+      </div>
+      <div class="navlinks">
+        <a class="pill" href="#top">Intro</a>
+        <a class="pill" href="#work">Work</a>
+        <a class="pill" href="#education">Education</a>
+        <a class="pill" href="#built">Side projects</a>
+        <a class="pill" href="#skills">Skills</a>
+        <a class="pill" href="#about">About</a>
+        <a class="pill" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO / LANDING -->
+    <section class="hero" id="top">
+      <div class="wrap grid">
+        <div class="reveal">
+          <div class="kicker">ABOUT ME <span aria-hidden="true">✦</span> clean, calm, quietly confident</div>
+          <h1>Building useful systems — with a human lens.</h1>
+
+          <p>
+            I’m a 25-year-old Computer Science M.Sc. graduate with a cybersecurity track, a product brain,
+            and a soft spot for how people actually behave around risk, trust, and technology.
+          </p>
+          <p>
+            I was born and raised in Canada, moved to Bonn in 2010, and have been based in Berlin since August.
+            I like work that sits between technical reality and human decision-making: clear trade-offs, clean execution,
+            and outcomes you can feel.
+          </p>
+
+          <div class="btnrow">
+            <!-- Put your PDF next to this HTML file (repo root) -->
+            <a class="btn primary" href="Charlotte_Maedler_CV.pdf" download>⤓ Download CV</a>
+            <a class="btn" href="#work">Work experience</a>
+            <a class="btn" href="#contact">Say hi</a>
+          </div>
+
+          <div class="scrollcue" id="scrollCue" role="button" tabindex="0" aria-label="Scroll to find out more">
+            <span class="chev" aria-hidden="true"></span>
+            <span>Scroll to find out more</span>
+          </div>
+
+          <div class="divider" aria-hidden="true"></div>
+          <p class="mini">Tip: hover cards + skill bars. There’s a small terminal easter egg in Contact.</p>
+        </div>
+
+        <div class="reveal card" style="align-self:stretch;">
+          <div class="kicker">CURRENTLY</div>
+          <p style="margin:0; color:var(--muted); line-height:1.65;">
+            Account Manager at Amazon Global Selling.
+            <br>Security background, product instincts, and a persistent habit of turning “this could be easier” into a workflow.
+          </p>
+          <div style="height:12px"></div>
+          <div class="chips">
+            <span class="chip">portfolio management</span>
+            <span class="chip">customer behaviour</span>
+            <span class="chip">data-driven decisions</span>
+            <span class="chip">UX research</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section id="work">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <h2>Work experience</h2>
+          <p class="hint">Time links on the left highlight where you are.</p>
+        </div>
+
+        <div class="work-layout">
+          <aside class="time-rail reveal" aria-label="Timeline navigation">
+            <div class="kicker">TIME LINKS</div>
+            <div class="time-links">
+              <a class="time-link" href="#w-amazon" data-target="w-amazon"><span>Amazon</span><small>2025→</small></a>
+              <a class="time-link" href="#w-research" data-target="w-research"><span>Behavioural Security</span><small>2023–2025</small></a>
+              <a class="time-link" href="#w-ta" data-target="w-ta"><span>Teaching</span><small>2019–2023</small></a>
+              <a class="time-link" href="#w-swim" data-target="w-swim"><span>Swimming</span><small>2022</small></a>
+              <a class="time-link" href="#w-fecht" data-target="w-fecht"><span>Fechtklingen</span><small>2023–2025</small></a>
+            </div>
+            <p class="mini" style="margin-bottom:0;">Clean overview, easy to skim.</p>
+          </aside>
+
+          <div class="timeline reveal">
+            <article class="role" id="w-amazon" data-spot>
+              <div>
+                <div class="when">Aug 2025 — Present</div>
+                <div class="who">Account Manager · Amazon Global Selling</div>
+              </div>
+              <div class="what">
+                Managing a seller portfolio and translating technical thinking into commercial outcomes: decision clarity, prioritisation, and repeatable playbooks.
+                <ul class="bul">
+                  <li>Portfolio ownership: growth plans, execution cadence, and measurable improvements</li>
+                  <li>Customer-first communication: turning constraints into clear next steps</li>
+                  <li>Process mindset: I like systems that reduce friction and make good behaviour easier</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="role" id="w-research" data-spot>
+              <div>
+                <div class="when">Apr 2023 — Aug 2025</div>
+                <div class="who">Student Researcher · University of Bonn</div>
+              </div>
+              <div class="what">
+                Behavioural Security Research Group: privacy, trust, and how people interpret surveillance and risk.
+                <ul class="bul">
+                  <li>Survey + experiment design, data collection, analysis, and scientific writing</li>
+                  <li>Worked on user-centric cybersecurity topics and human factors</li>
+                  <li>Co-authored a peer-reviewed publication</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="role" id="w-ta" data-spot>
+              <div>
+                <div class="when">Oct 2019 — Mar 2023</div>
+                <div class="who">Teaching Assistant · University of Bonn</div>
+              </div>
+              <div class="what">
+                Led tutorials and helped students through systems-heavy topics (with empathy and very direct debugging energy).
+                <ul class="bul">
+                  <li>Taught groups of 20–40 students, graded assignments, prepared and graded exams</li>
+                  <li>Explained architecture + OS fundamentals in a way that survived 8:15am</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="role" id="w-swim" data-spot>
+              <div>
+                <div class="when">Apr 2022 — Oct 2022</div>
+                <div class="who">Swimming Instructor · Nessy GmbH</div>
+              </div>
+              <div class="what">
+                Taught kids aged 3 months to 12 years. Equal parts technique, safety, and making fear feel manageable.
+                <ul class="bul">
+                  <li>Built confidence, resolved parent conflicts, kept sessions structured and fun</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="role" id="w-fecht" data-spot>
+              <div>
+                <div class="when">May 2023 — Jun 2025</div>
+                <div class="who">Strategy Team · Fechtklingen.de</div>
+              </div>
+              <div class="what">
+                Online fencing equipment retail, specialised on blades.
+                <ul class="bul">
+                  <li>Category expansion strategy (diversification + supplier relations)</li>
+                  <li>Brand vision and positioning as the store grew</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <h2>Education</h2>
+          <p class="hint">Straightforward, no fluff.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card reveal">
+            <div class="kicker">DEGREES</div>
+
+            <div class="timeline" style="gap:12px;">
+              <article class="role" style="grid-template-columns: 170px 1fr;">
+                <div>
+                  <div class="when">Apr 2023 — Aug 2025</div>
+                  <div class="who">M.Sc. Computer Science</div>
+                  <div class="mini">University of Bonn</div>
+                </div>
+                <div class="what">Focus: security, data analysis, and human factors in computing.</div>
+              </article>
+
+              <article class="role" style="grid-template-columns: 170px 1fr;">
+                <div>
+                  <div class="when">Oct 2018 — Mar 2023</div>
+                  <div class="who">B.Sc. Computer Science</div>
+                  <div class="mini">Minor: Physics</div>
+                </div>
+                <div class="what">Systems thinking, fundamentals, and the kind of CS that makes you respect constraints.</div>
+              </article>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="kicker">EXTRAS</div>
+            <ul class="bul" style="margin-top:6px;">
+              <li>Student researcher experience (survey + experiments, analysis, writing)</li>
+              <li>Teaching background (tutorial leadership, grading, exam prep)</li>
+              <li>Comfortable presenting and making complex things readable</li>
+            </ul>
+
+            <div style="height:12px"></div>
+            <div class="kicker">A SMALL NERDY CORNER</div>
+            <p class="mini" style="margin:0;">
+              ∀ε&gt;0 ∃δ&gt;0, ⟨M,w⟩ ∈ L(U)
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SIDE PROJECTS -->
+    <section id="built">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <h2>Side projects</h2>
+          <p class="hint">Only the shareable ones.</p>
+        </div>
+
+        <div class="projects">
+          <div class="card proj wide reveal">
+            <h3>Riposte / Vellaro — fencing analytics concept</h3>
+            <p>
+              Pose-estimation driven feedback concept: mapping raw movement data to usable coaching insights.
+              Focus: what athletes actually need, not what looks cool in a demo.
+            </p>
+            <div class="chips">
+              <span class="chip">pose estimation</span>
+              <span class="chip">UX research</span>
+              <span class="chip">product strategy</span>
+              <span class="chip">sports analytics</span>
+            </div>
+          </div>
+
+          <div class="card proj narrow reveal">
+            <h3>“Tiny but shiny” web toys</h3>
+            <p>
+              Small web experiments: clean layouts, micro-interactions, and tiny utilities that feel good to use.
+            </p>
+            <div class="chips">
+              <span class="chip">HTML/CSS</span>
+              <span class="chip">JS</span>
+              <span class="chip">micro UX</span>
+            </div>
+          </div>
+
+          <div class="card proj narrow reveal">
+            <h3>Automation helpers</h3>
+            <p>
+              Little scripts and workflow glue for reminders, templates, and sanity-saving structure.
+            </p>
+            <div class="chips">
+              <span class="chip">automation</span>
+              <span class="chip">quality-of-life</span>
+              <span class="chip">systems thinking</span>
+            </div>
+          </div>
+
+          <div class="card proj wide reveal">
+            <h3>Fechtklingen.de — strategy & growth</h3>
+            <p>
+              Building and scaling an e-commerce niche: category expansion, supplier work, and brand clarity.
+              A nice reminder that “buy” is an emotion with a spreadsheet attached.
+            </p>
+            <div class="chips">
+              <span class="chip">e-commerce</span>
+              <span class="chip">category strategy</span>
+              <span class="chip">supplier relations</span>
+              <span class="chip">brand</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="mini reveal" style="margin-top:14px;">
+          Note: some things I build are confidential, so this list is intentionally curated.
+        </p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <h2>Skills</h2>
+          <p class="hint">Hover a bar for context.</p>
+        </div>
+
+        <p class="skills-note reveal">No 100% claims. Just what I actually use.</p>
+
+        <div class="grid">
+          <div class="card reveal">
+            <div class="kicker">TECH + ANALYSIS</div>
+
+            <div class="skillbox" aria-label="Skills">
+              <div class="skillgroup">
+                <h3>Core</h3>
+
+                <div class="skill" data-level="85">
+                  <div class="label">Python</div>
+                  <div class="bar" aria-label="Python skill"><i></i></div>
+                  <div class="tip">Data analysis, automation, notebooks, quick prototyping, and shipping small tools end-to-end.</div>
+                </div>
+
+                <div class="skill" data-level="72">
+                  <div class="label">HTML/CSS/JS</div>
+                  <div class="bar" aria-label="HTML/CSS/JS skill"><i></i></div>
+                  <div class="tip">Polished layouts, prototypes, and simple UI logic. I care about readability and feel.</div>
+                </div>
+
+                <div class="skill" data-level="65">
+                  <div class="label">Data analysis</div>
+                  <div class="bar" aria-label="Data analysis skill"><i></i></div>
+                  <div class="tip">Cleaning, transforming, and interpreting data. Making results readable for humans.</div>
+                </div>
+
+                <div class="skill" data-level="58">
+                  <div class="label">Research methods</div>
+                  <div class="bar" aria-label="Research methods"><i></i></div>
+                  <div class="tip">Surveys, experiments, hypothesis testing, and careful interpretation (no dramatic overclaims).</div>
+                </div>
+
+                <div class="skill" data-level="55">
+                  <div class="label">Cybersecurity</div>
+                  <div class="bar" aria-label="Cybersecurity"><i></i></div>
+                  <div class="tip">User-centric security, behavioural security research, and translating risks into decisions.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="kicker">LANGUAGES + TOOLS</div>
+
+            <div class="skillgroup" style="margin-top:12px;">
+              <h3>Languages</h3>
+              <div class="skill" data-level="98">
+                <div class="label">English</div>
+                <div class="bar" aria-label="English"><i></i></div>
+                <div class="tip">Native-like.</div>
+              </div>
+              <div class="skill" data-level="98">
+                <div class="label">German</div>
+                <div class="bar" aria-label="German"><i></i></div>
+                <div class="tip">Native.</div>
+              </div>
+              <div class="skill" data-level="55">
+                <div class="label">French</div>
+                <div class="bar" aria-label="French"><i></i></div>
+                <div class="tip">B1 — can chat, can travel, can confidently order food.</div>
+              </div>
+              <div class="skill" data-level="35">
+                <div class="label">Italian</div>
+                <div class="bar" aria-label="Italian"><i></i></div>
+                <div class="tip">Basics — mostly vibes and determination.</div>
+              </div>
+            </div>
+
+            <div style="height:14px"></div>
+            <div class="kicker">TOOLS I TOUCH OFTEN</div>
+            <div class="chips" style="margin-top:10px;">
+              <span class="chip">Git</span>
+              <span class="chip">Jupyter</span>
+              <span class="chip">Pandas</span>
+              <span class="chip">Matplotlib</span>
+              <span class="chip">Docker</span>
+              <span class="chip">AWS (basics)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / HOBBIES -->
+    <section id="about">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <h2>Hobbies & about-me bits</h2>
+          <p class="hint">Outside the job description.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card reveal">
+            <div class="kicker">WHAT I LIKE</div>
+            <p style="margin:0; color:var(--muted); line-height:1.7;">
+              I like bouldering, swimming, cooking, motorcycles, and collecting niche fun facts (ideal for pub quiz nights).
+              I’m also very into words: poetry is where I put the thoughts that don’t belong in spreadsheets.
+            </p>
+            <div style="height:12px"></div>
+            <div class="chips">
+              <span class="chip">bouldering</span>
+              <span class="chip">cooking</span>
+              <span class="chip">swimming</span>
+              <span class="chip">motorcycles</span>
+              <span class="chip">poetry</span>
+              <span class="chip">travel</span>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="kicker">LINKS</div>
+
+            <div class="linklist">
+              <!-- Replace with your actual poetry blog URL -->
+              <div class="linkrow">
+                <div>
+                  <strong>Poetry blog</strong>
+                  <div class="mini" style="margin:6px 0 0;">Quiet Syntax and other small dramatic feelings.</div>
+                </div>
+                <a class="btn" href="https://charlymae0811.github.io/PoetryBlog/" target="_blank" rel="noreferrer">Open</a>
+              </div>
+
+              <!-- Cooking blog placeholder -->
+              <div class="linkrow">
+                <div>
+                  <strong>Cooking blog</strong>
+                  <div class="mini" style="margin:6px 0 0;">Work in progress. Currently living in my notes app.</div>
+                </div>
+                <span class="badge">WIP</span>
+              </div>
+            </div>
+
+            <p class="mini" style="margin-top:12px;">
+              If you want, I can wire the cooking blog link to a simple “coming soon” page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT + QUESTIONNAIRE -->
+    <footer id="contact">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <h2>Contact</h2>
+          <p class="hint">Say hi. Or send a very specific recommendation.</p>
+        </div>
+
+        <div class="grid">
+          <!-- Contact + terminal easter egg -->
+          <div class="card reveal">
+            <div class="kicker">REACH ME</div>
+            <p style="margin:0; color:var(--muted); line-height:1.7;">
+              Best way to reach me is email or LinkedIn. Extra points if you include a good cat story
+              or a surprisingly strong opinion on milk brands.
+            </p>
+
+            <!-- Terminal Easter egg -->
+            <div class="terminal" aria-label="Terminal easter egg">
+              <div class="term-line">
+                <span class="term-prompt">charlotte@web</span>:<span class="term-prompt">~</span>$
+                <span class="term-command" data-cmd="ls">ls socials</span>
+              </div>
+              <div class="term-line term-output" id="term-out-1"></div>
+
+              <div class="term-line" style="margin-top:8px;">
+                <span class="term-prompt">charlotte@web</span>:<span class="term-prompt">~</span>$
+                <span class="term-command" data-cmd="cv">cat CV.pdf</span>
+              </div>
+              <div class="term-line term-output" id="term-out-2"></div>
+            </div>
+
+            <div class="btnrow" style="margin-top:14px;">
+              <a class="btn" href="mailto:charlotte.t.maedler@gmail.com">Email</a>
+              <a class="btn" href="https://www.linkedin.com/in/charlotte-maedler" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a class="btn" href="https://github.com/CharlyMae0811" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="btn primary" href="Charlotte_Maedler_CV.pdf" download>⤓ Download CV</a>
+            </div>
+
+            <p class="mini" style="margin-top:12px;">
+              Somewhere between Turing machines and real-world decisions, I like building things that make people go:
+              “oh, that’s actually useful”.
+            </p>
+          </div>
+
+          <!-- Questionnaire -->
+          <div class="card reveal">
+            <div class="kicker">I’D LIKE TO GET TO KNOW YOU TOO</div>
+            <p style="margin:0 0 12px; color:var(--muted); line-height:1.7;">
+              Quick mini-questionnaire. It opens an email draft with your answers (no data stored here).
+            </p>
+
+            <form id="connectForm" class="formgrid">
+              <div class="field">
+                <label for="qName">Name</label>
+                <input id="qName" name="qName" type="text" placeholder="Your name" autocomplete="name" />
+              </div>
+
+              <div class="row2">
+                <div class="field">
+                  <label for="qFound">How did you find my website?</label>
+                  <input id="qFound" name="qFound" type="text" placeholder="Friend, LinkedIn, GitHub,…"/>
+                </div>
+
+                <div class="field">
+                  <label for="qConnect">What would you like to connect about?</label>
+                  <select id="qConnect" name="qConnect">
+                    <option value="Work / opportunities">Work / opportunities</option>
+                    <option value="Research / cybersecurity">Research / cybersecurity</option>
+                    <option value="Product / UX">Product / UX</option>
+                    <option value="Side projects / building">Side projects / building</option>
+                    <option value="Bouldering / sports">Bouldering / sports</option>
+                    <option value="Just saying hi">Just saying hi</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="qSeries">What series are you currently binging?</label>
+                <input id="qSeries" name="qSeries" type="text" placeholder="Tell me your current obsession" />
+              </div>
+
+              <div class="btnrow" style="margin-top:6px;">
+                <button class="btn primary" type="button" id="sendAnswers">Open email draft</button>
+                <button class="btn" type="button" id="copyAnswers">Copy message</button>
+              </div>
+
+              <p class="mini" id="copyStatus" style="margin:8px 0 0;"></p>
+            </form>
+          </div>
+        </div>
+
+        <p class="mini reveal" style="margin-top:18px;">
+          © <span id="year"></span> Charlotte Mädler · built with HTML/CSS/JS · calm glow on purpose.
+        </p>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Cursor glow (subtle)
+    const glow = document.querySelector('.cursor-glow');
+    window.addEventListener('pointermove', (e) => {
+      glow.style.setProperty('--mx', e.clientX + 'px');
+      glow.style.setProperty('--my', e.clientY + 'px');
+    }, { passive:true });
+
+    // Smooth scroll helper
+    function smoothScrollTo(selector){
+      const el = document.querySelector(selector);
+      if(!el) return;
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Scroll cue
+    const scrollCue = document.getElementById('scrollCue');
+    scrollCue?.addEventListener('click', () => smoothScrollTo('#work'));
+    scrollCue?.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') smoothScrollTo('#work');
+    });
+
+    // Make nav links smooth
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if(!href || href === '#') return;
+        e.preventDefault();
+        history.pushState(null, '', href);
+        smoothScrollTo(href);
+      });
+    });
+
+    // Header hide-on-scroll
+    const header = document.querySelector('header');
+    let lastY = window.scrollY;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      const down = y > lastY;
+      if(down && y > 140) header.classList.add('is-hidden');
+      else header.classList.remove('is-hidden');
+      lastY = y;
+    }, { passive:true });
+
+    // Scroll progress + continuous background mood
+    const progFill = document.getElementById('progFill');
+
+    function updateScrollFX(){
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      const p = max <= 0 ? 0 : (doc.scrollTop / max);
+
+      // progress bar
+      progFill.style.height = (p * 100) + '%';
+
+      // background drift + opacity blend (continuous)
+      // Keep it subtle: small drift and gentle opacity changes.
+      const bgY = (p * -120).toFixed(1) + 'px';
+      document.documentElement.style.setProperty('--p', p.toFixed(4));
+      document.documentElement.style.setProperty('--bgY', bgY);
+
+      // opacities slightly shift as you scroll (stays smooth)
+      const a1 = (0.12 + p * 0.05).toFixed(3);
+      const a2 = (0.10 + Math.sin(p * Math.PI) * 0.04).toFixed(3);
+      const a3 = (0.08 + (1 - p) * 0.04).toFixed(3);
+      document.documentElement.style.setProperty('--a1', a1);
+      document.documentElement.style.setProperty('--a2', a2);
+      document.documentElement.style.setProperty('--a3', a3);
+    }
+    window.addEventListener('scroll', updateScrollFX, { passive:true });
+    updateScrollFX();
+
+    // Reveal + skill bar fill
+    const revealEls = Array.from(document.querySelectorAll('.reveal'));
+    const io = new IntersectionObserver((entries) => {
+      for (const entry of entries){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-in');
+
+          // Fill skill bars when they enter
+          entry.target.querySelectorAll?.('.skill').forEach(skill => {
+            const level = Number(skill.dataset.level || 0);
+            const fill = skill.querySelector('.bar > i');
+            if(fill) fill.style.width = Math.max(0, Math.min(100, level)) + '%';
+          });
+
+          io.unobserve(entry.target);
+        }
+      }
+    }, { threshold: 0.14 });
+    revealEls.forEach(el => io.observe(el));
+
+    // Work time links rail: highlight active role while scrolling
+    const spots = Array.from(document.querySelectorAll('[data-spot]'));
+    const links = Array.from(document.querySelectorAll('.time-link'));
+    const spotIO = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if(!visible) return;
+      const id = visible.target.id;
+      links.forEach(l => l.classList.toggle('is-active', l.dataset.target === id));
+    }, { threshold: [0.25, 0.4, 0.55] });
+    spots.forEach(s => spotIO.observe(s));
+
+    // Terminal easter egg interactions (like your screenshot)
+    const out1 = document.getElementById('term-out-1');
+    const out2 = document.getElementById('term-out-2');
+
+    document.querySelectorAll('.term-command').forEach(cmd => {
+      cmd.addEventListener('click', () => {
+        const type = cmd.dataset.cmd;
+        if(type === 'ls'){
+          out1.textContent = 'linkedin  github  email  cv.pdf';
+        } else if(type === 'cv'){
+          out2.textContent = 'Opening CV… or just click the Download button like a normal human.';
+        }
+      });
+    });
+
+    // Questionnaire → mailto + copy
+    const EMAIL_TO = 'charlotte.t.maedler@gmail.com';
+
+    function buildMessage(){
+      const name = (document.getElementById('qName').value || '').trim();
+      const found = (document.getElementById('qFound').value || '').trim();
+      const connect = (document.getElementById('qConnect').value || '').trim();
+      const series = (document.getElementById('qSeries').value || '').trim();
+
+      const lines = [
+        'Hi Charlotte,',
+        '',
+        `Name: ${name || '(not provided)'}`,
+        `How I found your website: ${found || '(not provided)'}`,
+        `What I’d like to connect about: ${connect || '(not provided)'}`,
+        `Currently binging: ${series || '(not provided)'}`,
+        '',
+        '—'
+      ];
+      return lines.join('\n');
+    }
+
+    document.getElementById('sendAnswers').addEventListener('click', () => {
+      const subject = encodeURIComponent('Hello from your website');
+      const body = encodeURIComponent(buildMessage());
+      window.location.href = `mailto:${EMAIL_TO}?subject=${subject}&body=${body}`;
+    });
+
+    document.getElementById('copyAnswers').addEventListener('click', async () => {
+      const msg = buildMessage();
+      const status = document.getElementById('copyStatus');
+      try{
+        await navigator.clipboard.writeText(msg);
+        status.textContent = 'Copied. Paste it anywhere (email, LinkedIn message, carrier pigeon).';
+      }catch(e){
+        status.textContent = 'Copy failed (browser permission). You can still open the email draft.';
+      }
+      setTimeout(() => { status.textContent = ''; }, 3500);
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
