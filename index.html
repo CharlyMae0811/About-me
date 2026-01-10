@@ -1,1 +1,1158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Charlotte Mädler — About</title>
+  <meta name="description" content="Charlotte Mädler — computer science (M.Sc.), cybersecurity + product + strategy." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg0:#05070b;
+      --bg1:#070b12;
+      --ink:#eaf4ff;
+      --muted:#9bb2c9;
+      --muted2:#6f88a6;
+      --glass:rgba(16, 26, 40, .55);
+      --glass2:rgba(16, 26, 40, .35);
+      --border:rgba(124, 211, 255, .18);
+      --border2:rgba(124, 211, 255, .35);
+      --accent:#7cd3ff;
+      --accent2:#b79bff;
+      --accent3:#6cffb6;
+      --shadow:0 20px 80px rgba(0,0,0,.45);
+      --radius:22px;
+      --max:1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    html{ scroll-behavior:smooth; }
+
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(1000px 900px at 15% 10%, rgba(124,211,255,.10), transparent 60%),
+        radial-gradient(900px 900px at 85% 25%, rgba(183,155,255,.08), transparent 55%),
+        radial-gradient(900px 900px at 55% 90%, rgba(108,255,182,.06), transparent 50%),
+        linear-gradient(180deg, var(--bg1), var(--bg0));
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    /* Layout */
+    .wrap{ max-width:var(--max); margin:0 auto; padding:24px; position:relative; }
+
+    header{
+      position:fixed;
+      top:0; left:0; right:0;
+      z-index:2000;
+      background:linear-gradient(180deg, rgba(5,7,11,.86), rgba(5,7,11,.38), rgba(5,7,11,0));
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(124,211,255,.08);
+    }
+
+    .nav{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:baseline;
+      gap:10px;
+      letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .brand .name{ font-weight:700; }
+    .brand .tag{
+      color:var(--muted2);
+      font-weight:500;
+      font-size:12px;
+    }
+
+    .navlinks{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .pill{
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(16,26,40,.22);
+      backdrop-filter: blur(10px);
+      transition: transform .16s ease, border-color .16s ease, background .16s ease;
+      font-size:13px;
+      color:var(--muted);
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color:var(--border2);
+      background:rgba(16,26,40,.40);
+      color:var(--ink);
+      text-decoration:none;
+    }
+
+    @media (max-width: 820px){
+      .navlinks{ display:none; }
+      .brand .tag{ display:none; }
+    }
+
+    /* Scroll progress (subtle) */
+    .progress{
+      position:fixed;
+      top:86px;
+      right:16px;
+      width:10px;
+      height:calc(100vh - 140px);
+      border-radius:999px;
+      border:1px solid rgba(124,211,255,.12);
+      background: rgba(16,26,40,.14);
+      z-index:1500;
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+    }
+    .progress > i{
+      display:block;
+      width:100%;
+      height:0;
+      background: linear-gradient(180deg, rgba(124,211,255,.55), rgba(183,155,255,.35));
+      border-radius:999px;
+    }
+    @media (max-width: 900px){ .progress{ display:none; } }
+
+    main{ padding-top:86px; }
+
+    section{
+      padding:80px 0;
+      position:relative;
+    }
+
+    .section-title{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      margin:0 0 18px 0;
+    }
+    .section-title h2{
+      margin:0;
+      font-family: Fraunces, serif;
+      font-weight:700;
+      letter-spacing:-.2px;
+      font-size:34px;
+      line-height:1.15;
+    }
+    .section-title .hint{
+      margin:0;
+      color:var(--muted2);
+      font-size:13px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      align-items:start;
+    }
+    @media (max-width: 920px){
+      .grid{ grid-template-columns: 1fr; }
+      .section-title{ flex-direction:column; align-items:flex-start; }
+    }
+
+    /* Cards */
+    .card{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(16,26,40,.58), rgba(16,26,40,.34));
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      padding:20px;
+      position:relative;
+      overflow:hidden;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .card:hover{
+      transform: translateY(-2px);
+      border-color: rgba(124,211,255,.30);
+      background: linear-gradient(180deg, rgba(16,26,40,.64), rgba(16,26,40,.36));
+    }
+
+    .kicker{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      font-size:12px;
+      color:var(--muted2);
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(124,211,255,.25), transparent);
+      margin: 18px 0 0;
+    }
+
+    /* HERO – centered, clean */
+    .hero{
+      min-height: calc(100vh - 86px);
+      display:flex;
+      align-items:center;
+      padding:54px 0 26px;
+    }
+    .hero-center{
+      max-width: 880px;
+      margin: 0 auto;
+      text-align:center;
+    }
+    .hero h1{
+      font-family: Fraunces, serif;
+      font-size:58px;
+      line-height:1.0;
+      letter-spacing:-.8px;
+      margin:10px 0 12px;
+    }
+    @media (max-width: 520px){
+      .hero h1{ font-size:42px; }
+    }
+    .hero p{
+      margin:0 auto 14px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.65;
+      max-width: 70ch;
+    }
+
+    .btnrow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+      margin-top:16px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background: rgba(16,26,40,.32);
+      color:var(--ink);
+      font-weight:600;
+      font-size:14px;
+      cursor:pointer;
+      transition: transform .16s ease, border-color .16s ease, background .16s ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color:var(--border2);
+      background: rgba(16,26,40,.48);
+      text-decoration:none;
+    }
+    .btn.primary{
+      border-color: rgba(124,211,255,.46);
+      background: linear-gradient(180deg, rgba(124,211,255,.14), rgba(16,26,40,.34));
+    }
+
+    /* Scroll cue */
+    .scrollcue{
+      margin-top:26px;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      color:var(--muted2);
+      font-size:13px;
+      user-select:none;
+      cursor:pointer;
+      justify-content:center;
+    }
+    .arrow{
+      width:34px; height:34px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      display:grid;
+      place-items:center;
+      background: rgba(16,26,40,.18);
+    }
+    .arrow svg{ opacity:.9; }
+
+    /* Timeline */
+    .timeline{
+      display:grid;
+      gap:14px;
+    }
+    .role{
+      display:grid;
+      grid-template-columns: 170px 1fr;
+      gap:16px;
+      padding:16px;
+      border-radius: 18px;
+      background: rgba(16,26,40,.20);
+      border:1px solid rgba(124,211,255,.12);
+      transition: border-color .16s ease, background .16s ease, transform .16s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .role:hover{
+      border-color:rgba(124,211,255,.26);
+      background: rgba(16,26,40,.26);
+      transform: translateY(-1px);
+    }
+    .when{ color:var(--muted2); font-size:12px; letter-spacing:.08em; text-transform:uppercase; line-height:1.4; }
+    .who{ font-weight:700; }
+    .what{ color:var(--muted); font-size:14px; line-height:1.6; }
+    .bul{ margin:10px 0 0; padding-left:18px; color:var(--muted); }
+    .bul li{ margin:6px 0; }
+
+    @media (max-width: 720px){
+      .role{ grid-template-columns: 1fr; }
+    }
+
+    /* Image placeholders */
+    .imgph{
+      border-radius: 18px;
+      border:1px solid rgba(124,211,255,.14);
+      background:
+        linear-gradient(180deg, rgba(16,26,40,.22), rgba(16,26,40,.12));
+      overflow:hidden;
+    }
+    .imgph img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+    }
+    .imgph .ph-inner{
+      aspect-ratio: 16 / 10;
+      display:grid;
+      place-items:center;
+      color: rgba(234,244,255,.70);
+      font-size:13px;
+      padding:18px;
+      text-align:center;
+      background:
+        radial-gradient(600px 240px at 20% 10%, rgba(124,211,255,.10), transparent 60%),
+        radial-gradient(500px 240px at 80% 40%, rgba(183,155,255,.08), transparent 65%);
+    }
+
+    /* Projects grid */
+    .projects{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+    }
+    .proj{ grid-column: span 6; }
+    .proj.wide{ grid-column: span 8; }
+    .proj.narrow{ grid-column: span 4; }
+    @media (max-width: 920px){
+      .proj, .proj.wide, .proj.narrow{ grid-column: span 12; }
+    }
+    .proj h3{ margin:0 0 8px; font-size:18px; letter-spacing:-.2px; }
+    .proj p{ margin:0 0 10px; color:var(--muted); line-height:1.6; }
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+    .chip{
+      border:1px solid rgba(124,211,255,.16);
+      background: rgba(16,26,40,.22);
+      padding:7px 10px;
+      border-radius: 999px;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    /* Skills */
+    .skills-note{ color:var(--muted2); font-size:13px; margin: 0 0 16px; }
+    .skillbox{ display:grid; gap:14px; }
+    .skillgroup{
+      padding:16px;
+      border-radius: 18px;
+      border:1px solid rgba(124,211,255,.12);
+      background: rgba(16,26,40,.20);
+    }
+    .skillgroup h3{
+      margin:0 0 10px;
+      font-size:14px;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:var(--muted2);
+    }
+    .skill{
+      position:relative;
+      display:grid;
+      grid-template-columns: 160px 1fr;
+      gap:12px;
+      align-items:center;
+      padding:10px 0;
+    }
+    @media (max-width: 520px){
+      .skill{ grid-template-columns: 1fr; gap:8px; }
+    }
+    .skill .label{ font-weight:600; font-size:13px; }
+
+    .bar{
+      position:relative;
+      height:12px;
+      border-radius:999px;
+      border:1px solid rgba(124,211,255,.18);
+      background: rgba(5,7,11,.45);
+      overflow:hidden;
+    }
+    .bar > i{
+      display:block;
+      height:100%;
+      width:0;
+      border-radius:999px;
+      background: linear-gradient(90deg, rgba(124,211,255,.72), rgba(183,155,255,.50));
+      box-shadow: 0 0 18px rgba(124,211,255,.12);
+      transition: width 1.0s cubic-bezier(.2,.9,.2,1);
+    }
+    .tip{
+      position:absolute;
+      right:0;
+      top:-10px;
+      transform: translateY(-100%);
+      background: rgba(5,7,11,.78);
+      border:1px solid rgba(124,211,255,.22);
+      border-radius: 12px;
+      padding:10px 12px;
+      width:min(340px, 80vw);
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.45;
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .14s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 14px 50px rgba(0,0,0,.45);
+      z-index:5;
+    }
+    .skill:hover .tip{ opacity:1; }
+
+    /* Hobbies gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:14px;
+      margin-top: 12px;
+    }
+    .shot{ grid-column: span 4; }
+    .shot.wide{ grid-column: span 6; }
+    @media (max-width: 920px){
+      .shot, .shot.wide{ grid-column: span 12; }
+    }
+    figure{
+      margin:0;
+    }
+    .shot .frame{
+      border-radius: 18px;
+      border:1px solid rgba(124,211,255,.12);
+      background: rgba(16,26,40,.18);
+      overflow:hidden;
+    }
+    .shot img{
+      width:100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display:block;
+    }
+    figcaption{
+      padding:10px 12px 12px;
+      color: var(--muted);
+      font-size:13px;
+      line-height:1.5;
+    }
+    figcaption strong{ color: rgba(234,244,255,.92); font-weight:650; }
+
+    /* Contact */
+    footer{ padding: 70px 0 90px; }
+    .contactgrid{ display:grid; grid-template-columns: 1.1fr .9fr; gap:18px; }
+    @media (max-width: 920px){ .contactgrid{ grid-template-columns: 1fr; } }
+    .mini{ color:var(--muted2); font-size:12px; margin-top: 10px; }
+
+    /* Reveal (very light) */
+    .reveal{ opacity:0; transform: translateY(10px); }
+    .reveal.is-in{ opacity:1; transform: translateY(0); transition: opacity .6s ease, transform .6s ease; }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+      .reveal{ opacity:1; transform:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="progress" aria-hidden="true"><i id="progFill"></i></div>
+
+  <header>
+    <nav class="nav" aria-label="Primary">
+      <div class="brand">
+        <span class="name">Charlotte Mädler</span>
+        <span class="tag">computer science · cybersecurity · product</span>
+      </div>
+
+      <div class="navlinks">
+        <a class="pill" href="#work">Work</a>
+        <a class="pill" href="#education">Education</a>
+        <a class="pill" href="#projects">Side projects</a>
+        <a class="pill" href="#skills">Skills</a>
+        <a class="pill" href="#hobbies">About me</a>
+        <a class="pill" href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ==============================
+         HERO / LANDING (centered + clean)
+         ============================== -->
+    <section class="hero" id="top">
+      <div class="wrap">
+        <div class="hero-center reveal">
+          <div class="kicker">ABOUT <span aria-hidden="true">✦</span> calm systems, curious brain</div>
+          <h1>Hi, I’m Charlotte.</h1>
+          <p>
+            I recently graduated with an <strong>M.Sc. in Computer Science</strong> (cybersecurity track) and I like
+            the intersection of technical depth, product thinking, and how people actually behave.
+          </p>
+          <p>
+            These days I work in <strong>Amazon account management</strong>, where decisions have real constraints, real incentives,
+            and real humans attached.
+          </p>
+
+          <div class="btnrow" role="group" aria-label="Primary actions">
+            <!-- Put your PDF in the same folder as this file -->
+            <a class="btn primary" href="Charlotte_Maedler_CV.pdf" download>⤓ Download CV</a>
+            <a class="btn" href="#contact">Say hi</a>
+          </div>
+
+          <div class="scrollcue" id="scrollCue" role="button" tabindex="0" aria-label="Scroll to work experience">
+            <span class="arrow" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v12" stroke="rgba(234,244,255,.85)" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M7 14l5 5 5-5" stroke="rgba(234,244,255,.85)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>Scroll to find out more</span>
+          </div>
+
+          <div class="divider" aria-hidden="true"></div>
+          <p class="mini">Tip: swap image placeholders by replacing the <code>src</code> values with your photos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================
+         WORK EXPERIENCE
+         ============================== -->
+    <section id="work">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <h2>Work experience</h2>
+          <p class="hint">Readable timeline, minimal fluff.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card reveal">
+            <div class="kicker">TIMELINE</div>
+
+            <div class="timeline">
+              <article class="role">
+                <div>
+                  <div class="when">Aug 2025 — Present</div>
+                  <div class="who">Account Manager · Amazon Global Selling</div>
+                  <div class="mini">Berlin</div>
+                </div>
+                <div class="what">
+                  Managing a portfolio of EU sellers expanding internationally, with a focus on sustainable growth and clean execution.
+                  <ul class="bul">
+                    <li>Translate analytical thinking into practical account decisions</li>
+                    <li>Improve listing quality, prioritisation, and high-ROI actions</li>
+                    <li>Build small internal systems that make workflows easier to repeat</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="role">
+                <div>
+                  <div class="when">Apr 2023 — Aug 2025</div>
+                  <div class="who">Student Researcher · Behavioural Security</div>
+                  <div class="mini">University of Bonn</div>
+                </div>
+                <div class="what">
+                  Research on digital vs physical surveillance, trust in authorities, and privacy behaviour.
+                  <ul class="bul">
+                    <li>Designed surveys and experiments; analysed data with statistical methods</li>
+                    <li>Contributed to scientific writing and a peer-reviewed publication (details optional)</li>
+                    <li>Worked end-to-end: methodology → data collection → interpretation</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="role">
+                <div>
+                  <div class="when">Oct 2019 — Mar 2023</div>
+                  <div class="who">Teaching Assistant · Technical CS</div>
+                  <div class="mini">University of Bonn</div>
+                </div>
+                <div class="what">
+                  Taught and mentored groups of 20–40 students across systems/architecture-heavy courses.
+                  <ul class="bul">
+                    <li>Led tutorials, explained assignments, corrected and graded exams</li>
+                    <li>Turned “this makes no sense” into “ok wait I get it”</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="role">
+                <div>
+                  <div class="when">Apr 2022 — Oct 2022</div>
+                  <div class="who">Swimming Instructor · Nessy GmbH</div>
+                  <div class="mini">Bonn</div>
+                </div>
+                <div class="what">
+                  Taught children aged 3 months to 12 years, balancing safety, confidence, and a very firm “fun first” policy.
+                  <ul class="bul">
+                    <li>Handled fear of water gently but clearly</li>
+                    <li>Managed parent communication and conflict resolution</li>
+                  </ul>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="kicker">PHOTO SPACE</div>
+            <div class="imgph">
+              <!-- Replace with a real image: e.g. a clean portrait / office / neutral -->
+              <!-- <img src="img/work-portrait.jpg" alt="Charlotte portrait"> -->
+              <div class="ph-inner">
+                Add a photo here (portrait / city shot / clean vibe).
+                <br><span style="color:var(--muted2); font-size:12px;">Recommended: 1600×1000+</span>
+              </div>
+            </div>
+
+            <div style="height:12px"></div>
+
+            <div class="kicker">QUICK SUMMARY</div>
+            <p style="margin:0; color:var(--muted); line-height:1.65;">
+              I’m happiest when the work is a mix of people, systems, and decisions.
+              I like making complicated things feel straightforward — without pretending they’re simple.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================
+         EDUCATION
+         ============================== -->
+    <section id="education">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <h2>Education</h2>
+          <p class="hint">The structured part of my lore.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card reveal">
+            <div class="kicker">DEGREES</div>
+
+            <div class="timeline">
+              <article class="role">
+                <div>
+                  <div class="when">Apr 2023 — Aug 2025</div>
+                  <div class="who">M.Sc. Computer Science</div>
+                  <div class="mini">University of Bonn</div>
+                </div>
+                <div class="what">
+                  Focus: security, data analysis, and human factors in computing.
+                </div>
+              </article>
+
+              <article class="role">
+                <div>
+                  <div class="when">Oct 2018 — Mar 2023</div>
+                  <div class="who">B.Sc. Computer Science</div>
+                  <div class="mini">Minor: Physics</div>
+                </div>
+                <div class="what">
+                  Systems foundations, architecture, algorithms — plus enough physics to stay curious forever.
+                </div>
+              </article>
+
+              <article class="role">
+                <div>
+                  <div class="when">Sep 2010 — Jun 2018</div>
+                  <div class="who">Abitur</div>
+                  <div class="mini">Bonn</div>
+                </div>
+                <div class="what">
+                  A mix of maths, languages, and the usual teenage chaos.
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="kicker">EXTRAS</div>
+            <p style="margin:0; color:var(--muted); line-height:1.65;">
+              Along the way, I got comfortable with presenting, writing, and collaborating under real constraints
+              (time, scope, attention spans). Which, honestly, is its own kind of education.
+            </p>
+
+            <div style="height:12px"></div>
+
+            <div class="kicker">PHOTO SPACE</div>
+            <div class="imgph">
+              <!-- Replace with: graduation / campus / bookish photo -->
+              <!-- <img src="img/education.jpg" alt="Graduation or campus"> -->
+              <div class="ph-inner">Add an education photo here (graduation / campus / conference).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================
+         SIDE PROJECTS
+         ============================== -->
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <h2>Side projects</h2>
+          <p class="hint">Where curiosity turns into interfaces.</p>
+        </div>
+
+        <div class="projects">
+          <div class="card proj wide reveal">
+            <div class="kicker">PROJECT</div>
+            <h3>LUMI — AI seller call simulator</h3>
+            <p>
+              A practice environment for seller calls: persona-based dialogue, near real-time responses, and feedback that’s actually actionable.
+              Built with a custom front end (HTML/CSS/JS), workflow automation (n8n), and AWS services for speech + knowledge-base access.
+            </p>
+            <div class="chips">
+              <span class="chip">HTML/CSS/JS</span>
+              <span class="chip">n8n</span>
+              <span class="chip">AWS speech</span>
+              <span class="chip">dialogue + scoring</span>
+            </div>
+            <div style="height:12px"></div>
+            <div class="imgph">
+              <!-- Replace with 1–2 screenshots (or keep placeholder) -->
+              <!-- <img src="img/lumi.jpg" alt="LUMI screenshot"> -->
+              <div class="ph-inner">Add a screenshot collage here (LUMI UI / workflow / scoring).</div>
+            </div>
+          </div>
+
+          <div class="card proj narrow reveal">
+            <div class="kicker">PROJECT</div>
+            <h3>Vellaro — fencing analytics</h3>
+            <p>
+              A concept for turning fencing footage into useful coaching feedback using pose estimation and interpretable movement metrics.
+            </p>
+            <div class="chips">
+              <span class="chip">pose estimation</span>
+              <span class="chip">sports analytics</span>
+              <span class="chip">product discovery</span>
+            </div>
+            <div style="height:12px"></div>
+            <div class="imgph">
+              <!-- <img src="img/vellaro.jpg" alt="Vellaro placeholder"> -->
+              <div class="ph-inner">Add 1 strong image here (frame overlay / training shot).</div>
+            </div>
+          </div>
+
+          <div class="card proj narrow reveal">
+            <div class="kicker">PROJECT</div>
+            <h3>Fechtklingen.de — online fencing store</h3>
+            <p>
+              Early category expansion work: product strategy, supplier relations, and brand direction — the non-code side of building.
+            </p>
+            <div class="chips">
+              <span class="chip">e-commerce</span>
+              <span class="chip">category strategy</span>
+              <span class="chip">brand</span>
+            </div>
+            <div style="height:12px"></div>
+            <div class="imgph">
+              <!-- <img src="img/fechtklingen.jpg" alt="Fechtklingen placeholder"> -->
+              <div class="ph-inner">Add a clean store/product shot here.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================
+         SKILLS
+         ============================== -->
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <h2>Skills</h2>
+          <p class="hint">Hover for context. Bars fill when visible.</p>
+        </div>
+
+        <p class="skills-note reveal">No “100% expert” theatre — just what I use and where it came from.</p>
+
+        <div class="grid">
+          <div class="card reveal">
+            <div class="kicker">TECH</div>
+
+            <div class="skillbox" aria-label="Skills">
+              <div class="skillgroup">
+                <h3>Core</h3>
+
+                <div class="skill" data-level="82">
+                  <div class="label">Python</div>
+                  <div class="bar"><i></i></div>
+                  <div class="tip">Data analysis, automation, notebooks, prototyping — used across research and projects.</div>
+                </div>
+
+                <div class="skill" data-level="72">
+                  <div class="label">HTML/CSS/JS</div>
+                  <div class="bar"><i></i></div>
+                  <div class="tip">Building polished layouts and interactive prototypes (including this site).</div>
+                </div>
+
+                <div class="skill" data-level="60">
+                  <div class="label">SQL</div>
+                  <div class="bar"><i></i></div>
+                  <div class="tip">Querying, joins, aggregation, sanity-checking datasets.</div>
+                </div>
+
+                <div class="skill" data-level="55">
+                  <div class="label">R</div>
+                  <div class="bar"><i></i></div>
+                  <div class="tip">Stats workflows and hypothesis testing for behavioural security research.</div>
+                </div>
+
+                <div class="skill" data-level="48">
+                  <div class="label">C++ / systems</div>
+                  <div class="bar"><i></i></div>
+                  <div class="tip">Foundations from coursework and teaching — good systems intuition, no bravado.</div>
+                </div>
+              </div>
+
+              <div class="skillgroup">
+                <h3>Applied</h3>
+
+                <div class="skill" data-level="78">
+                  <div class="label">Data analysis</div>
+                  <div class="bar"><i></i></div>
+                  <div class="tip">Pandas/Jupyter mindset: clean datasets, readable analysis, and decision-oriented outputs.</div>
+                </div>
+
+                <div class="skill" data-level="70">
+                  <div class="label">Research methods</div>
+                  <div class="bar"><i></i></div>
+                  <div class="tip">Surveys, interviews, experimental design, interpretation, and scientific writing.</div>
+                </div>
+
+                <div class="skill" data-level="62">
+                  <div class="label">Cybersecurity</div>
+                  <div class="bar"><i></i></div>
+                  <div class="tip">User-centric security, threat thinking, privacy/security trade-offs.</div>
+                </div>
+
+                <div class="skill" data-level="58">
+                  <div class="label">UX research</div>
+                  <div class="bar"><i></i></div>
+                  <div class="tip">Turning “vibes” into needs → features → prototypes that people can actually test.</div>
+                </div>
+
+                <div class="skill" data-level="60">
+                  <div class="label">AWS + n8n + Git</div>
+                  <div class="bar"><i></i></div>
+                  <div class="tip">Practical glue for shipping small systems (speech/LLMs/automation + version control).</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="kicker">LANGUAGES</div>
+
+            <div class="skillgroup" style="margin-top:12px;">
+              <h3>Human</h3>
+
+              <div class="skill" data-level="98">
+                <div class="label">German</div>
+                <div class="bar"><i></i></div>
+                <div class="tip">Native.</div>
+              </div>
+
+              <div class="skill" data-level="98">
+                <div class="label">English</div>
+                <div class="bar"><i></i></div>
+                <div class="tip">Native-like.</div>
+              </div>
+
+              <div class="skill" data-level="55">
+                <div class="label">French</div>
+                <div class="bar"><i></i></div>
+                <div class="tip">B1 — functional and improving.</div>
+              </div>
+
+              <div class="skill" data-level="35">
+                <div class="label">Italian</div>
+                <div class="bar"><i></i></div>
+                <div class="tip">Learning — mostly enthusiasm and food-related vocabulary so far.</div>
+              </div>
+            </div>
+
+            <div style="height:14px"></div>
+
+            <div class="kicker">TOOLS I TOUCH OFTEN</div>
+            <div class="chips" style="margin-top:10px;">
+              <span class="chip">Pandas</span>
+              <span class="chip">Jupyter</span>
+              <span class="chip">Matplotlib</span>
+              <span class="chip">GitHub</span>
+              <span class="chip">AWS</span>
+              <span class="chip">n8n</span>
+              <span class="chip">LaTeX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================
+         HOBBIES / ABOUT ME + GALLERY
+         ============================== -->
+    <section id="hobbies">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <h2>Hobbies & behind the scenes</h2>
+          <p class="hint">The human part of the portfolio.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card reveal">
+            <div class="kicker">ABOUT ME</div>
+            <p style="margin:0; color:var(--muted); line-height:1.7;">
+              I like side quests: cooking experiments, bouldering sessions that humble me, and trips where the weather tries to win.
+              I’m also a committed cat person (I don’t make the rules).
+            </p>
+
+            <div style="height:12px"></div>
+
+            <div class="kicker">GET TO KNOW ME (BEHIND THE SCENES)</div>
+
+            <div class="gallery" aria-label="Behind the scenes gallery">
+              <!-- BBQ -->
+              <figure class="shot wide">
+                <div class="frame">
+                  <!-- Replace src -->
+                  <img src="gallery-bbq.jpg" alt="Charlotte barbequing (placeholder)">
+                </div>
+                <figcaption>
+                  <strong>BBQ mode:</strong> mildly competitive about grill timing, very serious about feeding people.
+                </figcaption>
+              </figure>
+
+              <!-- Fried chicken -->
+              <figure class="shot wide">
+                <div class="frame">
+                  <img src="gallery-fried-chicken.jpg" alt="Charlotte making fried chicken (placeholder)">
+                </div>
+                <figcaption>
+                  <strong>Fried chicken arc:</strong> the kitchen looks like chaos, the results are worth it.
+                </figcaption>
+              </figure>
+
+              <!-- Alaska hiking -->
+              <figure class="shot">
+                <div class="frame">
+                  <img src="gallery-alaska-rain.jpg" alt="Hiking in Alaska drenched in rain (placeholder)">
+                </div>
+                <figcaption>
+                  <strong>Alaska rain hike:</strong> soaked, smiling, and learning that “waterproof” is mostly marketing.
+                </figcaption>
+              </figure>
+
+              <!-- Cat: DDoS -->
+              <figure class="shot">
+                <div class="frame">
+                  <img src="gallery-cat-ddos.jpg" alt="Cat DDoS (placeholder)">
+                </div>
+                <figcaption>
+                  <strong>DDoS:</strong> named after the obvious. Specialises in overwhelming attention requests at peak hours.
+                </figcaption>
+              </figure>
+
+              <!-- Cat: Caruso -->
+              <figure class="shot">
+                <div class="frame">
+                  <img src="gallery-cat-caruso.jpg" alt="Cat Caruso (placeholder)">
+                </div>
+                <figcaption>
+                  <strong>Caruso:</strong> named after the singer. Performs dramatic solos (usually at 3am).
+                </figcaption>
+              </figure>
+
+              <!-- Bouldering -->
+              <figure class="shot wide">
+                <div class="frame">
+                  <img src="gallery-bouldering-upside-down.jpg" alt="Bouldering upside down (placeholder)">
+                </div>
+                <figcaption>
+                  <strong>Bouldering:</strong> hanging upside down, reconsidering my life choices, having a great time.
+                </figcaption>
+              </figure>
+            </div>
+
+            <p class="mini">
+              Replace the gallery image filenames with your real photos (same folder is easiest).
+              Keep them reasonably large for crisp rendering.
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <div class="kicker">PHOTO SPACE</div>
+            <div class="imgph">
+              <!-- Optional: add a single “vibe” photo here -->
+              <!-- <img src="img/about-vibe.jpg" alt="Charlotte vibe photo"> -->
+              <div class="ph-inner">Optional: add one “vibe” photo here (travel / city / cozy desk).</div>
+            </div>
+
+            <div style="height:12px"></div>
+
+            <div class="kicker">QUICK FACTS</div>
+            <div class="chips">
+              <span class="chip">bouldering</span>
+              <span class="chip">cooking</span>
+              <span class="chip">hiking</span>
+              <span class="chip">cats</span>
+              <span class="chip">motorcycles</span>
+              <span class="chip">pub quiz trivia</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==============================
+         CONTACT
+         ============================== -->
+    <footer id="contact">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <h2>Contact</h2>
+          <p class="hint">Links that actually work.</p>
+        </div>
+
+        <div class="contactgrid">
+          <div class="card reveal">
+            <div class="kicker">LINKS</div>
+            <div class="btnrow" style="margin-top:8px; justify-content:flex-start;">
+              <a class="btn" href="https://www.linkedin.com/in/charlotte-maedler" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a class="btn" href="https://github.com/CharlyMae0811" target="_blank" rel="noreferrer">GitHub</a>
+              <a class="btn primary" href="Charlotte_Maedler_CV.pdf" download>⤓ Download CV</a>
+            </div>
+            <p class="mini">Tip: on GitHub Pages, put the PDF in the repo root next to this HTML file.</p>
+          </div>
+
+          <div class="card reveal">
+            <div class="kicker">EMAIL</div>
+            <p style="margin:0; color:var(--muted); line-height:1.7;">
+              <a href="mailto:charlotte.t.maedler@gmail.com">charlotte.t.maedler@gmail.com</a>
+            </p>
+            <p class="mini">If you email me, bonus points for a subject line that tells me what you want in one sentence.</p>
+          </div>
+        </div>
+
+        <p class="mini" style="margin-top:18px;">
+          © <span id="year"></span> Charlotte Mädler · built with HTML/CSS/JS · clean first, glow second.
+        </p>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll helper
+    function smoothScrollTo(selector){
+      const el = document.querySelector(selector);
+      if(!el) return;
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Scroll cue
+    const scrollCue = document.getElementById('scrollCue');
+    scrollCue?.addEventListener('click', () => smoothScrollTo('#work'));
+    scrollCue?.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter' || e.key === ' ') smoothScrollTo('#work');
+    });
+
+    // Make in-page links smooth (without breaking normal links)
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        if(!href || href === '#') return;
+        e.preventDefault();
+        history.pushState(null, '', href);
+        smoothScrollTo(href);
+      });
+    });
+
+    // Scroll progress (right edge)
+    const progFill = document.getElementById('progFill');
+    function updateProgress(){
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      const p = max <= 0 ? 0 : (doc.scrollTop / max);
+      progFill.style.height = (p * 100) + '%';
+    }
+    window.addEventListener('scroll', updateProgress, { passive:true });
+    updateProgress();
+
+    // Reveal + skill bar fill
+    const revealEls = Array.from(document.querySelectorAll('.reveal'));
+    const io = new IntersectionObserver((entries) => {
+      for (const entry of entries){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-in');
+
+          // Fill skill bars when section becomes visible
+          entry.target.querySelectorAll?.('.skill').forEach(skill => {
+            const level = Number(skill.dataset.level || 0);
+            const fill = skill.querySelector('.bar > i');
+            if(fill) fill.style.width = Math.max(0, Math.min(100, level)) + '%';
+          });
+
+          io.unobserve(entry.target);
+        }
+      }
+    }, { threshold: 0.14 });
+    revealEls.forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
 
