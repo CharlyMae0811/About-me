@@ -61,7 +61,7 @@
       pointer-events:none;
       z-index:0;
       transform: translateY(var(--bgY));
-      transition: transform .10s linear; /* keeps it smooth but not “laggy” */
+      transition: transform .10s linear;
       background:
         radial-gradient(1000px 900px at calc(15% + (var(--p) * 8%)) calc(10% + (var(--p) * 18%)),
           rgba(124,211,255,var(--a1)), transparent 60%),
@@ -84,7 +84,7 @@
       background-size:220px 220px;
     }
 
-    /* Cursor glow (kept, but calmer) */
+    /* Cursor glow (kept, calmer) */
     .cursor-glow{
       position:fixed;
       inset:0;
@@ -211,11 +211,12 @@
       font-size:13px;
     }
 
+    /* Ensure hero columns align nicely and the left text can be longer */
     .grid{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: 1.35fr .65fr;
       gap:18px;
-      align-items:start;
+      align-items:stretch;
     }
     @media (max-width: 920px){
       .grid{ grid-template-columns: 1fr; }
@@ -271,7 +272,7 @@
       color:var(--muted);
       font-size:16px;
       line-height:1.65;
-      max-width:64ch;
+      max-width:68ch;
     }
 
     .btnrow{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
@@ -406,7 +407,7 @@
       color:var(--muted);
     }
 
-    /* Skills */
+    /* Skills (kept visually, but removed hover “tip” popups to avoid side-thing clutter) */
     .skills-note{ color:var(--muted2); font-size:13px; margin: 0 0 16px; }
     .skillbox{ display:grid; gap:14px; }
     .skillgroup{ padding:16px; border-radius: 18px; border:1px solid rgba(124,211,255,.12); background: rgba(16,26,40,.16); }
@@ -441,29 +442,7 @@
       transition: width 1.2s cubic-bezier(.2,.9,.2,1);
     }
 
-    .tip{
-      position:absolute;
-      right:0;
-      top:-10px;
-      transform: translateY(-100%);
-      background: rgba(5,7,11,.72);
-      border:1px solid rgba(124,211,255,.22);
-      border-radius: 12px;
-      padding:10px 12px;
-      width:min(340px, 80vw);
-      color:var(--muted);
-      font-size:12px;
-      line-height:1.45;
-      opacity:0;
-      pointer-events:none;
-      transition: opacity .16s ease;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 14px 50px rgba(0,0,0,.45);
-      z-index:5;
-    }
-    .skill:hover .tip{ opacity:1; }
-
-    /* Hobbies/About: clean + links */
+    /* About links */
     .linklist{ display:grid; gap:10px; margin-top:10px; }
     .linkrow{
       display:flex;
@@ -488,31 +467,59 @@
       white-space:nowrap;
     }
 
-    /* Contact: terminal easter egg */
-    .terminal{
+    /* Publications + Awards lists */
+    .itemlist{ display:grid; gap:12px; }
+    .item{
+      padding:14px;
+      border-radius: 18px;
+      border:1px solid rgba(124,211,255,.12);
+      background: rgba(16,26,40,.16);
+    }
+    .item .top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .item .title{ font-weight:700; }
+    .item .meta{ color:var(--muted2); font-size:12px; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
+    .item .desc{ margin-top:8px; color:var(--muted); line-height:1.6; font-size:14px; }
+
+    /* Gallery placeholder */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:10px;
       margin-top:14px;
-      background: rgba(5,7,11,.55);
+    }
+    @media (max-width: 920px){ .gallery{ grid-template-columns: repeat(2, 1fr); } }
+    .ph{
+      aspect-ratio: 4 / 3;
       border-radius: 16px;
-      border: 1px solid rgba(124,211,255,.18);
-      padding: 12px 12px;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-      font-size: 12px;
-      color: rgba(234,244,255,.88);
+      border:1px solid rgba(124,211,255,.14);
+      background:
+        linear-gradient(180deg, rgba(16,26,40,.22), rgba(16,26,40,.10));
+      position:relative;
       overflow:hidden;
     }
-    .term-line{ margin-bottom: 6px; white-space: nowrap; overflow-x:auto; }
-    .term-line::-webkit-scrollbar{ height:0; width:0; }
-    .term-prompt{ color: rgba(124,211,255,.95); }
-    .term-command{ color: rgba(183,155,255,.92); cursor:pointer; text-decoration: none; }
-    .term-command:hover{ text-decoration: underline; }
-    .term-output{ color: rgba(155,178,201,.9); }
+    .ph::after{
+      content:"photo";
+      position:absolute;
+      inset:auto 10px 10px auto;
+      font-size:11px;
+      color:rgba(155,178,201,.7);
+      border:1px solid rgba(124,211,255,.16);
+      background: rgba(5,7,11,.35);
+      padding:6px 8px;
+      border-radius:999px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      backdrop-filter: blur(10px);
+    }
 
     /* Questionnaire */
     .formgrid{ display:grid; gap:12px; }
-    .field{
-      display:grid;
-      gap:6px;
-    }
+    .field{ display:grid; gap:6px; }
     label{
       color: var(--muted2);
       font-size:12px;
@@ -569,6 +576,8 @@
         <a class="pill" href="#top">Intro</a>
         <a class="pill" href="#work">Work</a>
         <a class="pill" href="#education">Education</a>
+        <a class="pill" href="#publications">Publications</a>
+        <a class="pill" href="#awards">Awards</a>
         <a class="pill" href="#built">Side projects</a>
         <a class="pill" href="#skills">Skills</a>
         <a class="pill" href="#about">About</a>
@@ -582,12 +591,12 @@
     <section class="hero" id="top">
       <div class="wrap grid">
         <div class="reveal">
-          <div class="kicker">ABOUT ME <span aria-hidden="true">✦
+          <div class="kicker">About me <span aria-hidden="true">✦</span></div>
           <h1>Hi! I'm Charlotte.</h1>
 
           <p>
-            But all my friends call me Charly. I’m a 25-year-old Computer Science M.Sc. graduate with a cybersecurity track, a product brain,
-            and a soft spot for how people actually behave around risk, trust, and technology.
+            But all my friends call me Charly. I’m a 25-year-old Computer Science M.Sc. graduate with a cybersecurity track,
+            a product brain, and a soft spot for how people actually behave around risk, trust, and technology.
           </p>
           <p>
             I was born and raised in Canada, moved to Bonn in 2010, and have been based in Berlin since August.
@@ -596,7 +605,6 @@
           </p>
 
           <div class="btnrow">
-            <!-- Put your PDF next to this HTML file (repo root) -->
             <a class="btn primary" href="Charlotte_Maedler_CV.pdf" download>⤓ Download CV</a>
             <a class="btn" href="#work">Work experience</a>
             <a class="btn" href="#contact">Say hi</a>
@@ -608,19 +616,19 @@
           </div>
 
           <div class="divider" aria-hidden="true"></div>
-          <p class="mini">Tip: hover cards + skill bars. There’s a small terminal easter egg in Contact.</p>
         </div>
 
         <div class="reveal card" style="align-self:stretch;">
-          <div class="kicker">CURRENTLY</div>
+          <div class="kicker">Currently</div>
           <p style="margin:0; color:var(--muted); line-height:1.65;">
-            I’m currently working as an Account Manager at Amazon Global Selling, 
-            a role I chose intentionally to understand what it really means to build great customer relationships, 
+            I’m currently working as an Account Manager at Amazon Global Selling,
+            a role I chose intentionally to understand what it really means to build great customer relationships,
             how cross-functional teams collaborate, and what clients truly value.
-            <br>Throughout my studies, I’ve always looked for experiences that stretch me beyond one box: 
-            from teaching at university to teaching children how to swim, from robotics to cybersecurity, 
-            from research and data analysis to writing academic papers. 
-            I’m curious by nature and driven by the question of how technology, people and good communication come together 
+            <br><br>
+            Throughout my studies, I’ve always looked for experiences that stretch me beyond one box:
+            from teaching at university to teaching children how to swim, from robotics to cybersecurity,
+            from research and data analysis to writing academic papers.
+            I’m curious by nature and driven by the question of how technology, people and good communication come together.
           </p>
           <div style="height:12px"></div>
           <div class="chips">
@@ -628,7 +636,7 @@
             <span class="chip">customer behaviour</span>
             <span class="chip">data-driven decisions</span>
             <span class="chip">UX research</span>
-            <span class="chip">Academia</span>
+            <span class="chip">academia</span>
           </div>
         </div>
       </div>
@@ -644,15 +652,15 @@
 
         <div class="work-layout">
           <aside class="time-rail reveal" aria-label="Timeline navigation">
-            <div class="kicker">TIME LINKS</div>
+            <div class="kicker">Time links</div>
             <div class="time-links">
               <a class="time-link" href="#w-amazon" data-target="w-amazon"><span>Amazon</span><small>2025→</small></a>
               <a class="time-link" href="#w-research" data-target="w-research"><span>Behavioural Security</span><small>2023–2025</small></a>
+              <a class="time-link" href="#w-riposte" data-target="w-riposte"><span>Riposte</span><small>2024–2025</small></a>
               <a class="time-link" href="#w-ta" data-target="w-ta"><span>Teaching</span><small>2019–2023</small></a>
               <a class="time-link" href="#w-swim" data-target="w-swim"><span>Swimming</span><small>2022</small></a>
               <a class="time-link" href="#w-fecht" data-target="w-fecht"><span>Fechtklingen</span><small>2023–2025</small></a>
             </div>
-            <p class="mini" style="margin-bottom:0;">Clean overview, easy to skim.</p>
           </aside>
 
           <div class="timeline reveal">
@@ -666,7 +674,7 @@
                 <ul class="bul">
                   <li>Portfolio ownership: growth plans, execution cadence, and measurable improvements</li>
                   <li>Customer-first communication: turning constraints into clear next steps</li>
-                  <li>Process mindset: I like systems that reduce friction and make good behaviour easier</li>
+                  <li>Process mindset: systems that reduce friction and make good behaviour easier</li>
                 </ul>
               </div>
             </article>
@@ -680,8 +688,23 @@
                 Behavioural Security Research Group: privacy, trust, and how people interpret surveillance and risk.
                 <ul class="bul">
                   <li>Survey + experiment design, data collection, analysis, and scientific writing</li>
-                  <li>Worked on user-centric cybersecurity topics and human factors</li>
+                  <li>Human factors in security, with a strong focus on clarity and participant reasoning</li>
                   <li>Co-authored a peer-reviewed publication</li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="role" id="w-riposte" data-spot>
+              <div>
+                <div class="when">2024 — 2025</div>
+                <div class="who">Riposte · Fencing analytics (concept + prototyping)</div>
+              </div>
+              <div class="what">
+                Exploring how to turn raw movement signals into coaching insights athletes actually use.
+                <ul class="bul">
+                  <li>Product concept + user discovery with athletes/coaches (what’s useful vs what’s flashy)</li>
+                  <li>Prototyped simple analysis flows for clips: tagging actions, timing, and repeatable patterns</li>
+                  <li>Focused on output formats that fit real training sessions (fast, clear, actionable)</li>
                 </ul>
               </div>
             </article>
@@ -740,7 +763,7 @@
 
         <div class="grid">
           <div class="card reveal">
-            <div class="kicker">DEGREES</div>
+            <div class="kicker">Degrees</div>
 
             <div class="timeline" style="gap:12px;">
               <article class="role" style="grid-template-columns: 170px 1fr;">
@@ -749,7 +772,13 @@
                   <div class="who">M.Sc. Computer Science</div>
                   <div class="mini">University of Bonn</div>
                 </div>
-                <div class="what">German GPA: 1.3</div>
+                <div class="what">
+                  German GPA: 1.3
+                  <ul class="bul">
+                    <li>Focus: cybersecurity (user-centric security, privacy, and applied research)</li>
+                    <li>Broader coursework: visual/audio data analysis, algorithms, systems, and intelligent systems</li>
+                  </ul>
+                </div>
               </article>
 
               <article class="role" style="grid-template-columns: 170px 1fr;">
@@ -758,7 +787,14 @@
                   <div class="who">B.Sc. Computer Science</div>
                   <div class="mini">Minor: Physics</div>
                 </div>
-                <div class="what">German GPA. 2.0</div>
+                <div class="what">
+                  German GPA: 2.0
+                  <ul class="bul">
+                    <li>Minor focus: astrophysics-heavy physics track</li>
+                    <li>Broad foundation across theoretical CS, robotics & intelligent systems, hardware design, and software design</li>
+                    <li>Strong emphasis on mathematics, algorithms, and systems thinking</li>
+                  </ul>
+                </div>
               </article>
 
               <article class="role" style="grid-template-columns: 170px 1fr;">
@@ -773,12 +809,100 @@
           </div>
 
           <div class="card reveal">
-            <div class="kicker">EXTRAS</div>
+            <div class="kicker">Extras</div>
             <ul class="bul" style="margin-top:6px;">
+              <li>Overall studies covered: theoretical CS, robotics & intelligent systems, hardware and software design, mathematics and algorithms, cybersecurity, and visual/audio data analysis</li>
               <li>Elected Student Body Member</li>
               <li>Peer Tutor for diverse subjects</li>
               <li>Comfortable presenting and making complex things readable</li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <h2>Publications</h2>
+          <p class="hint">Peer-reviewed + what’s coming next.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card reveal">
+            <div class="kicker">Published</div>
+
+            <div class="itemlist">
+              <div class="item">
+                <div class="top">
+                  <div>
+                    <div class="title">Adventures in Recovery Land: Testing Account Recovery of Popular Websites When the Second Factor is Lost</div>
+                    <div class="mini" style="margin-top:6px;">SOUPS 2023 (USENIX) · August 2023</div>
+                  </div>
+                  <div class="meta">SOUPS 2023</div>
+                </div>
+                <div class="desc">
+                  <a class="btn" href="https://www.usenix.org/conference/soups2023/presentation/gerlitz-adventures" target="_blank" rel="noreferrer">View on USENIX</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="kicker">Coming soon</div>
+            <div class="item">
+              <div class="top">
+                <div class="title">Publication in progress</div>
+                <div class="meta">WIP</div>
+              </div>
+              <div class="desc">
+                Placeholder for the next paper — I’ll add title, venue, and link once it’s public.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AWARDS -->
+    <section id="awards">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <h2>Awards</h2>
+          <p class="hint">Scholarships, competitions, and the occasional flex.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card reveal">
+            <div class="kicker">Highlights</div>
+            <div class="itemlist">
+              <div class="item">
+                <div class="top">
+                  <div class="title">FS-ISAC Scholarship for Women in Cybersecurity</div>
+                  <div class="meta">2023</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="top">
+                  <div class="title">SAT Exam (1400 points)</div>
+                  <div class="meta">2017</div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="top">
+                  <div class="title">Hans-Riegel-Fachpreis (University of Bonn) — 2nd place in Physics</div>
+                  <div class="meta">2017</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="kicker">Notes</div>
+            <p style="margin:0; color:var(--muted); line-height:1.7;">
+              I like awards that reflect two things: strong fundamentals and work that holds up outside a classroom.
+            </p>
           </div>
         </div>
       </div>
@@ -808,9 +932,10 @@
           </div>
 
           <div class="card proj narrow reveal">
-            <h3>“Tiny but shiny” web toys</h3>
+            <h3>“Tiny but shiny” web tools</h3>
             <p>
-              Small web experiments: clean layouts, micro-interactions, and tiny utilities that feel good to use.
+              Small utilities with clean UI: a simple budget splitter, a “weekly reset” checklist page,
+              and a lightweight reading list tracker with tags and search.
             </p>
             <div class="chips">
               <span class="chip">HTML/CSS</span>
@@ -822,7 +947,8 @@
           <div class="card proj narrow reveal">
             <h3>Automation helpers</h3>
             <p>
-              Little scripts and workflow glue for reminders, templates, and sanity-saving structure.
+              Practical workflow glue: calendar reminders for recurring chores, auto-formatting templates for meeting notes,
+              a small script that turns a CSV into a clean summary, and a “mail draft builder” for repeatable outreach.
             </p>
             <div class="chips">
               <span class="chip">automation</span>
@@ -857,14 +983,13 @@
       <div class="wrap">
         <div class="section-title reveal">
           <h2>Skills</h2>
-          <p class="hint">Hover a bar for context.</p>
         </div>
 
         <p class="skills-note reveal">No 100% claims. Just what I actually use.</p>
 
         <div class="grid">
           <div class="card reveal">
-            <div class="kicker">TECH + ANALYSIS</div>
+            <div class="kicker">Tech + analysis</div>
 
             <div class="skillbox" aria-label="Skills">
               <div class="skillgroup">
@@ -873,65 +998,56 @@
                 <div class="skill" data-level="85">
                   <div class="label">Python</div>
                   <div class="bar" aria-label="Python skill"><i></i></div>
-                  <div class="tip">Data analysis, automation, notebooks, quick prototyping, and shipping small tools end-to-end.</div>
                 </div>
 
                 <div class="skill" data-level="72">
                   <div class="label">HTML/CSS/JS</div>
                   <div class="bar" aria-label="HTML/CSS/JS skill"><i></i></div>
-                  <div class="tip">Polished layouts, prototypes, and simple UI logic. I care about readability and feel.</div>
                 </div>
 
                 <div class="skill" data-level="65">
                   <div class="label">Data analysis</div>
                   <div class="bar" aria-label="Data analysis skill"><i></i></div>
-                  <div class="tip">Cleaning, transforming, and interpreting data. Making results readable for humans.</div>
                 </div>
 
                 <div class="skill" data-level="58">
                   <div class="label">Research methods</div>
                   <div class="bar" aria-label="Research methods"><i></i></div>
-                  <div class="tip">Surveys, experiments, hypothesis testing, and careful interpretation (no dramatic overclaims).</div>
                 </div>
 
                 <div class="skill" data-level="55">
                   <div class="label">Cybersecurity</div>
                   <div class="bar" aria-label="Cybersecurity"><i></i></div>
-                  <div class="tip">User-centric security, behavioural security research, and translating risks into decisions.</div>
                 </div>
               </div>
             </div>
           </div>
 
           <div class="card reveal">
-            <div class="kicker">LANGUAGES + TOOLS</div>
+            <div class="kicker">Languages + tools</div>
 
             <div class="skillgroup" style="margin-top:12px;">
               <h3>Languages</h3>
               <div class="skill" data-level="98">
                 <div class="label">English</div>
                 <div class="bar" aria-label="English"><i></i></div>
-                <div class="tip">Native-like.</div>
               </div>
               <div class="skill" data-level="98">
                 <div class="label">German</div>
                 <div class="bar" aria-label="German"><i></i></div>
-                <div class="tip">Native.</div>
               </div>
               <div class="skill" data-level="55">
                 <div class="label">French</div>
                 <div class="bar" aria-label="French"><i></i></div>
-                <div class="tip">B1 — can chat, can travel, can confidently order food.</div>
               </div>
               <div class="skill" data-level="35">
                 <div class="label">Italian</div>
                 <div class="bar" aria-label="Italian"><i></i></div>
-                <div class="tip">Basics — mostly vibes and determination.</div>
               </div>
             </div>
 
             <div style="height:14px"></div>
-            <div class="kicker">TOOLS I TOUCH OFTEN</div>
+            <div class="kicker">Tools I touch often</div>
             <div class="chips" style="margin-top:10px;">
               <span class="chip">Git</span>
               <span class="chip">Jupyter</span>
@@ -955,11 +1071,23 @@
 
         <div class="grid">
           <div class="card reveal">
-            <div class="kicker">WHAT I LIKE</div>
+            <div class="kicker">What I like</div>
             <p style="margin:0; color:var(--muted); line-height:1.7;">
               I like bouldering, swimming, cooking, motorcycles, and collecting niche fun facts (ideal for pub quiz nights).
               I’m also very into words: poetry is where I put the thoughts that don’t belong in spreadsheets.
             </p>
+
+            <div class="gallery" aria-label="Photo gallery placeholder">
+              <div class="ph" title="Placeholder"></div>
+              <div class="ph" title="Placeholder"></div>
+              <div class="ph" title="Placeholder"></div>
+              <div class="ph" title="Placeholder"></div>
+              <div class="ph" title="Placeholder"></div>
+              <div class="ph" title="Placeholder"></div>
+              <div class="ph" title="Placeholder"></div>
+              <div class="ph" title="Placeholder"></div>
+            </div>
+
             <div style="height:12px"></div>
             <div class="chips">
               <span class="chip">bouldering</span>
@@ -972,10 +1100,9 @@
           </div>
 
           <div class="card reveal">
-            <div class="kicker">LINKS</div>
+            <div class="kicker">Links</div>
 
             <div class="linklist">
-              <!-- Replace with your actual poetry blog URL -->
               <div class="linkrow">
                 <div>
                   <strong>Poetry blog</strong>
@@ -984,7 +1111,6 @@
                 <a class="btn" href="https://charlymae0811.github.io/PoetryBlog/" target="_blank" rel="noreferrer">Open</a>
               </div>
 
-              <!-- Cooking blog placeholder -->
               <div class="linkrow">
                 <div>
                   <strong>Cooking blog</strong>
@@ -1011,28 +1137,12 @@
         </div>
 
         <div class="grid">
-          <!-- Contact + terminal easter egg -->
           <div class="card reveal">
-            <div class="kicker">REACH ME</div>
+            <div class="kicker">Reach me</div>
             <p style="margin:0; color:var(--muted); line-height:1.7;">
               Best way to reach me is email or LinkedIn. Extra points if you include a good cat story
               or a surprisingly strong opinion on milk brands.
             </p>
-
-            <!-- Terminal Easter egg -->
-            <div class="terminal" aria-label="Terminal easter egg">
-              <div class="term-line">
-                <span class="term-prompt">charlotte@web</span>:<span class="term-prompt">~</span>$
-                <span class="term-command" data-cmd="ls">ls socials</span>
-              </div>
-              <div class="term-line term-output" id="term-out-1"></div>
-
-              <div class="term-line" style="margin-top:8px;">
-                <span class="term-prompt">charlotte@web</span>:<span class="term-prompt">~</span>$
-                <span class="term-command" data-cmd="cv">cat CV.pdf</span>
-              </div>
-              <div class="term-line term-output" id="term-out-2"></div>
-            </div>
 
             <div class="btnrow" style="margin-top:14px;">
               <a class="btn" href="mailto:charlotte.t.maedler@gmail.com">Email</a>
@@ -1047,9 +1157,8 @@
             </p>
           </div>
 
-          <!-- Questionnaire -->
           <div class="card reveal">
-            <div class="kicker">I’D LIKE TO GET TO KNOW YOU TOO</div>
+            <div class="kicker">I’d like to get to know you too</div>
             <p style="margin:0 0 12px; color:var(--muted); line-height:1.7;">
               Quick mini-questionnaire. It opens an email draft with your answers (no data stored here).
             </p>
@@ -1153,16 +1262,12 @@
       const max = doc.scrollHeight - doc.clientHeight;
       const p = max <= 0 ? 0 : (doc.scrollTop / max);
 
-      // progress bar
       progFill.style.height = (p * 100) + '%';
 
-      // background drift + opacity blend (continuous)
-      // Keep it subtle: small drift and gentle opacity changes.
       const bgY = (p * -120).toFixed(1) + 'px';
       document.documentElement.style.setProperty('--p', p.toFixed(4));
       document.documentElement.style.setProperty('--bgY', bgY);
 
-      // opacities slightly shift as you scroll (stays smooth)
       const a1 = (0.12 + p * 0.05).toFixed(3);
       const a2 = (0.10 + Math.sin(p * Math.PI) * 0.04).toFixed(3);
       const a3 = (0.08 + (1 - p) * 0.04).toFixed(3);
@@ -1206,21 +1311,6 @@
     }, { threshold: [0.25, 0.4, 0.55] });
     spots.forEach(s => spotIO.observe(s));
 
-    // Terminal easter egg interactions (like your screenshot)
-    const out1 = document.getElementById('term-out-1');
-    const out2 = document.getElementById('term-out-2');
-
-    document.querySelectorAll('.term-command').forEach(cmd => {
-      cmd.addEventListener('click', () => {
-        const type = cmd.dataset.cmd;
-        if(type === 'ls'){
-          out1.textContent = 'linkedin  github  email  cv.pdf';
-        } else if(type === 'cv'){
-          out2.textContent = 'Opening CV… or just click the Download button like a normal human.';
-        }
-      });
-    });
-
     // Questionnaire → mailto + copy
     const EMAIL_TO = 'charlotte.t.maedler@gmail.com';
 
@@ -1254,7 +1344,7 @@
       const status = document.getElementById('copyStatus');
       try{
         await navigator.clipboard.writeText(msg);
-        status.textContent = 'Copied. Paste it anywhere (email, LinkedIn message, carrier pigeon).';
+        status.textContent = 'Copied. Paste it anywhere.';
       }catch(e){
         status.textContent = 'Copy failed (browser permission). You can still open the email draft.';
       }
