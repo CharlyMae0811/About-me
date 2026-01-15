@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Charlotte Mädler — About</title>
-  <meta name="description" content="About Charlotte Mädler — cybersecurity + product + strategy, with a soft spot for bouldering and poetry." />
+  <meta name="description" content="About Charlotte Mädler — cybersecurity + product + strategy, with a soft spot for bouldering, cooking, and poetry." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,7 +84,7 @@
       background-size:220px 220px;
     }
 
-    /* Cursor glow (kept, calmer) */
+    /* Cursor glow (calm) */
     .cursor-glow{
       position:fixed;
       inset:0;
@@ -187,7 +187,6 @@
     @media (max-width: 900px){ .progress{ display:none; } }
 
     main{ padding-top:86px; position:relative; z-index:3; }
-
     section{ padding:80px 0; position:relative; }
 
     .section-title{
@@ -211,12 +210,11 @@
       font-size:13px;
     }
 
-    /* Ensure hero columns align nicely and the left text can be longer */
     .grid{
       display:grid;
-      grid-template-columns: 1.35fr .65fr;
+      grid-template-columns: 1.2fr .8fr;
       gap:18px;
-      align-items:stretch;
+      align-items:start;
     }
     @media (max-width: 920px){
       .grid{ grid-template-columns: 1fr; }
@@ -272,7 +270,7 @@
       color:var(--muted);
       font-size:16px;
       line-height:1.65;
-      max-width:68ch;
+      max-width:64ch;
     }
 
     .btnrow{ display:flex; gap:12px; flex-wrap:wrap; margin-top:14px; }
@@ -407,7 +405,7 @@
       color:var(--muted);
     }
 
-    /* Skills (kept visually, but removed hover “tip” popups to avoid side-thing clutter) */
+    /* Skills */
     .skills-note{ color:var(--muted2); font-size:13px; margin: 0 0 16px; }
     .skillbox{ display:grid; gap:14px; }
     .skillgroup{ padding:16px; border-radius: 18px; border:1px solid rgba(124,211,255,.12); background: rgba(16,26,40,.16); }
@@ -442,7 +440,29 @@
       transition: width 1.2s cubic-bezier(.2,.9,.2,1);
     }
 
-    /* About links */
+    .tip{
+      position:absolute;
+      right:0;
+      top:-10px;
+      transform: translateY(-100%);
+      background: rgba(5,7,11,.72);
+      border:1px solid rgba(124,211,255,.22);
+      border-radius: 12px;
+      padding:10px 12px;
+      width:min(340px, 80vw);
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.45;
+      opacity:0;
+      pointer-events:none;
+      transition: opacity .16s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 14px 50px rgba(0,0,0,.45);
+      z-index:5;
+    }
+    .skill:hover .tip{ opacity:1; }
+
+    /* Hobbies/About links */
     .linklist{ display:grid; gap:10px; margin-top:10px; }
     .linkrow{
       display:flex;
@@ -467,55 +487,164 @@
       white-space:nowrap;
     }
 
-    /* Publications + Awards lists */
-    .itemlist{ display:grid; gap:12px; }
-    .item{
-      padding:14px;
-      border-radius: 18px;
-      border:1px solid rgba(124,211,255,.12);
-      background: rgba(16,26,40,.16);
-    }
-    .item .top{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:12px;
-    }
-    .item .title{ font-weight:700; }
-    .item .meta{ color:var(--muted2); font-size:12px; letter-spacing:.06em; text-transform:uppercase; white-space:nowrap; }
-    .item .desc{ margin-top:8px; color:var(--muted); line-height:1.6; font-size:14px; }
-
-    /* Gallery placeholder */
+    /* Gallery grid */
     .gallery{
       display:grid;
       grid-template-columns: repeat(4, 1fr);
-      gap:10px;
+      gap:12px;
       margin-top:14px;
     }
-    @media (max-width: 920px){ .gallery{ grid-template-columns: repeat(2, 1fr); } }
-    .ph{
-      aspect-ratio: 4 / 3;
-      border-radius: 16px;
+    @media (max-width: 920px){
+      .gallery{ grid-template-columns: repeat(2, 1fr); }
+    }
+    .g-item{
+      padding:0;
+      border:none;
+      background:transparent;
+      cursor:pointer;
+      border-radius:16px;
+      overflow:hidden;
       border:1px solid rgba(124,211,255,.14);
-      background:
-        linear-gradient(180deg, rgba(16,26,40,.22), rgba(16,26,40,.10));
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .g-item:hover{
+      transform: translateY(-2px);
+      border-color: rgba(124,211,255,.28);
+    }
+    .g-item img{
+      width:100%;
+      height:150px;
+      object-fit:cover;
+      display:block;
+    }
+
+    /* Lightbox */
+    .lightbox{
+      position:fixed;
+      inset:0;
+      display:none;
+      z-index:3000;
+    }
+    .lightbox.is-open{ display:block; }
+
+    .lb-backdrop{
+      position:absolute;
+      inset:0;
+      background: rgba(0,0,0,.62);
+      backdrop-filter: blur(6px);
+    }
+
+    .lb-card{
       position:relative;
+      width:min(980px, calc(100vw - 28px));
+      margin: 70px auto 0;
+      border-radius: 18px;
+      border:1px solid rgba(124,211,255,.20);
+      background: rgba(5,7,11,.78);
+      box-shadow: 0 30px 120px rgba(0,0,0,.65);
       overflow:hidden;
     }
-    .ph::after{
-      content:"photo";
+
+    .lb-card img{
+      width:100%;
+      height:auto;
+      max-height: 72vh;
+      object-fit: contain;
+      display:block;
+      background: rgba(0,0,0,.25);
+      touch-action: pan-y; /* allow vertical scroll, we handle horizontal swipe */
+    }
+
+    .lb-card figcaption{
+      padding: 12px 14px 16px;
+      color: rgba(234,244,255,.90);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .lb-close{
       position:absolute;
-      inset:auto 10px 10px auto;
-      font-size:11px;
-      color:rgba(155,178,201,.7);
-      border:1px solid rgba(124,211,255,.16);
-      background: rgba(5,7,11,.35);
-      padding:6px 8px;
-      border-radius:999px;
+      top:10px;
+      right:10px;
+      width:38px;
+      height:38px;
+      border-radius: 12px;
+      border:1px solid rgba(124,211,255,.22);
+      background: rgba(16,26,40,.35);
+      color: var(--ink);
+      cursor:pointer;
+      z-index:2;
+    }
+    .lb-close:hover{ border-color: rgba(124,211,255,.38); }
+
+    .lb-nav{
+      position:absolute;
+      top:50%;
+      transform: translateY(-50%);
+      width:44px;
+      height:44px;
+      border-radius: 14px;
+      border:1px solid rgba(124,211,255,.22);
+      background: rgba(16,26,40,.35);
+      color: var(--ink);
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      font-size: 28px;
+      line-height: 1;
+      user-select:none;
+      z-index:2;
+    }
+    .lb-nav:hover{ border-color: rgba(124,211,255,.38); }
+    .lb-prev{ left:10px; }
+    .lb-next{ right:10px; }
+
+    .lb-meta{
+      position:absolute;
+      left:10px;
+      top:10px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      z-index:2;
+    }
+    .lb-count{
+      font-size:12px;
       letter-spacing:.08em;
       text-transform:uppercase;
-      backdrop-filter: blur(10px);
+      color: rgba(155,178,201,.95);
+      border:1px solid rgba(124,211,255,.18);
+      background: rgba(16,26,40,.22);
+      padding:6px 10px;
+      border-radius: 999px;
     }
+    @media (max-width: 560px){
+      .lb-nav{ width:40px; height:40px; border-radius: 12px; }
+    }
+
+    /* Terminal */
+    .terminal{
+      margin-top:14px;
+      background: rgba(5,7,11,.55);
+      border-radius: 16px;
+      border: 1px solid rgba(124,211,255,.18);
+      padding: 12px 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+      color: rgba(234,244,255,.88);
+      overflow:hidden;
+    }
+    .term-line{ margin-bottom: 6px; white-space: nowrap; overflow-x:auto; }
+    .term-line::-webkit-scrollbar{ height:0; width:0; }
+    .term-prompt{ color: rgba(124,211,255,.95); }
+    .term-command{ color: rgba(183,155,255,.92); cursor:pointer; text-decoration: none; }
+    .term-command:hover{ text-decoration: underline; }
+    .term-output{ color: rgba(155,178,201,.9); }
+    .terminal a{
+      color: rgba(124,211,255,.95);
+      text-decoration: none;
+    }
+    .terminal a:hover{ text-decoration: underline; }
 
     /* Questionnaire */
     .formgrid{ display:grid; gap:12px; }
@@ -575,8 +704,8 @@
       <div class="navlinks">
         <a class="pill" href="#top">Intro</a>
         <a class="pill" href="#work">Work</a>
-        <a class="pill" href="#education">Education</a>
         <a class="pill" href="#publications">Publications</a>
+        <a class="pill" href="#education">Education</a>
         <a class="pill" href="#awards">Awards</a>
         <a class="pill" href="#built">Side projects</a>
         <a class="pill" href="#skills">Skills</a>
@@ -595,7 +724,7 @@
           <h1>Hi! I'm Charlotte.</h1>
 
           <p>
-            But all my friends call me Charly. I’m a 25-year-old Computer Science M.Sc. graduate with a cybersecurity track,
+            But all my friends call me Charly. I’m a 25-year-old Computer Science M.Sc. graduate with a cybersecurity focus,
             a product brain, and a soft spot for how people actually behave around risk, trust, and technology.
           </p>
           <p>
@@ -627,8 +756,8 @@
             <br><br>
             Throughout my studies, I’ve always looked for experiences that stretch me beyond one box:
             from teaching at university to teaching children how to swim, from robotics to cybersecurity,
-            from research and data analysis to writing academic papers.
-            I’m curious by nature and driven by the question of how technology, people and good communication come together.
+            from research and data analysis to writing academic papers. I’m driven by the question of how technology,
+            people, and good communication come together.
           </p>
           <div style="height:12px"></div>
           <div class="chips">
@@ -655,12 +784,13 @@
             <div class="kicker">Time links</div>
             <div class="time-links">
               <a class="time-link" href="#w-amazon" data-target="w-amazon"><span>Amazon</span><small>2025→</small></a>
-              <a class="time-link" href="#w-research" data-target="w-research"><span>Behavioural Security</span><small>2023–2025</small></a>
               <a class="time-link" href="#w-riposte" data-target="w-riposte"><span>Riposte</span><small>2024–2025</small></a>
+              <a class="time-link" href="#w-research" data-target="w-research"><span>Behavioural Security</span><small>2023–2025</small></a>
               <a class="time-link" href="#w-ta" data-target="w-ta"><span>Teaching</span><small>2019–2023</small></a>
               <a class="time-link" href="#w-swim" data-target="w-swim"><span>Swimming</span><small>2022</small></a>
               <a class="time-link" href="#w-fecht" data-target="w-fecht"><span>Fechtklingen</span><small>2023–2025</small></a>
             </div>
+            <p class="mini" style="margin-bottom:0;">Clean overview, easy to skim.</p>
           </aside>
 
           <div class="timeline reveal">
@@ -679,6 +809,21 @@
               </div>
             </article>
 
+            <article class="role" id="w-riposte" data-spot>
+              <div>
+                <div class="when">2024 — 2025</div>
+                <div class="who">Product & Research · Riposte (fencing analytics concept)</div>
+              </div>
+              <div class="what">
+                A coaching-focused analytics concept: turning raw movement + match data into feedback that an athlete can actually use.
+                <ul class="bul">
+                  <li>Early product framing: what coaches ask for vs what looks cool in a demo</li>
+                  <li>Concept exploration around pose estimation + tactical insights</li>
+                  <li>Systems thinking: measurement → signal → decision</li>
+                </ul>
+              </div>
+            </article>
+
             <article class="role" id="w-research" data-spot>
               <div>
                 <div class="when">Apr 2023 — Aug 2025</div>
@@ -688,23 +833,8 @@
                 Behavioural Security Research Group: privacy, trust, and how people interpret surveillance and risk.
                 <ul class="bul">
                   <li>Survey + experiment design, data collection, analysis, and scientific writing</li>
-                  <li>Human factors in security, with a strong focus on clarity and participant reasoning</li>
+                  <li>User-centric cybersecurity topics and human factors</li>
                   <li>Co-authored a peer-reviewed publication</li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="role" id="w-riposte" data-spot>
-              <div>
-                <div class="when">2024 — 2025</div>
-                <div class="who">Riposte · Fencing analytics (concept + prototyping)</div>
-              </div>
-              <div class="what">
-                Exploring how to turn raw movement signals into coaching insights athletes actually use.
-                <ul class="bul">
-                  <li>Product concept + user discovery with athletes/coaches (what’s useful vs what’s flashy)</li>
-                  <li>Prototyped simple analysis flows for clips: tagging actions, timing, and repeatable patterns</li>
-                  <li>Focused on output formats that fit real training sessions (fast, clear, actionable)</li>
                 </ul>
               </div>
             </article>
@@ -754,6 +884,58 @@
       </div>
     </section>
 
+    <!-- PUBLICATIONS -->
+    <section id="publications">
+      <div class="wrap">
+        <div class="section-title reveal">
+          <h2>Publications</h2>
+        </div>
+
+        <div class="grid">
+          <div class="card reveal">
+            <div class="kicker">Peer-reviewed</div>
+
+            <div class="timeline" style="gap:12px;">
+              <article class="role" style="grid-template-columns: 170px 1fr;">
+                <div>
+                  <div class="when">Aug 2023</div>
+                  <div class="who">SOUPS 2023 · USENIX</div>
+                  <div class="mini">Conference paper</div>
+                </div>
+                <div class="what">
+                  <strong>Adventures in Recovery Land: Testing Account Recovery of Popular Websites When the Second Factor is Lost</strong>
+                  <div class="mini" style="margin-top:8px;">
+                    <a href="https://www.usenix.org/conference/soups2023/presentation/gerlitz-adventures" target="_blank" rel="noreferrer">
+                      View on USENIX
+                    </a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="role" style="grid-template-columns: 170px 1fr; opacity:.85;">
+                <div>
+                  <div class="when">Coming soon</div>
+                  <div class="who">Publication</div>
+                  <div class="mini">In progress</div>
+                </div>
+                <div class="what">
+                  Placeholder for the next paper (the fun kind of “soon”, not the vague kind).
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="card reveal">
+            <div class="kicker">Notes</div>
+            <ul class="bul" style="margin-top:6px;">
+              <li>I like research that stays grounded in real user behaviour and real failure modes</li>
+              <li>Security is only useful when it survives the messy parts of real life</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- EDUCATION -->
     <section id="education">
       <div class="wrap">
@@ -772,13 +954,7 @@
                   <div class="who">M.Sc. Computer Science</div>
                   <div class="mini">University of Bonn</div>
                 </div>
-                <div class="what">
-                  German GPA: 1.3
-                  <ul class="bul">
-                    <li>Focus: cybersecurity (user-centric security, privacy, and applied research)</li>
-                    <li>Broader coursework: visual/audio data analysis, algorithms, systems, and intelligent systems</li>
-                  </ul>
-                </div>
+                <div class="what">German GPA: 1.3 · Focus: cybersecurity</div>
               </article>
 
               <article class="role" style="grid-template-columns: 170px 1fr;">
@@ -787,14 +963,7 @@
                   <div class="who">B.Sc. Computer Science</div>
                   <div class="mini">Minor: Physics</div>
                 </div>
-                <div class="what">
-                  German GPA: 2.0
-                  <ul class="bul">
-                    <li>Minor focus: astrophysics-heavy physics track</li>
-                    <li>Broad foundation across theoretical CS, robotics & intelligent systems, hardware design, and software design</li>
-                    <li>Strong emphasis on mathematics, algorithms, and systems thinking</li>
-                  </ul>
-                </div>
+                <div class="what">German GPA: 2.0 · Physics minor with a strong astrophysics focus</div>
               </article>
 
               <article class="role" style="grid-template-columns: 170px 1fr;">
@@ -810,56 +979,17 @@
 
           <div class="card reveal">
             <div class="kicker">Extras</div>
+            <p style="margin:0; color:var(--muted); line-height:1.7;">
+              Across both degrees, my coursework covered a pretty broad spread: theoretical computer science, robotics and intelligent systems,
+              hardware design, software design, mathematics and algorithms, cybersecurity, and visual/audio data analysis.
+              I like being able to zoom in on technical detail and still communicate the big picture.
+            </p>
+            <div style="height:10px"></div>
             <ul class="bul" style="margin-top:6px;">
-              <li>Overall studies covered: theoretical CS, robotics & intelligent systems, hardware and software design, mathematics and algorithms, cybersecurity, and visual/audio data analysis</li>
               <li>Elected Student Body Member</li>
-              <li>Peer Tutor for diverse subjects</li>
+              <li>Peer tutor for diverse subjects</li>
               <li>Comfortable presenting and making complex things readable</li>
             </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PUBLICATIONS -->
-    <section id="publications">
-      <div class="wrap">
-        <div class="section-title reveal">
-          <h2>Publications</h2>
-          <p class="hint">Peer-reviewed + what’s coming next.</p>
-        </div>
-
-        <div class="grid">
-          <div class="card reveal">
-            <div class="kicker">Published</div>
-
-            <div class="itemlist">
-              <div class="item">
-                <div class="top">
-                  <div>
-                    <div class="title">Adventures in Recovery Land: Testing Account Recovery of Popular Websites When the Second Factor is Lost</div>
-                    <div class="mini" style="margin-top:6px;">SOUPS 2023 (USENIX) · August 2023</div>
-                  </div>
-                  <div class="meta">SOUPS 2023</div>
-                </div>
-                <div class="desc">
-                  <a class="btn" href="https://www.usenix.org/conference/soups2023/presentation/gerlitz-adventures" target="_blank" rel="noreferrer">View on USENIX</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card reveal">
-            <div class="kicker">Coming soon</div>
-            <div class="item">
-              <div class="top">
-                <div class="title">Publication in progress</div>
-                <div class="meta">WIP</div>
-              </div>
-              <div class="desc">
-                Placeholder for the next paper — I’ll add title, venue, and link once it’s public.
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -870,38 +1000,46 @@
       <div class="wrap">
         <div class="section-title reveal">
           <h2>Awards</h2>
-          <p class="hint">Scholarships, competitions, and the occasional flex.</p>
         </div>
 
         <div class="grid">
           <div class="card reveal">
-            <div class="kicker">Highlights</div>
-            <div class="itemlist">
-              <div class="item">
-                <div class="top">
-                  <div class="title">FS-ISAC Scholarship for Women in Cybersecurity</div>
-                  <div class="meta">2023</div>
+            <div class="kicker">Scholarships & prizes</div>
+
+            <div class="timeline" style="gap:12px;">
+              <article class="role" style="grid-template-columns: 170px 1fr;">
+                <div>
+                  <div class="when">2023</div>
+                  <div class="who">FS-ISAC Scholarship</div>
+                  <div class="mini">Women in Cybersecurity</div>
                 </div>
-              </div>
-              <div class="item">
-                <div class="top">
-                  <div class="title">SAT Exam (1400 points)</div>
-                  <div class="meta">2017</div>
+                <div class="what">Awarded scholarship supporting women pursuing cybersecurity.</div>
+              </article>
+
+              <article class="role" style="grid-template-columns: 170px 1fr;">
+                <div>
+                  <div class="when">2017</div>
+                  <div class="who">SAT Exam</div>
+                  <div class="mini">Score</div>
                 </div>
-              </div>
-              <div class="item">
-                <div class="top">
-                  <div class="title">Hans-Riegel-Fachpreis (University of Bonn) — 2nd place in Physics</div>
-                  <div class="meta">2017</div>
+                <div class="what">1400 points.</div>
+              </article>
+
+              <article class="role" style="grid-template-columns: 170px 1fr;">
+                <div>
+                  <div class="when">2017</div>
+                  <div class="who">Hans-Riegel-Fachpreis</div>
+                  <div class="mini">University of Bonn</div>
                 </div>
-              </div>
+                <div class="what">2nd place in Physics.</div>
+              </article>
             </div>
           </div>
 
           <div class="card reveal">
-            <div class="kicker">Notes</div>
+            <div class="kicker">Tiny context</div>
             <p style="margin:0; color:var(--muted); line-height:1.7;">
-              I like awards that reflect two things: strong fundamentals and work that holds up outside a classroom.
+              I like environments that reward curiosity and follow-through. Being recognised is nice, but the best part is usually the work that led there.
             </p>
           </div>
         </div>
@@ -934,8 +1072,8 @@
           <div class="card proj narrow reveal">
             <h3>“Tiny but shiny” web tools</h3>
             <p>
-              Small utilities with clean UI: a simple budget splitter, a “weekly reset” checklist page,
-              and a lightweight reading list tracker with tags and search.
+              Small web utilities I built for real use: quick calculators, clean one-page trackers, and little “forms that do something useful”
+              (like generating messages, checklists, or templates).
             </p>
             <div class="chips">
               <span class="chip">HTML/CSS</span>
@@ -947,8 +1085,8 @@
           <div class="card proj narrow reveal">
             <h3>Automation helpers</h3>
             <p>
-              Practical workflow glue: calendar reminders for recurring chores, auto-formatting templates for meeting notes,
-              a small script that turns a CSV into a clean summary, and a “mail draft builder” for repeatable outreach.
+              Tiny automations that remove friction: auto-renaming and sorting files, simple reporting summaries, reminder workflows,
+              and “one-click” templates that turn repetitive admin into a non-event.
             </p>
             <div class="chips">
               <span class="chip">automation</span>
@@ -973,7 +1111,7 @@
         </div>
 
         <p class="mini reveal" style="margin-top:14px;">
-          Note: some things I build are confidential, so this list is intentionally curated.
+          Some things I build are confidential, so this list is intentionally curated.
         </p>
       </div>
     </section>
@@ -983,6 +1121,7 @@
       <div class="wrap">
         <div class="section-title reveal">
           <h2>Skills</h2>
+          <p class="hint">Hover a bar for context.</p>
         </div>
 
         <p class="skills-note reveal">No 100% claims. Just what I actually use.</p>
@@ -998,26 +1137,31 @@
                 <div class="skill" data-level="85">
                   <div class="label">Python</div>
                   <div class="bar" aria-label="Python skill"><i></i></div>
+                  <div class="tip">Data analysis, automation, notebooks, quick prototyping, and shipping small tools end-to-end.</div>
                 </div>
 
                 <div class="skill" data-level="72">
                   <div class="label">HTML/CSS/JS</div>
                   <div class="bar" aria-label="HTML/CSS/JS skill"><i></i></div>
+                  <div class="tip">Polished layouts, prototypes, and simple UI logic. I care about readability and feel.</div>
                 </div>
 
                 <div class="skill" data-level="65">
                   <div class="label">Data analysis</div>
                   <div class="bar" aria-label="Data analysis skill"><i></i></div>
+                  <div class="tip">Cleaning, transforming, and interpreting data. Making results readable for humans.</div>
                 </div>
 
                 <div class="skill" data-level="58">
                   <div class="label">Research methods</div>
                   <div class="bar" aria-label="Research methods"><i></i></div>
+                  <div class="tip">Surveys, experiments, hypothesis testing, and careful interpretation (no dramatic overclaims).</div>
                 </div>
 
                 <div class="skill" data-level="55">
                   <div class="label">Cybersecurity</div>
                   <div class="bar" aria-label="Cybersecurity"><i></i></div>
+                  <div class="tip">User-centric security, behavioural security research, and translating risks into decisions.</div>
                 </div>
               </div>
             </div>
@@ -1031,18 +1175,22 @@
               <div class="skill" data-level="98">
                 <div class="label">English</div>
                 <div class="bar" aria-label="English"><i></i></div>
+                <div class="tip">Native-like.</div>
               </div>
               <div class="skill" data-level="98">
                 <div class="label">German</div>
                 <div class="bar" aria-label="German"><i></i></div>
+                <div class="tip">Native.</div>
               </div>
               <div class="skill" data-level="55">
                 <div class="label">French</div>
                 <div class="bar" aria-label="French"><i></i></div>
+                <div class="tip">B1 — can chat, can travel, can confidently order food.</div>
               </div>
               <div class="skill" data-level="35">
                 <div class="label">Italian</div>
                 <div class="bar" aria-label="Italian"><i></i></div>
+                <div class="tip">Basics — mostly vibes and determination.</div>
               </div>
             </div>
 
@@ -1076,18 +1224,6 @@
               I like bouldering, swimming, cooking, motorcycles, and collecting niche fun facts (ideal for pub quiz nights).
               I’m also very into words: poetry is where I put the thoughts that don’t belong in spreadsheets.
             </p>
-
-            <div class="gallery" aria-label="Photo gallery placeholder">
-              <div class="ph" title="Placeholder"></div>
-              <div class="ph" title="Placeholder"></div>
-              <div class="ph" title="Placeholder"></div>
-              <div class="ph" title="Placeholder"></div>
-              <div class="ph" title="Placeholder"></div>
-              <div class="ph" title="Placeholder"></div>
-              <div class="ph" title="Placeholder"></div>
-              <div class="ph" title="Placeholder"></div>
-            </div>
-
             <div style="height:12px"></div>
             <div class="chips">
               <span class="chip">bouldering</span>
@@ -1096,6 +1232,65 @@
               <span class="chip">motorcycles</span>
               <span class="chip">poetry</span>
               <span class="chip">travel</span>
+            </div>
+
+            <!-- Clickable photo gallery (4x2) -->
+            <div class="gallery" aria-label="Photo gallery">
+              <button class="g-item" type="button"
+                data-src="images/hobbies/01-graduation.jpg"
+                data-alt="Graduation day"
+                data-caption="Graduation day: one of those moments where effort turns into something you can actually hold.">
+                <img src="images/hobbies/01-graduation.jpg" alt="Graduation day" loading="lazy">
+              </button>
+
+              <button class="g-item" type="button"
+                data-src="images/hobbies/02-ddos.jpg"
+                data-alt="DDoS the black cat"
+                data-caption="DDoS (black hat energy). He specialises in distributed denial of cuddles… until he suddenly doesn’t.">
+                <img src="images/hobbies/02-ddos.jpg" alt="DDoS the black cat" loading="lazy">
+              </button>
+
+              <button class="g-item" type="button"
+                data-src="images/hobbies/03-caruso.jpg"
+                data-alt="Caruso the cat"
+                data-caption="Caruso: named after the singer for his lovely (and loud) voice, after Caruso from Prof. Dr. Dr. Dr. Van Dusen because of the big feet, and after the Sicilian word for ‘little boy’… which is funny because he’s 9kg and counting. (Yes: I know the Van Dusen reference — niche, but elite.)">
+                <img src="images/hobbies/03-caruso.jpg" alt="Caruso the cat" loading="lazy">
+              </button>
+
+              <button class="g-item" type="button"
+                data-src="images/hobbies/04-grill.jpg"
+                data-alt="Grilling on the balcony"
+                data-caption="Balcony grill sessions: a little chaos, a little smoke, and the kind of happiness that tastes like summer.">
+                <img src="images/hobbies/04-grill.jpg" alt="Grilling on the balcony" loading="lazy">
+              </button>
+
+              <button class="g-item" type="button"
+                data-src="images/hobbies/05-rain.jpg"
+                data-alt="Walking in the rain"
+                data-caption="I love the rain — and all the cities I love seem to reflect that: Vancouver, London, Berlin.">
+                <img src="images/hobbies/05-rain.jpg" alt="Walking in the rain" loading="lazy">
+              </button>
+
+              <button class="g-item" type="button"
+                data-src="images/hobbies/06-canoe-moto.jpg"
+                data-alt="Motorcycle and canoe"
+                data-caption="Two of my favourite moods: motorcycle freedom and ‘let’s just paddle somewhere quiet’.">
+                <img src="images/hobbies/06-canoe-moto.jpg" alt="Motorcycle and canoe" loading="lazy">
+              </button>
+
+              <button class="g-item" type="button"
+                data-src="images/hobbies/07-bouldering.jpg"
+                data-alt="Bouldering moment"
+                data-caption="Bouldering: problem-solving, but with your whole body (and occasional questionable positions).">
+                <img src="images/hobbies/07-bouldering.jpg" alt="Bouldering moment" loading="lazy">
+              </button>
+
+              <button class="g-item" type="button"
+                data-src="images/hobbies/08-cooking-drumstick.jpg"
+                data-alt="Cooking moment"
+                data-caption="Cooking makes me absurdly happy — especially the ‘I can’t believe this worked’ stage right before the first bite.">
+                <img src="images/hobbies/08-cooking-drumstick.jpg" alt="Cooking moment" loading="lazy">
+              </button>
             </div>
           </div>
 
@@ -1137,6 +1332,7 @@
         </div>
 
         <div class="grid">
+          <!-- Contact -->
           <div class="card reveal">
             <div class="kicker">Reach me</div>
             <p style="margin:0; color:var(--muted); line-height:1.7;">
@@ -1155,8 +1351,30 @@
               Somewhere between Turing machines and real-world decisions, I like building things that make people go:
               “oh, that’s actually useful”.
             </p>
+
+            <!-- Little terminal thing for socials -->
+            <div class="terminal" aria-label="Terminal socials">
+              <div class="term-line">
+                <span class="term-prompt">charlotte@web</span>:<span class="term-prompt">~</span>$ 
+                <span class="term-command" data-cmd="help">help</span>
+              </div>
+              <div class="term-line term-output" id="term-help"></div>
+
+              <div class="term-line" style="margin-top:8px;">
+                <span class="term-prompt">charlotte@web</span>:<span class="term-prompt">~</span>$ 
+                <span class="term-command" data-cmd="ls">ls socials</span>
+              </div>
+              <div class="term-line term-output" id="term-socials"></div>
+
+              <div class="term-line" style="margin-top:8px;">
+                <span class="term-prompt">charlotte@web</span>:<span class="term-prompt">~</span>$ 
+                <span class="term-command" data-cmd="open">open linkedin</span>
+              </div>
+              <div class="term-line term-output" id="term-open"></div>
+            </div>
           </div>
 
+          <!-- Questionnaire -->
           <div class="card reveal">
             <div class="kicker">I’d like to get to know you too</div>
             <p style="margin:0 0 12px; color:var(--muted); line-height:1.7;">
@@ -1207,6 +1425,24 @@
           © <span id="year"></span> Charlotte Mädler · built with HTML/CSS/JS · calm glow on purpose.
         </p>
       </div>
+
+      <!-- Lightbox modal -->
+      <div class="lightbox" id="lightbox" aria-hidden="true">
+        <div class="lb-backdrop" data-close></div>
+
+        <figure class="lb-card" role="dialog" aria-modal="true" aria-label="Image preview">
+          <button class="lb-close" type="button" aria-label="Close" data-close>✕</button>
+          <button class="lb-nav lb-prev" type="button" aria-label="Previous image">‹</button>
+          <button class="lb-nav lb-next" type="button" aria-label="Next image">›</button>
+
+          <div class="lb-meta">
+            <span id="lbCount" class="lb-count">1 / 8</span>
+          </div>
+
+          <img id="lbImg" src="" alt="">
+          <figcaption id="lbCap"></figcaption>
+        </figure>
+      </div>
     </footer>
   </main>
 
@@ -1256,7 +1492,6 @@
 
     // Scroll progress + continuous background mood
     const progFill = document.getElementById('progFill');
-
     function updateScrollFX(){
       const doc = document.documentElement;
       const max = doc.scrollHeight - doc.clientHeight;
@@ -1344,7 +1579,7 @@
       const status = document.getElementById('copyStatus');
       try{
         await navigator.clipboard.writeText(msg);
-        status.textContent = 'Copied. Paste it anywhere.';
+        status.textContent = 'Copied. Paste it anywhere (email, LinkedIn message, carrier pigeon).';
       }catch(e){
         status.textContent = 'Copy failed (browser permission). You can still open the email draft.';
       }
@@ -1353,6 +1588,147 @@
 
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Terminal socials logic
+    const termHelp = document.getElementById('term-help');
+    const termSocials = document.getElementById('term-socials');
+    const termOpen = document.getElementById('term-open');
+
+    document.querySelectorAll('.term-command').forEach(cmd => {
+      cmd.addEventListener('click', () => {
+        const type = cmd.dataset.cmd;
+
+        if(type === 'help'){
+          termHelp.textContent = 'Available commands: ls socials · open linkedin · open github · open email';
+        }
+
+        if(type === 'ls'){
+          termSocials.innerHTML =
+            '<a href="https://www.linkedin.com/in/charlotte-maedler" target="_blank" rel="noreferrer">linkedin</a>  ' +
+            '<a href="https://github.com/CharlyMae0811" target="_blank" rel="noreferrer">github</a>  ' +
+            '<a href="mailto:charlotte.t.maedler@gmail.com">email</a>';
+        }
+
+        if(type === 'open'){
+          termOpen.textContent = 'Tip: click "ls socials" above. I’m a terminal, not a magician.';
+        }
+      });
+    });
+
+    // Lightbox + navigation + swipe
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbCap = document.getElementById('lbCap');
+    const lbCount = document.getElementById('lbCount');
+    const prevBtn = document.querySelector('.lb-prev');
+    const nextBtn = document.querySelector('.lb-next');
+
+    const galleryButtons = Array.from(document.querySelectorAll('.g-item'));
+    const galleryItems = galleryButtons.map(btn => ({
+      src: btn.dataset.src,
+      alt: btn.dataset.alt || '',
+      caption: btn.dataset.caption || ''
+    }));
+
+    let currentIndex = 0;
+
+    function renderLightbox(){
+      const item = galleryItems[currentIndex];
+      lbImg.src = item.src;
+      lbImg.alt = item.alt;
+      lbCap.textContent = item.caption;
+      lbCount.textContent = `${currentIndex + 1} / ${galleryItems.length}`;
+    }
+
+    function openLightbox(index){
+      currentIndex = index;
+      renderLightbox();
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      lightbox.querySelector('[data-close]')?.focus();
+    }
+
+    function closeLightbox(){
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lbImg.src = '';
+      lbImg.alt = '';
+      lbCap.textContent = '';
+      document.body.style.overflow = '';
+    }
+
+    function prevImage(){
+      currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+      renderLightbox();
+    }
+
+    function nextImage(){
+      currentIndex = (currentIndex + 1) % galleryItems.length;
+      renderLightbox();
+    }
+
+    galleryButtons.forEach((btn, idx) => {
+      btn.addEventListener('click', () => openLightbox(idx));
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target.matches('[data-close]')) closeLightbox();
+    });
+
+    prevBtn?.addEventListener('click', (e) => { e.stopPropagation(); prevImage(); });
+    nextBtn?.addEventListener('click', (e) => { e.stopPropagation(); nextImage(); });
+
+    window.addEventListener('keydown', (e) => {
+      if(!lightbox.classList.contains('is-open')) return;
+      if(e.key === 'Escape') closeLightbox();
+      if(e.key === 'ArrowLeft') prevImage();
+      if(e.key === 'ArrowRight') nextImage();
+    });
+
+    // Swipe support
+    let startX = 0;
+    let startY = 0;
+    let isSwiping = false;
+
+    function onTouchStart(e){
+      if(!lightbox.classList.contains('is-open')) return;
+      const t = e.touches[0];
+      startX = t.clientX;
+      startY = t.clientY;
+      isSwiping = true;
+    }
+
+    function onTouchMove(e){
+      if(!isSwiping) return;
+      const t = e.touches[0];
+      const dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+
+      if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > 10){
+        isSwiping = false;
+      }
+    }
+
+    function onTouchEnd(e){
+      if(!lightbox.classList.contains('is-open')) return;
+      if(!isSwiping) return;
+
+      const t = e.changedTouches[0];
+      const dx = t.clientX - startX;
+      const dy = t.clientY - startY;
+
+      if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)){
+        if (dx < 0) nextImage();
+        else prevImage();
+      }
+
+      isSwiping = false;
+    }
+
+    lightbox.addEventListener('touchstart', onTouchStart, { passive: true });
+    lightbox.addEventListener('touchmove', onTouchMove, { passive: true });
+    lightbox.addEventListener('touchend', onTouchEnd, { passive: true });
   </script>
 </body>
 </html>
