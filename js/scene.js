@@ -136,8 +136,8 @@
   const CATS = [
     { t: 0.00, caruso: [720, SILL, 'asleep'],  ddos: [1180, DESK + 30, 'asleep'] },
     { t: 0.11, caruso: [760, SILL, 'sit'],     ddos: [1180, DESK + 30, 'asleep'] },
-    { t: 0.30, caruso: [760, SILL, 'sit'],     ddos: [900, DESK + 12, 'loaf'] },
-    { t: 0.44, caruso: [1180, SILL, 'loaf'],   ddos: [330, DESK + 20, 'sit'] },
+    { t: 0.30, caruso: [900, SILL, 'lounge'],  ddos: [900, DESK + 12, 'loaf'] },
+    { t: 0.44, caruso: [900, SILL, 'lounge'],  ddos: [330, DESK + 20, 'sit'] },
     { t: 0.55, caruso: [740, SILL, 'sit'],     ddos: [1140, SILL, 'sit'] },
     { t: 0.66, caruso: [740, SILL, 'loaf'],    ddos: [1140, SILL, 'sit'] },
     { t: 0.78, caruso: [720, SILL, 'asleep'],  ddos: [1200, DESK + 10, 'loaf'] },

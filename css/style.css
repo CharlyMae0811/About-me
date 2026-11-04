@@ -144,8 +144,8 @@ a { color: inherit; }
 .leaf { fill: #2f8f83; } .l2 { fill: #3aa08f; } .l3 { fill: #257468; }
 
 /* cats */
-.caruso-fur { fill: #8d8f9a; } .caruso-white { fill: #f2efe9; } .caruso-tail { stroke: #8d8f9a; stroke-width: 18; stroke-linecap: round; }
-.ddos-fur { fill: #15151b; } .ddos-tail { stroke: #15151b; stroke-width: 18; stroke-linecap: round; } .ddos-spot { fill: #f2efe9; }
+.caruso-fur { fill: #2a2a32; } .caruso-white { fill: #f2efe9; } .caruso-tail { stroke: #2a2a32; stroke-width: 18; stroke-linecap: round; }
+.ddos-fur { fill: #111116; } .ddos-tail { stroke: #111116; stroke-width: 18; stroke-linecap: round; } .ddos-spot { fill: #f2efe9; }
 .cat-eye.green { fill: #9ad35a; } .cat-eye.yellow { fill: #e7c54a; }
 .cat-pupil { fill: #0d0d12; }
 .cat-nose { fill: #e39a9a; } .cat-nose.dark { fill: #3a2a2a; }
@@ -475,3 +475,10 @@ body.en-garde, body.en-garde * { cursor: url("data:image/svg+xml;utf8,<svg xmlns
   .modal { max-width: 94vw; }
   .modal-inner { max-height: 86vh; overflow: auto; }
 }
+
+/* portrait */
+.portrait { float: right; width: 150px; margin: -6px 0 10px 22px; shape-outside: inset(0 round 8px); }
+.portrait img { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center 30%; border-radius: 8px; display: block; transform: rotate(2deg); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+.portrait figcaption { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; opacity: 0.6; margin-top: 8px; text-align: right; }
+.modal-photo { width: 100%; max-height: 320px; object-fit: cover; object-position: center 30%; border-radius: 8px; margin: 6px 0 12px; display: block; }
+@media (max-width: 760px) { .portrait { float: none; width: 120px; margin: 0 0 14px; } }
