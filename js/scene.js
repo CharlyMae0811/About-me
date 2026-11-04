@@ -245,6 +245,7 @@
       return `${String(Math.floor(m / 60)).padStart(2, '0')}:${String(m % 60).padStart(2, '0')}`;
     }
   };
+  Scene.force = (v) => { forced = v; onScroll(); current = target; applyScene(current); Scene.onChange.forEach(fn => fn(current)); };
   window.Scene = Scene;
 
   buildSkyline(); buildStars(); buildClouds(); buildRain();

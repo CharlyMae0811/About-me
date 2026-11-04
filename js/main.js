@@ -97,6 +97,7 @@ window.SUDOKU = {
     if (p.modal) $('#' + p.modal).showModal();
     else openGeneric(p.label, p.title, p.body);
   };
+  window.__openProp = openProp; window.__toast = toast; window.__achieve = achieve;
 
   const tip = $('#tip');
   $$('.prop').forEach(node => {
@@ -193,6 +194,23 @@ window.SUDOKU = {
     } else { removeEventListener('click', toucheHandler); toast('salute.'); }
   }
   function toucheHandler() { toast(`touché · ${++touche}`); }
+
+  /* ---------- 8:15am ---------- */
+  $$('.clock-egg').forEach(n => {
+    n.addEventListener('pointerenter', () => { tip.textContent = '🕣 the tutorial started. nobody was awake.'; tip.classList.add('show'); });
+    n.addEventListener('pointermove', e => { tip.style.left = e.clientX + 14 + 'px'; tip.style.top = e.clientY + 14 + 'px'; });
+    n.addEventListener('pointerleave', () => tip.classList.remove('show'));
+  });
+
+  /* ---------- ?s=N isolates chapter N (visual testing) ---------- */
+  const jump = parseInt(new URLSearchParams(location.search).get('s'));
+  if (!Number.isNaN(jump)) {
+    document.documentElement.classList.add('no-anim');
+    chapters.forEach((c, i) => { if (i !== jump) c.style.display = 'none'; });
+    $$('.panel').forEach(p => p.classList.add('in'));
+    const times = [0, 0.11, 0.3, 0.44, 0.55, 0.66, 0.78, 0.86, 0.93, 1];
+    Scene.force && Scene.force(times[jump] ?? 0);
+  }
 
   /* ---------- console ---------- */
   console.log(`%c

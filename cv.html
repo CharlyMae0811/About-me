@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Charlotte Mädler — CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink: #1b1a22; --accent: #e0472b; --muted: #6b6a73; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font: 10.5pt/1.45 "Inter Tight", system-ui, sans-serif; color: var(--ink); background: #f4efe4; }
+    .page { max-width: 820px; margin: 0 auto; padding: 48px 40px 60px; background: #fff; }
+    header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 18px; }
+    h1 { font: 600 30pt/1 "Fraunces", serif; margin: 0 0 6px; letter-spacing: -0.01em; }
+    .sub { font-size: 11pt; color: var(--muted); }
+    .links { text-align: right; font: 8.5pt "JetBrains Mono", monospace; line-height: 1.7; }
+    .links a { color: var(--ink); text-decoration: none; }
+    h2 { font: 500 8.5pt "JetBrains Mono", monospace; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 18px 0 8px; }
+    .item { display: grid; grid-template-columns: 120px 1fr; gap: 12px; margin-bottom: 9px; break-inside: avoid; }
+    .when { font: 8.5pt "JetBrains Mono", monospace; color: var(--muted); padding-top: 2px; }
+    .what strong { font-weight: 600; }
+    .what .org { color: var(--muted); }
+    ul { margin: 3px 0 0; padding-left: 16px; }
+    li { margin-bottom: 2px; }
+    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
+    .skills p { margin: 0 0 4px; }
+    .skills b { font-weight: 600; }
+    .print { position: fixed; top: 14px; right: 14px; font: 9pt "JetBrains Mono", monospace; padding: 8px 12px; background: var(--ink); color: #fff; border: 0; border-radius: 6px; cursor: pointer; }
+    @media print {
+      body { background: #fff; }
+      .page { padding: 0; max-width: none; }
+      .print { display: none; }
+      @page { margin: 16mm 14mm; size: A4; }
+      a::after { content: ""; }
+    }
+  </style>
+</head>
+<body>
+<button class="print" onclick="print()">print / save as PDF</button>
+<div class="page">
+  <header>
+    <div>
+      <h1>Charlotte Mädler</h1>
+      <div class="sub">M.Sc. Computer Science · Data, systems and people · Berlin</div>
+    </div>
+    <div class="links">
+      <a href="mailto:charlotte.t.maedler@gmail.com">charlotte.t.maedler@gmail.com</a><br>
+      <a href="https://www.linkedin.com/in/charlotte-maedler">linkedin.com/in/charlotte-maedler</a><br>
+      <a href="https://github.com/CharlyMae0811">github.com/CharlyMae0811</a><br>
+      <a href="https://charlymae0811.github.io/About-me/">charlymae0811.github.io</a>
+    </div>
+  </header>
+
+  <h2>Experience</h2>
+  <div class="item"><div class="when">Jul 2026 — present</div><div class="what"><strong>Cloud Support Associate</strong> <span class="org">· AWS, European Sovereign Cloud</span>
+    <ul><li>Diagnose customer issues across AWS services, drive tickets to root cause, document fixes for reuse</li></ul></div></div>
+  <div class="item"><div class="when">Aug 2025 — Jun 2026</div><div class="what"><strong>Account Manager</strong> <span class="org">· Amazon Global Selling</span>
+    <ul>
+      <li>Managed a seller portfolio; translated technical thinking into commercial results and repeatable playbooks</li>
+      <li>Built <b>Lumi</b>, an interactive pitch-call training simulator: HTML/JS front-end, n8n workflows, AWS speech and knowledge-base integration, scoring framework and UI prototype</li>
+    </ul></div></div>
+  <div class="item"><div class="when">Apr 2023 — Jul 2025</div><div class="what"><strong>Student Researcher</strong> <span class="org">· Behavioural Security Group, University of Bonn</span>
+    <ul>
+      <li>Designed and ran quantitative and qualitative studies on user-centric security; led data collection and analysis</li>
+      <li>Co-authored a peer-reviewed SOUPS 2023 paper; M.Sc. thesis on surveillance perception (preregistered, n = 982)</li>
+    </ul></div></div>
+  <div class="item"><div class="when">Apr 2023 — Jul 2025</div><div class="what"><strong>Product & Research Lead</strong> <span class="org">· Riposte, fencing analytics project</span>
+    <ul>
+      <li>Defined product concept for AI-based fencing feedback (pose estimation → movement metrics → tactical insight)</li>
+      <li>User interviews with fencers and coaches to scope features and UX needs</li>
+    </ul></div></div>
+  <div class="item"><div class="when">May 2023 — Jun 2025</div><div class="what"><strong>Strategy Team</strong> <span class="org">· Fechtklingen.de</span>
+    <ul><li>Category expansion strategy, product diversification, supplier relations, brand vision for an online blade retailer</li></ul></div></div>
+  <div class="item"><div class="when">Oct 2019 — Mar 2023</div><div class="what"><strong>Teaching Assistant</strong> <span class="org">· University of Bonn (technical CS, computer organisation, systems)</span>
+    <ul><li>Led tutorials for 20–40 students, prepared materials, graded assignments and exams</li></ul></div></div>
+  <div class="item"><div class="when">Apr — Oct 2022</div><div class="what"><strong>Swimming Instructor</strong> <span class="org">· Nessy GmbH</span>
+    <ul><li>Taught children aged 3 months to 12 years; parent communication, safety and emergency response</li></ul></div></div>
+
+  <h2>Education</h2>
+  <div class="item"><div class="when">2023 — 2025</div><div class="what"><strong>M.Sc. Computer Science</strong>, GPA 1.3 <span class="org">· University of Bonn · focus: cybersecurity</span></div></div>
+  <div class="item"><div class="when">2018 — 2023</div><div class="what"><strong>B.Sc. Computer Science</strong>, minor in Physics, GPA 2.0 <span class="org">· University of Bonn</span></div></div>
+  <div class="item"><div class="when">2010 — 2018</div><div class="what"><strong>Abitur</strong>, GPA 1.1 <span class="org">· Sankt Adelheid Gymnasium, Bonn</span></div></div>
+
+  <div class="cols">
+    <div>
+      <h2>Publications</h2>
+      <div class="item"><div class="when">Aug 2023</div><div class="what">Adventures in Recovery Land: Testing Account Recovery of Popular Websites When the Second Factor is Lost. <span class="org">SOUPS 2023, USENIX.</span></div></div>
+      <h2>Awards</h2>
+      <div class="item"><div class="when">2023</div><div class="what">FS-ISAC Scholarship for Women in Cybersecurity</div></div>
+      <div class="item"><div class="when">2017</div><div class="what">Hans-Riegel-Fachpreis, 2nd place in Physics, University of Bonn</div></div>
+      <h2>Volunteer</h2>
+      <div class="item"><div class="when">2020 — 2023</div><div class="what">Girls' Day team for Computer Science, University of Bonn</div></div>
+      <div class="item"><div class="when">2018 — 2020</div><div class="what">Elected Student Body Member, University of Bonn</div></div>
+    </div>
+    <div class="skills">
+      <h2>Skills</h2>
+      <p><b>Data:</b> Python (pandas, numpy, scipy, matplotlib), R, SQL, hypothesis testing, A/B testing, machine learning, research methods, Jupyter</p>
+      <p><b>Engineering:</b> HTML/CSS/JS, C++, x86, ROS, AWS, Docker, Git, n8n automation</p>
+      <p><b>Product:</b> UX research, user interviews, product framing, customer communication, strategy</p>
+      <p><b>Security:</b> user-centric and behavioural security, privacy research</p>
+      <h2>Languages</h2>
+      <p>English (native), German (native), French (B1), Italian (basics)</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
