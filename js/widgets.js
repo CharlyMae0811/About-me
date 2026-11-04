@@ -112,7 +112,7 @@
     const tip = $('#tip');
     const apply = (lens) => {
       $$('.skill', skills).forEach(s => {
-        if (lens === 'all') { s.style.setProperty('--w', 1); s.classList.remove('dim'); return; }
+        if (lens === 'all') { s.style.setProperty('--w', 1); s.classList.remove('dim', 'hot'); return; }
         const m = s.dataset.w.match(new RegExp(`${lens}:(\\d)`));
         const w = m ? +m[1] : 0;
         s.style.setProperty('--w', (0.35 + w * 0.22).toFixed(2));
