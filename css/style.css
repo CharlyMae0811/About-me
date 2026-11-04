@@ -40,7 +40,7 @@
   --rain-o: 0;
   --steam-o: 1;
   --text-on-wall: #1b1a22;
-  --panel-bg: rgba(244, 239, 228, 0.92);
+  --panel-bg: rgba(244, 239, 228, 0.78);
   --panel-ink: #1b1a22;
 }
 
@@ -234,7 +234,7 @@ main { position: relative; z-index: 2; pointer-events: none; }
   background: var(--panel-bg); color: var(--panel-ink);
   border-radius: 10px; padding: 28px 32px 32px;
   box-shadow: 0 20px 60px rgba(0,0,0,0.12);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(10px) saturate(1.1); -webkit-backdrop-filter: blur(10px) saturate(1.1);
   opacity: 0; transform: translateY(24px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
@@ -256,9 +256,8 @@ main { position: relative; z-index: 2; pointer-events: none; }
   .margin { position: absolute; left: calc(100% + 24px); top: 32px; width: 220px; border: 0; padding: 0; margin: 0; }
 }
 
-/* chapter alignment: alternate sides so the scene stays visible */
-.chapter[data-chapter="1"], .chapter[data-chapter="3"], .chapter[data-chapter="5"], .chapter[data-chapter="7"], .chapter[data-chapter="9"] { justify-content: flex-start; }
-.chapter[data-chapter="2"], .chapter[data-chapter="4"], .chapter[data-chapter="6"], .chapter[data-chapter="8"] { justify-content: flex-end; }
+/* chapter alignment: panels sit left so the window and cats stay in view */
+.chapter { justify-content: flex-start; }
 
 /* ---------------- modals ---------------- */
 .modal { border: 0; padding: 0; background: transparent; max-width: min(92vw, 640px); }
@@ -314,7 +313,7 @@ body.en-garde, body.en-garde * { cursor: url("data:image/svg+xml;utf8,<svg xmlns
 /* =====================================================================
    Content widgets
    ===================================================================== */
-.panel.wide { max-width: 760px; }
+.panel.wide { max-width: 680px; }
 .chapter:not(.hero) { min-height: 100vh; padding-top: 14vh; padding-bottom: 14vh; align-items: flex-start; }
 .chapter .panel { margin-top: auto; margin-bottom: auto; }
 .lede { font-size: 17px; opacity: 0.85; }
@@ -341,7 +340,7 @@ body.en-garde, body.en-garde * { cursor: url("data:image/svg+xml;utf8,<svg xmlns
 .plain li { margin-bottom: 6px; display: flex; gap: 14px; }
 
 /* chart */
-.chart { margin: 14px 0 16px; padding: 12px 14px 10px; border-radius: 8px; background: rgba(127,127,127,0.08); }
+.chart { margin: 14px 0 16px; padding: 12px 14px 10px; border-radius: 8px; background: rgba(127,127,127,0.12); }
 .chart-tabs, .tab-list, .lens-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
 .ctab, .tab, .ltab { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(127,127,127,0.4); background: transparent; color: inherit; cursor: pointer; }
 .ctab.is-on, .tab.is-on, .ltab.is-on { background: var(--panel-ink); color: var(--panel-bg); border-color: var(--panel-ink); }
@@ -366,7 +365,7 @@ body.en-garde, body.en-garde * { cursor: url("data:image/svg+xml;utf8,<svg xmlns
 .role-head { width: 100%; display: grid; grid-template-columns: 150px 1fr 20px; gap: 12px; align-items: baseline; text-align: left; background: none; border: 0; color: inherit; font: inherit; padding: 12px 0; cursor: pointer; }
 .role-when { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; opacity: 0.65; white-space: nowrap; }
 .role-what { font-size: 15.5px; }
-.role-toggle { font-family: var(--mono); color: var(--accent); text-align: right; }
+.role-toggle { font-family: var(--mono); color: var(--accent); text-align: right; grid-row: 1 / span 2; align-self: start; }
 .role-body { display: none; padding: 0 0 14px 162px; font-size: 15px; }
 .role.is-open .role-body { display: block; animation: fadein 0.3s ease; }
 .role-body p { margin: 0 0 8px; }
@@ -484,3 +483,26 @@ body.en-garde, body.en-garde * { cursor: url("data:image/svg+xml;utf8,<svg xmlns
 @media (max-width: 760px) { .portrait { float: none; width: 120px; margin: 0 0 14px; } }
 
 .strip img.wide { object-position: center; }
+
+/* highlight tiles */
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 14px 0 6px; clear: both; }
+.tile { padding: 12px 12px 10px; border-radius: 8px; background: rgba(127,127,127,0.12); display: grid; gap: 2px; }
+.tile b { font-family: var(--display); font-weight: 600; font-size: 28px; line-height: 1; color: var(--accent); }
+.tile span { font-size: 12px; line-height: 1.3; opacity: 0.8; }
+.role-line { grid-column: 2; font-size: 13.5px; opacity: 0.72; margin-top: -4px; }
+.role-head { row-gap: 4px; align-items: start; }
+.role-when { padding-top: 3px; }
+@media (max-width: 760px) { .tiles { grid-template-columns: 1fr 1fr; } .role-line { grid-column: 1 / -1; } }
+
+/* cat idle life: breathing, blinking, tail sway */
+.cat .pose.active { animation: breathe 3.4s ease-in-out infinite; }
+#ddos .pose.active { animation-duration: 4.1s; }
+@keyframes breathe { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+.cat-eye, .cat-pupil { transform-box: fill-box; transform-origin: center; animation: blink 5.5s infinite; }
+#ddos .cat-eye, #ddos .cat-pupil { animation-delay: 2.3s; animation-duration: 6.5s; }
+@keyframes blink { 0%, 94%, 100% { transform: scaleY(1); } 96%, 98% { transform: scaleY(0.08); } }
+.caruso-tail, .ddos-tail { transform-box: fill-box; animation: sway 3.2s ease-in-out infinite; }
+.ddos-tail { animation-duration: 2.7s; animation-delay: 0.8s; }
+@keyframes sway { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+.cat .pose { transition: opacity 0.35s ease; }
+@media (prefers-reduced-motion: reduce) { .cat .pose.active, .cat-eye, .cat-pupil, .caruso-tail, .ddos-tail { animation: none; } }

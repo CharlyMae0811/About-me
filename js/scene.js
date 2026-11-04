@@ -201,19 +201,36 @@
   }
 
   function placeCat(node, from, to, u) {
-    // move along a little arc so hops look like hops
+    const moving = from[0] !== to[0] || from[1] !== to[1];
     const x = lerp(from[0], to[0], u);
-    const hop = from[0] !== to[0] || from[1] !== to[1] ? Math.sin(u * Math.PI) * 60 : 0;
+    const hop = moving ? Math.sin(u * Math.PI) * 70 : 0;
     const y = lerp(from[1], to[1], u) - hop;
-    node.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
-    const pose = u < 0.5 ? from[2] : to[2];
+    // squash & stretch: stretch on take-off, squash on landing
+    let sx = 1, sy = 1;
+    if (moving && u > 0 && u < 1) {
+      const s = Math.sin(u * Math.PI * 2) * 0.10;
+      sy = 1 + s; sx = 1 - s * 0.7;
+    }
+    // face the direction of travel (poses are drawn facing right-ish)
+    const dir = node.dataset.dir || 1;
+    node.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)}) scale(${(sx * dir).toFixed(3)} ${sy.toFixed(3)})`);
+    const pose = moving ? (u < 0.5 ? from[2] : to[2]) : to[2];
     if (node.dataset.pose !== pose) {
       node.dataset.pose = pose;
       node.querySelectorAll('.pose').forEach(p => p.classList.toggle('active', p.dataset.pose === pose));
     }
-    // flip Caruso to face the window when on the sill
     node.classList.toggle('on-sill', Math.abs(to[1] - SILL) < 1);
   }
+
+  // tails rotate around their base: set transform-origin from each path's M x y
+  document.querySelectorAll('.caruso-tail, .ddos-tail').forEach(p => {
+    const m = p.getAttribute('d').match(/M\s*(-?[\d.]+)\s+(-?[\d.]+)/);
+    if (!m) return;
+    const bb = p.getBBox(), sw = 9; // half stroke width
+    const ox = ((+m[1] - (bb.x - sw)) / (bb.width + sw * 2)) * 100;
+    const oy = ((+m[2] - (bb.y - sw)) / (bb.height + sw * 2)) * 100;
+    p.style.transformOrigin = `${ox.toFixed(1)}% ${oy.toFixed(1)}%`;
+  });
 
   /* ---------- scroll → progress with light smoothing ---------- */
   let target = 0, current = -1;
@@ -226,7 +243,7 @@
   }
   function tick() {
     if (current < 0) current = target;
-    const next = reduced ? target : current + (target - current) * 0.12;
+    const next = reduced ? target : current + (target - current) * 0.085;
     if (Math.abs(next - current) > 0.00005 || current === target) {
       current = next;
       applyScene(current);
