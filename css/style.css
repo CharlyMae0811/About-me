@@ -508,3 +508,7 @@ body.en-garde, body.en-garde * { cursor: url("data:image/svg+xml;utf8,<svg xmlns
 @keyframes sway { 0%,100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
 .cat .pose { transition: opacity 0.35s ease; }
 @media (prefers-reduced-motion: reduce) { .cat .pose.active, .cat-eye, .cat-pupil, .caruso-tail, .ddos-tail { animation: none; } }
+
+.certs { grid-template-columns: repeat(3, 1fr); }
+.award.next { opacity: 0.6; border: 1px dashed rgba(127,127,127,0.5); background: transparent; }
+@media (max-width: 760px) { .certs { grid-template-columns: 1fr; } }
