@@ -4,118 +4,167 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <title>Charlotte Mädler — CV</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <title>Charlotte Mädler – Résumé</title>
+  <meta name="description" content="Résumé of Charlotte Mädler, M.Sc. Computer Science. Data analysis, statistics, Python, SQL, AWS. Berlin.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Charlotte Mädler",
+    "email": "mailto:charlotte.t.maedler@gmail.com",
+    "url": "https://charlymae0811.github.io/About-me/",
+    "sameAs": ["https://www.linkedin.com/in/charlotte-maedler", "https://github.com/CharlyMae0811"],
+    "address": {"@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "DE"},
+    "jobTitle": "Cloud Support Engineer",
+    "worksFor": {"@type": "Organization", "name": "Amazon Web Services"},
+    "alumniOf": {"@type": "CollegeOrUniversity", "name": "University of Bonn"},
+    "knowsAbout": ["Data analysis", "Statistics", "Hypothesis testing", "Python", "SQL", "R", "Machine learning", "AWS", "Cloud computing", "Networking", "Usable security"],
+    "knowsLanguage": ["en", "de", "fr"]
+  }
+  </script>
   <style>
-    :root { --ink: #1b1a22; --accent: #e0472b; --muted: #6b6a73; }
+    :root { --ink: #1a1a1a; --muted: #5f5f66; --rule: #d9d6cf; --accent: #b3361f; }
     * { box-sizing: border-box; }
-    body { margin: 0; font: 10.5pt/1.45 "Inter Tight", system-ui, sans-serif; color: var(--ink); background: #f4efe4; }
-    .page { max-width: 820px; margin: 0 auto; padding: 48px 40px 60px; background: #fff; }
-    header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 18px; }
-    h1 { font: 600 30pt/1 "Fraunces", serif; margin: 0 0 6px; letter-spacing: -0.01em; }
-    .sub { font-size: 11pt; color: var(--muted); }
-    .links { text-align: right; font: 8.5pt "JetBrains Mono", monospace; line-height: 1.7; }
-    .links a { color: var(--ink); text-decoration: none; }
-    h2 { font: 500 8.5pt "JetBrains Mono", monospace; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin: 18px 0 8px; }
-    .item { display: grid; grid-template-columns: 120px 1fr; gap: 12px; margin-bottom: 9px; break-inside: avoid; }
-    .when { font: 8.5pt "JetBrains Mono", monospace; color: var(--muted); padding-top: 2px; }
-    .what strong { font-weight: 600; }
-    .what .org { color: var(--muted); }
+    html { background: #ebe7df; }
+    body { margin: 0; font: 10.5pt/1.45 "Inter Tight", "Helvetica Neue", Arial, sans-serif; color: var(--ink); }
+    .page { max-width: 800px; margin: 28px auto; padding: 44px 48px 52px; background: #fff; box-shadow: 0 6px 30px rgba(0,0,0,0.08); }
+    header { margin-bottom: 18px; }
+    h1 { font-size: 24pt; font-weight: 700; letter-spacing: -0.01em; margin: 0 0 2px; }
+    .headline { font-size: 11pt; color: var(--muted); margin: 0 0 8px; }
+    .contact { font-size: 9.5pt; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 14px; }
+    .contact a { color: var(--muted); text-decoration: none; }
+    h2 { font-size: 9pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 20px 0 8px; padding-bottom: 4px; border-bottom: 1px solid var(--rule); }
+    .summary { margin: 0; font-size: 10.5pt; }
+    .job { margin-bottom: 11px; break-inside: avoid; }
+    .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+    .job-title { font-weight: 600; }
+    .job-org { color: var(--muted); }
+    .job-when { font-size: 9.5pt; color: var(--muted); white-space: nowrap; }
     ul { margin: 3px 0 0; padding-left: 16px; }
     li { margin-bottom: 2px; }
-    .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
-    .skills p { margin: 0 0 4px; }
+    .skills p { margin: 0 0 3px; }
     .skills b { font-weight: 600; }
-    .print { position: fixed; top: 14px; right: 14px; font: 9pt "JetBrains Mono", monospace; padding: 8px 12px; background: var(--ink); color: #fff; border: 0; border-radius: 6px; cursor: pointer; }
+    .edu { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+    .edu .job-when { padding-top: 1px; }
+    .note { font-size: 9pt; color: var(--muted); margin: 2px 0 0; }
+    .print { position: fixed; top: 14px; right: 14px; font: 9.5pt "Inter Tight", sans-serif; padding: 8px 12px; background: var(--ink); color: #fff; border: 0; border-radius: 6px; cursor: pointer; }
+    @media (max-width: 640px) { .page { padding: 28px 22px; margin: 0; } .job-head, .edu { flex-direction: column; gap: 0; } }
     @media print {
-      body { background: #fff; }
-      .page { padding: 0; max-width: none; }
+      html { background: #fff; }
+      .page { max-width: none; margin: 0; padding: 0; box-shadow: none; }
       .print { display: none; }
-      @page { margin: 16mm 14mm; size: A4; }
-      a::after { content: ""; }
+      a { color: inherit; }
+      @page { margin: 15mm 16mm; size: A4; }
     }
   </style>
 </head>
 <body>
-<button class="print" onclick="print()">print / save as PDF</button>
-<div class="page">
+<button class="print" onclick="print()">Print / save as PDF</button>
+<main class="page">
   <header>
-    <div>
-      <h1>Charlotte Mädler</h1>
-      <div class="sub">M.Sc. Computer Science · Data, systems and people · Berlin</div>
-    </div>
-    <div class="links">
-      <a href="mailto:charlotte.t.maedler@gmail.com">charlotte.t.maedler@gmail.com</a><br>
-      <a href="https://www.linkedin.com/in/charlotte-maedler">linkedin.com/in/charlotte-maedler</a><br>
-      <a href="https://github.com/CharlyMae0811">github.com/CharlyMae0811</a><br>
-      <a href="https://charlymae0811.github.io/About-me/">charlymae0811.github.io</a>
+    <h1>Charlotte Mädler</h1>
+    <p class="headline">Data Scientist / Software Engineer · M.Sc. Computer Science (with honours)</p>
+    <div class="contact">
+      <span>Berlin, Germany · open to relocation (US) and remote</span>
+      <a href="mailto:charlotte.t.maedler@gmail.com">charlotte.t.maedler@gmail.com</a>
+      <a href="https://www.linkedin.com/in/charlotte-maedler">linkedin.com/in/charlotte-maedler</a>
+      <a href="https://github.com/CharlyMae0811">github.com/CharlyMae0811</a>
+      <a href="https://charlymae0811.github.io/About-me/">charlymae0811.github.io/About-me</a>
     </div>
   </header>
 
+  <h2>Summary</h2>
+  <p class="summary">Computer scientist with two years of applied statistical research (preregistered study, n = 982; peer-reviewed USENIX publication) and 15 months in customer-facing roles at Amazon and AWS, where I analyse revenue, advertising and inventory data and troubleshoot production cloud systems. Comfortable owning the full data lifecycle: collecting and cleaning data in Python and SQL, choosing and running the right statistical test, and turning the result into a decision a non-specialist can act on. Four years of teaching computer architecture and operating systems.</p>
+
   <h2>Experience</h2>
-  <div class="item"><div class="when">Jul 2026 — present</div><div class="what"><strong>Cloud Support Engineer</strong> <span class="org">· AWS, European Sovereign Cloud</span>
-    <ul>
-      <li>Customer-facing technical troubleshooting across AWS services (networking, compute, IAM, storage) for the EU Sovereign Cloud</li>
-      <li>Team “Voice of the Engineer”: designed and analysed team-satisfaction surveys, surfaced improvement points to leadership</li>
-      <li>Side project: built a certification study site (cheat sheets, quizzes, flashcard app) and ran in-person prep sessions for the team</li>
-      <li>Organised team meetings, team-bonding activities and site-wide meetings</li>
-    </ul></div></div>
-  <div class="item"><div class="when">Aug 2025 — Jun 2026</div><div class="what"><strong>Account Manager</strong> <span class="org">· Amazon Global Selling</span>
-    <ul>
-      <li>Revenue analysis per seller (sales, conversion, traffic); advertising keyword and search-term analysis with A/B tests on listings and campaigns; stock-level and sell-through analysis</li>
-      <li>Marketing strategy and growth plans derived from the numbers: catalogue expansion, pricing, promotions; lead identification across the portfolio</li>
-      <li>Built <b>Lumi</b>, an interactive pitch-call training simulator: HTML/JS front-end, n8n workflows, AWS speech and knowledge-base integration, scoring framework and UI prototype</li>
-    </ul></div></div>
-  <div class="item"><div class="when">Apr 2023 — Jul 2025</div><div class="what"><strong>Student Researcher</strong> <span class="org">· Behavioural Security Group, University of Bonn</span>
-    <ul>
-      <li>Designed and ran quantitative and qualitative studies; led data collection and statistical analysis (t-tests, chi-square, non-parametric tests, post-hoc corrections)</li>
-      <li>Co-authored a peer-reviewed SOUPS 2023 paper; M.Sc. thesis on surveillance perception (preregistered, n = 982)</li>
-    </ul></div></div>
-  <div class="item"><div class="when">Apr 2023 — Jul 2025</div><div class="what"><strong>Product & Research Lead</strong> <span class="org">· Riposte, fencing analytics project</span>
-    <ul>
-      <li>Evaluated pose-estimation models on fencing footage; derived movement metrics (distance, tempo, lunge depth/speed) from keypoint time-series</li>
-      <li>Designed the statistical framework (smoothing, normalisation, significance testing) and validated metrics against coach judgement in Python</li>
-      <li>Market and competitor research; scoped the product roadmap from fencer and coach interviews</li>
-    </ul></div></div>
-  <div class="item"><div class="when">May 2023 — Jun 2025</div><div class="what"><strong>Strategy Team</strong> <span class="org">· Fechtklingen.de</span>
-    <ul><li>A/B testing, market research, inventory planning, category expansion and supplier relations for an online blade retailer</li></ul></div></div>
-  <div class="item"><div class="when">Oct 2019 — Mar 2023</div><div class="what"><strong>Teaching Assistant</strong> <span class="org">· University of Bonn</span>
-    <ul>
-      <li>Technical Computer Science (digital logic, circuits, arithmetic units), Computer Organisation (x86 assembly, pipelining, caches, memory hierarchy) and Systems-related CS (operating systems, C)</li>
-      <li>Led weekly tutorials for 20–40 students, prepared exercises and solutions, graded assignments and exams</li>
-    </ul></div></div>
-  <div class="item"><div class="when">Apr — Oct 2022</div><div class="what"><strong>Swimming Instructor</strong> <span class="org">· Nessy GmbH</span>
-    <ul><li>Taught children aged 3 months to 12 years; parent communication, safety and emergency response</li></ul></div></div>
 
-  <h2>Education <span style="font:8pt 'Inter Tight';color:var(--muted);text-transform:none;letter-spacing:0">· GPAs on the German scale, 1.0 = best</span></h2>
-  <div class="item"><div class="when">2023 — 2025</div><div class="what"><strong>M.Sc. Computer Science</strong>, with honours, GPA 1.3 <span class="org">· University of Bonn · focus: cybersecurity</span></div></div>
-  <div class="item"><div class="when">2018 — 2023</div><div class="what"><strong>B.Sc. Computer Science</strong>, minor in Physics, GPA 2.0 <span class="org">· University of Bonn</span></div></div>
-  <div class="item"><div class="when">2010 — 2018</div><div class="what"><strong>Abitur</strong>, GPA 1.1 <span class="org">· Sankt Adelheid Gymnasium, Bonn</span></div></div>
+  <article class="job">
+    <div class="job-head"><span><span class="job-title">Cloud Support Engineer</span> <span class="job-org">· Amazon Web Services (AWS), European Sovereign Cloud · Berlin</span></span><span class="job-when">Jul 2026 – present</span></div>
+    <ul>
+      <li>Technical, customer-facing troubleshooting across AWS services (networking/VPC, EC2, IAM, S3, databases) in a regulated cloud environment; perform root cause analysis from logs, metrics and configuration and write up findings for reuse.</li>
+      <li>Voice of the Engineer: designed and ran team-satisfaction surveys, analysed results with descriptive statistics, and presented improvement points to leadership.</li>
+      <li>Side project: built a certification study site (cheat sheets, quizzes, flashcard app in plain JavaScript) and ran in-person prep sessions for colleagues.</li>
+    </ul>
+  </article>
 
-  <div class="cols">
-    <div>
-      <h2>Publications</h2>
-      <div class="item"><div class="when">Aug 2023</div><div class="what">Adventures in Recovery Land: Testing Account Recovery of Popular Websites When the Second Factor is Lost. <span class="org">SOUPS 2023, USENIX.</span></div></div>
-      <h2>Certifications</h2>
-      <div class="item"><div class="when">AWS</div><div class="what">AWS Certified AI Practitioner</div></div>
-      <div class="item"><div class="when">AWS</div><div class="what">AWS Certified AI Business Strategist</div></div>
-      <h2>Awards</h2>
-      <div class="item"><div class="when">2023</div><div class="what">FS-ISAC Scholarship for Women in Cybersecurity</div></div>
-      <div class="item"><div class="when">2017</div><div class="what">Hans-Riegel-Fachpreis, 2nd place in Physics, University of Bonn</div></div>
-      <h2>Volunteer</h2>
-      <div class="item"><div class="when">2020 — 2023</div><div class="what">Girls' Day team for Computer Science, University of Bonn</div></div>
-      <div class="item"><div class="when">2018 — 2020</div><div class="what">Elected Student Body Member, University of Bonn</div></div>
-    </div>
-    <div class="skills">
-      <h2>Skills</h2>
-      <p><b>Data:</b> Python (pandas, numpy, scipy, matplotlib), R, SQL, hypothesis testing, A/B testing, machine learning, research methods, Jupyter</p>
-      <p><b>Engineering:</b> AWS, cloud and networking troubleshooting, HTML/CSS/JS, C++, x86, ROS, Docker, Git, n8n automation</p>
-      <p><b>Product &amp; business:</b> UX research, market research, business analytics, A/B testing, customer-facing communication, product framing, strategy</p>
-      <p><b>Security:</b> user-centric and behavioural security, privacy research</p>
-      <h2>Languages</h2>
-      <p>English (native), German (native), French (B1), Italian (basics)</p>
-    </div>
+  <article class="job">
+    <div class="job-head"><span><span class="job-title">Account Manager</span> <span class="job-org">· Amazon Global Selling · Berlin</span></span><span class="job-when">Aug 2025 – Jun 2026</span></div>
+    <ul>
+      <li>Managed a portfolio of marketplace sellers using weekly revenue, conversion and traffic data; decomposed changes into price, visibility and stock effects to identify root causes and prioritise actions.</li>
+      <li>Advertising analytics: keyword and search-term analysis, bid and budget adjustments, A/B tests on listings and campaigns measured on ACoS and conversion rate.</li>
+      <li>Inventory analytics: stock-level and sell-through analysis, out-of-stock risk and restock timing, lost-sales estimates.</li>
+      <li>Presented KPIs and recommendations in regular business reviews with sellers; built per-account growth plans (catalogue, pricing, promotions) ranked by expected revenue impact.</li>
+      <li>Built Lumi, an interactive pitch-call training simulator: HTML/CSS/JavaScript front-end, n8n workflow automation, AWS services for speech, knowledge-base retrieval and near real-time dialogue, plus a rubric-based scoring framework.</li>
+    </ul>
+  </article>
+
+  <article class="job">
+    <div class="job-head"><span><span class="job-title">Student Researcher</span> <span class="job-org">· Behavioural Security Group, University of Bonn</span></span><span class="job-when">Apr 2023 – Jul 2025</span></div>
+    <ul>
+      <li>Designed and ran quantitative and qualitative studies on user-centric security: survey instruments, experiments, interviews, preregistrations.</li>
+      <li>Owned data collection (Prolific, Qualtrics) and cleaning pipelines in Python (pandas); ran t-tests, chi-square, Wilcoxon, Kruskal–Wallis and Spearman analyses with post-hoc corrections and effect sizes.</li>
+      <li>Co-authored a peer-reviewed paper at SOUPS 2023 (USENIX) auditing two-factor account recovery across 78 online services.</li>
+      <li>Master's thesis: preregistered survey of 982 US participants on surveillance perception, 28 hypotheses, full analysis published as an open notebook.</li>
+    </ul>
+  </article>
+
+  <article class="job">
+    <div class="job-head"><span><span class="job-title">Co-Founder, Product &amp; Research Lead</span> <span class="job-org">· Riposte (fencing analytics)</span></span><span class="job-when">Apr 2023 – Jul 2025</span></div>
+    <ul>
+      <li>Evaluated pose-estimation models (OpenPose, MediaPipe) on bout footage; derived movement metrics (distance, tempo, lunge depth and speed) from keypoint time series.</li>
+      <li>Designed the statistical framework (smoothing, per-athlete normalisation, significance testing) and validated metrics against coach judgement; prototyping in Python and PyTorch.</li>
+      <li>Market and competitor research; defined the product roadmap from interviews with fencers and coaches.</li>
+    </ul>
+  </article>
+
+  <article class="job">
+    <div class="job-head"><span><span class="job-title">Strategy Team</span> <span class="job-org">· Fechtklingen.de (e-commerce)</span></span><span class="job-when">May 2023 – Jun 2025</span></div>
+    <ul>
+      <li>Analysed sales, margins and demand to drive portfolio expansion; A/B tests on listings and pricing; inventory planning and reorder points.</li>
+      <li>Category expansion strategy, supplier relations and product sourcing; customer research and athlete collaborations.</li>
+    </ul>
+  </article>
+
+  <article class="job">
+    <div class="job-head"><span><span class="job-title">Teaching Assistant</span> <span class="job-org">· University of Bonn</span></span><span class="job-when">Oct 2019 – Mar 2023</span></div>
+    <ul>
+      <li>Technical Computer Science (digital logic, circuits, arithmetic units), Computer Organisation (x86 assembly, pipelining, caches, memory hierarchy) and Systems-related Computer Science (operating systems, C).</li>
+      <li>Led weekly tutorials for 20–40 students, prepared exercises and solutions, graded assignments and exams.</li>
+    </ul>
+  </article>
+
+  <h2>Education</h2>
+  <div class="edu"><span><b>M.Sc. Computer Science</b>, with honours, GPA 1.3 · University of Bonn · focus: cybersecurity</span><span class="job-when">2023 – 2025</span></div>
+  <div class="edu"><span><b>B.Sc. Computer Science</b>, minor in Physics, GPA 2.0 · University of Bonn</span><span class="job-when">2018 – 2023</span></div>
+  <div class="edu"><span><b>Abitur</b>, GPA 1.1 · Sankt Adelheid Gymnasium, Bonn</span><span class="job-when">2010 – 2018</span></div>
+  <p class="note">GPAs on the German scale: 1.0 is the best grade, 4.0 is a pass.</p>
+
+  <h2>Skills</h2>
+  <div class="skills">
+    <p><b>Data &amp; statistics:</b> Python (pandas, NumPy, SciPy, Matplotlib, Seaborn), R, SQL, Jupyter; hypothesis testing (t-tests, chi-square, non-parametric tests), descriptive statistics, A/B testing, root cause analysis, survey design, data cleaning and pipelines</p>
+    <p><b>Machine learning:</b> PyTorch, pose estimation (OpenPose, MediaPipe), computer vision and audio analysis coursework, generative AI integration (AWS speech and knowledge-base services)</p>
+    <p><b>Software &amp; cloud:</b> Python, C, C++, JavaScript/HTML/CSS, x86 assembly, Linux; AWS (EC2, VPC, IAM, S3), networking, Docker, Git, n8n workflow automation</p>
+    <p><b>Communication:</b> customer-facing technical support, business reviews and KPI presentations, four years of teaching, scientific writing</p>
+    <p><b>Languages:</b> English (native), German (native), French (B1), Italian (basic)</p>
   </div>
-</div>
+
+  <h2>Publications</h2>
+  <p style="margin:0">Gerlitz, E., et al. (incl. Mädler, C.). <i>Adventures in Recovery Land: Testing the Account Recovery of Popular Websites When the Second Factor is Lost.</i> Symposium on Usable Privacy and Security (SOUPS), USENIX, August 2023.</p>
+
+  <h2>Certifications &amp; Awards</h2>
+  <ul style="margin-top:0">
+    <li>AWS Certified AI Practitioner · AWS Certified AI Business Strategist</li>
+    <li>FS-ISAC Scholarship for Women in Cybersecurity, 2023</li>
+    <li>Hans-Riegel-Fachpreis, 2nd place in Physics, University of Bonn, 2017</li>
+  </ul>
+
+  <h2>Volunteering</h2>
+  <ul style="margin-top:0">
+    <li>Girls' Day team for Computer Science, University of Bonn, 2020–2023</li>
+    <li>Elected Student Body Member, University of Bonn, 2018–2020</li>
+    <li>Youth Program Assistant, American Protestant Church Bonn, 2018–2022</li>
+  </ul>
+</main>
 </body>
 </html>
