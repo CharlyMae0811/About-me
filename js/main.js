@@ -57,7 +57,7 @@ window.SUDOKU = {
 
   /* ---------- props: tips, modals, inventory ---------- */
   const PROPS = {
-    photo:   { label: 'photo frame · about', title: 'Graduation, 2025', body: '<p>M.Sc. Computer Science, University of Bonn, GPA 1.3. Cybersecurity focus, thesis on how people judge physical vs digital surveillance.</p><img class="modal-photo" src="images/portrait.jpg" alt="" onerror="this.remove()">' },
+    photo:   { label: 'photo frame · about', title: 'Graduation, 2025', body: '<p>M.Sc. Computer Science, University of Bonn, GPA 1.3. Cybersecurity focus, thesis on how people judge physical vs digital surveillance.</p><img class="modal-photo" src="images/graduation.jpg" alt="Charlotte at her graduation" onerror="this.remove()">' },
     fencing: { label: 'fencing mask', modal: 'modal-fencing' },
     award:   { label: 'award', title: 'Awards & certifications', body: '<p><strong>FS-ISAC Scholarship</strong>, Women in Cybersecurity, 2023.</p><p><strong>Hans-Riegel-Fachpreis</strong>, 2nd place in Physics, University of Bonn, 2017.</p><p><strong>AWS Certified AI Practitioner</strong> and <strong>AWS Certified AI Business Strategist</strong>.</p>' },
     cooking: { label: 'the pan · cooking', title: 'Cooking', body: '<p>Cooking blog is work in progress. Current status: fermenting.</p>' },
