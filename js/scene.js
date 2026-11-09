@@ -185,8 +185,15 @@
   function applyScene(t) {
     const [a, b, u] = segment(K, t);
     for (const k in a.v) {
-      const val = mix(a.v[k], b.v[k], u);
       if (k === 'sunX' || k === 'sunY') continue;
+      // panel/text colours flip in a short window instead of blending across the whole dusk
+      if (k === 'text' || k === 'panelBg' || k === 'panelInk') {
+        const NIGHT_AT = 0.735, W = 0.015;
+        const nu = ease(Math.min(1, Math.max(0, (t - NIGHT_AT) / W)));
+        root.style.setProperty(cssName[k], mix(K[0].v[k], K[K.length - 1].v[k], nu));
+        continue;
+      }
+      const val = mix(a.v[k], b.v[k], u);
       root.style.setProperty(cssName[k], typeof val === 'number' ? val.toFixed(3) : val);
     }
     const sx = lerp(a.v.sunX, b.v.sunX, u), sy = lerp(a.v.sunY, b.v.sunY, u);
