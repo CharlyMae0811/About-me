@@ -520,3 +520,14 @@ body.en-garde, body.en-garde * { cursor: url("data:image/svg+xml;utf8,<svg xmlns
 .tiles.five .tile b { font-size: 24px; }
 .tiles.five .tile span { font-size: 11.5px; }
 @media (max-width: 760px) { .tiles.five { grid-template-columns: 1fr 1fr; } }
+
+/* in short: scannable lines */
+.short { list-style: none; margin: 10px 0 6px; padding: 0; }
+.short li { display: grid; grid-template-columns: 74px 1fr; gap: 12px; align-items: baseline; padding: 8px 0; border-top: 1px solid rgba(127,127,127,0.18); font-size: 15px; line-height: 1.45; }
+.short li:first-child { border-top: 0; }
+.short .k, .short .now { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.55; padding-top: 2px; }
+.short .now { opacity: 1; color: var(--accent); font-weight: 500; }
+.short strong { font-weight: 600; }
+.short li:first-child strong { color: var(--accent); }
+.short a { text-decoration: none; border-bottom: 1px solid currentColor; }
+@media (max-width: 760px) { .short li { grid-template-columns: 1fr; gap: 2px; } }
