@@ -371,130 +371,9 @@
   </section>
 
   <!-- ================= 02 DATA ================= -->
-  <section class="chapter" data-chapter="2" data-time="09:00" data-label="WORK · DATA">
+  <section class="chapter" data-chapter="2" data-time="09:00" data-label="MORNING · ROLES">
     <article class="panel wide">
-      <header class="panel-head">LEVEL 02 · 09:00 · DATA</header>
-      <h2>Research I've done</h2>
-
-      <div class="case">
-        <div class="case-meta">
-          <span class="tag">M.Sc. thesis · 2025</span>
-          <span class="tag ghost">survey · n = 982 · preregistered</span>
-        </div>
-        <h3>Physical vs Digital Surveillance</h3>
-        <p>How do people judge surveillance: effective, invasive, acceptable? I designed the survey, preregistered 28 hypotheses, cleaned and analysed 982 responses (Wilcoxon, Kruskal–Wallis, Spearman, Dunn), and wrote it up. Click through the findings:</p>
-
-        <div class="chart" id="thesisChart">
-          <div class="chart-tabs" role="tablist">
-            <button class="ctab is-on" data-view="overt">Overt vs covert</button>
-            <button class="ctab" data-view="medium">Digital vs physical</button>
-            <button class="ctab" data-view="predict">What predicts acceptance</button>
-            <button class="ctab" data-view="me">"It won't affect me"</button>
-          </div>
-          <svg viewBox="0 0 560 220" class="chart-svg" aria-label="Thesis results chart"></svg>
-          <p class="chart-note" id="chartNote"></p>
-        </div>
-
-        <ul class="bullets">
-          <li>Overt methods are more acceptable than covert ones (3.78 vs 2.81 on a 5-point scale, p &lt; .001). Physical slightly beats digital.</li>
-          <li>Effectiveness predicts acceptance more than invasiveness does (ρ up to 0.47 vs 0.15). People accept what they think works.</li>
-          <li>Trust in institutions is the strongest driver and lower than in prior studies; political affiliation is a clear divider.</li>
-        </ul>
-        <p class="links"><a href="https://github.com/CharlyMae0811/MasterThesis-StatisticalAnalysis" target="_blank" rel="noopener">analysis notebook ↗</a></p>
-      </div>
-
-      <div class="case">
-        <div class="case-meta">
-          <span class="tag">SOUPS 2023 · USENIX</span>
-          <span class="tag ghost">peer-reviewed · co-author</span>
-        </div>
-        <h3>Adventures in Recovery Land</h3>
-        <p>We set up 2FA on 78 popular services and audited what happens when you lose the second factor. 28 never warn you it could happen; most have no "forgot my 2FA" link. I ran data collection and analysis.</p>
-        <p class="links"><a href="https://www.usenix.org/conference/soups2023/presentation/gerlitz-adventures" target="_blank" rel="noopener">paper ↗</a></p>
-      </div>
-    </article>
-  </section>
-
-  <!-- ================= 03 BUILD ================= -->
-  <section class="chapter" data-chapter="3" data-time="11:30" data-label="WORK · BUILD">
-    <article class="panel wide">
-      <header class="panel-head">LEVEL 03 · 11:30 · BUILD</header>
-      <h2>Things I've built</h2>
-      <p class="lede">Mostly solo, mostly plain HTML/CSS/JS, always end to end.</p>
-
-      <div class="tabs" id="buildTabs">
-        <div class="tab-list" role="tablist">
-          <button class="tab is-on" data-tab="lumi">Lumi</button>
-          <button class="tab" data-tab="certhub">Cert study site</button>
-          <button class="tab" data-tab="riposte">Riposte</button>
-          <button class="tab" data-tab="trips">OurTrips</button>
-          <button class="tab" data-tab="site">This site</button>
-          <button class="tab" data-tab="small">Small tools</button>
-        </div>
-
-        <div class="tab-pane is-on" data-pane="lumi">
-          <div class="case-meta"><span class="tag">product</span><span class="tag">front-end</span><span class="tag">AWS</span><span class="tag">n8n</span></div>
-          <h3>Lumi — pitch-call training simulator</h3>
-          <p>Built at Amazon to practise seller pitch calls against a simulated counterpart. I designed the user flow, conversation structure and scoring framework, built the front-end, automated the workflows in n8n, and integrated AWS services for speech, knowledge-base retrieval and near real-time dialogue.</p>
-          <ul class="bullets">
-            <li>Front-end: HTML/CSS/JS, UI prototype through to working tool</li>
-            <li>Back-end: n8n workflows orchestrating AWS speech + knowledge base</li>
-            <li>Scoring: rubric-based feedback after every simulated call</li>
-          </ul>
-        </div>
-
-        <div class="tab-pane" data-pane="certhub">
-          <div class="case-meta"><span class="tag">side project</span><span class="tag">teaching</span><span class="tag">plain JS</span></div>
-          <h3>Certification study site — a side project for my team</h3>
-          <p>A personal side project, not an official AWS resource: I built it in my own time so colleagues had one place to prepare for AWS certifications. Cheat sheets, quizzes, a flashcard study app and the slide decks from sessions I ran in person. Covers Cloud Practitioner, AI Practitioner, Solutions Architect Associate and Professional, and AI Business Strategist.</p>
-          <ul class="bullets">
-            <li>Flashcard and quiz app with spaced repetition, no backend, works offline</li>
-            <li>Cheat sheets per exam domain, written from my own prep notes</li>
-            <li>Presentations delivered live to the team, then published on the site</li>
-          </ul>
-          <p class="links"><a href="https://charlymae0811.github.io/AIPractitioner/" target="_blank" rel="noopener">open the site ↗</a><a href="https://github.com/CharlyMae0811/AIPractitioner" target="_blank" rel="noopener">code ↗</a></p>
-        </div>
-
-        <div class="tab-pane" data-pane="riposte">
-          <div class="case-meta"><span class="tag">product research</span><span class="tag">ML concept</span><span class="tag">UX interviews</span></div>
-          <h3>Riposte — analytics for fencers and coaches</h3>
-          <p>Co-founder, product and research lead, 2023–2025. An AI-based feedback tool for fencers: pose estimation on bout footage (MediaPipe / OpenPose), PyTorch action classification, a Python/OpenCV pipeline in Docker on cloud infrastructure. I shaped the concept and use cases, ran interviews with fencers and coaches, and structured how keypoint data becomes metrics a coach can read.</p>
-          <div class="flow">
-            <span>pose data</span><i>→</i><span>movement metrics</span><i>→</i><span>tactical insight</span><i>→</i><span>a decision</span>
-          </div>
-        </div>
-
-        <div class="tab-pane" data-pane="trips">
-          <div class="case-meta"><span class="tag">plain JS</span><span class="tag">PWA</span><span class="tag">maps</span></div>
-          <h3>OurTrips — one small site per trip</h3>
-          <p>Route map, hotel options with picks, food, a drag-and-drop day-by-day plan with Google Maps links, and a shared packing list. Installable PWA with a service worker, no build step, shared logic across trips.</p>
-          <p class="links"><a href="https://github.com/CharlyMae0811/OurTrips" target="_blank" rel="noopener">code ↗</a></p>
-        </div>
-
-        <div class="tab-pane" data-pane="site">
-          <div class="case-meta"><span class="tag">SVG</span><span class="tag">vanilla JS</span><span class="tag">no framework</span></div>
-          <h3>This website</h3>
-          <p>One hand-drawn SVG room. Scroll progress drives a keyframed day: ~25 colour variables, sun and moon paths, two cats with three poses each, rain, city lights, a lamp. Interpolation is smoothstep between keyframes, smoothed again per frame. Everything is plain HTML, CSS and JS served from GitHub Pages.</p>
-          <p class="small">There are at least five easter eggs. The console has a hint.</p>
-        </div>
-
-        <div class="tab-pane" data-pane="small">
-          <h3>Tools I made for myself</h3>
-          <ul class="bullets">
-            <li><strong>Meal planner</strong>: weekly plan + shopping list, local-first.</li>
-            <li><strong>Event site</strong> for the German team fencing championships in Koblenz.</li>
-            <li><strong>Instagram unfollowers</strong>: a Python script, because the app wouldn't tell me.</li>
-          </ul>
-          <p class="links"><a href="https://github.com/CharlyMae0811" target="_blank" rel="noopener">all repos ↗</a></p>
-        </div>
-      </div>
-    </article>
-  </section>
-
-  <!-- ================= 04 ROLES ================= -->
-  <section class="chapter" data-chapter="4" data-time="14:00" data-label="WORK · ROLES">
-    <article class="panel wide">
-      <header class="panel-head">LEVEL 04 · 14:00 · ROLES</header>
+      <header class="panel-head">LEVEL 02 · 09:00 · ROLES</header>
       <h2>Where I've worked</h2>
       <p class="lede">One line each. Open a row for the detail.</p>
 
@@ -633,7 +512,128 @@
     </article>
   </section>
 
-  <!-- ================= 05 SKILLS ================= -->
+  <section class="chapter" data-chapter="3" data-time="11:30" data-label="WORK · DATA">
+    <article class="panel wide">
+      <header class="panel-head">LEVEL 03 · 11:30 · DATA</header>
+      <h2>Research I've done</h2>
+
+      <div class="case">
+        <div class="case-meta">
+          <span class="tag">M.Sc. thesis · 2025</span>
+          <span class="tag ghost">survey · n = 982 · preregistered</span>
+        </div>
+        <h3>Physical vs Digital Surveillance</h3>
+        <p>How do people judge surveillance: effective, invasive, acceptable? I designed the survey, preregistered 28 hypotheses, cleaned and analysed 982 responses (Wilcoxon, Kruskal–Wallis, Spearman, Dunn), and wrote it up. Click through the findings:</p>
+
+        <div class="chart" id="thesisChart">
+          <div class="chart-tabs" role="tablist">
+            <button class="ctab is-on" data-view="overt">Overt vs covert</button>
+            <button class="ctab" data-view="medium">Digital vs physical</button>
+            <button class="ctab" data-view="predict">What predicts acceptance</button>
+            <button class="ctab" data-view="me">"It won't affect me"</button>
+          </div>
+          <svg viewBox="0 0 560 220" class="chart-svg" aria-label="Thesis results chart"></svg>
+          <p class="chart-note" id="chartNote"></p>
+        </div>
+
+        <ul class="bullets">
+          <li>Overt methods are more acceptable than covert ones (3.78 vs 2.81 on a 5-point scale, p &lt; .001). Physical slightly beats digital.</li>
+          <li>Effectiveness predicts acceptance more than invasiveness does (ρ up to 0.47 vs 0.15). People accept what they think works.</li>
+          <li>Trust in institutions is the strongest driver and lower than in prior studies; political affiliation is a clear divider.</li>
+        </ul>
+        <p class="links"><a href="https://github.com/CharlyMae0811/MasterThesis-StatisticalAnalysis" target="_blank" rel="noopener">analysis notebook ↗</a></p>
+      </div>
+
+      <div class="case">
+        <div class="case-meta">
+          <span class="tag">SOUPS 2023 · USENIX</span>
+          <span class="tag ghost">peer-reviewed · co-author</span>
+        </div>
+        <h3>Adventures in Recovery Land</h3>
+        <p>We set up 2FA on 78 popular services and audited what happens when you lose the second factor. 28 never warn you it could happen; most have no "forgot my 2FA" link. I ran data collection and analysis.</p>
+        <p class="links"><a href="https://www.usenix.org/conference/soups2023/presentation/gerlitz-adventures" target="_blank" rel="noopener">paper ↗</a></p>
+      </div>
+    </article>
+  </section>
+
+  <!-- ================= 03 BUILD ================= -->
+  <section class="chapter" data-chapter="4" data-time="14:00" data-label="WORK · BUILD">
+    <article class="panel wide">
+      <header class="panel-head">LEVEL 04 · 14:00 · BUILD</header>
+      <h2>Things I've built</h2>
+      <p class="lede">Mostly solo, mostly plain HTML/CSS/JS, always end to end.</p>
+
+      <div class="tabs" id="buildTabs">
+        <div class="tab-list" role="tablist">
+          <button class="tab is-on" data-tab="lumi">Lumi</button>
+          <button class="tab" data-tab="certhub">Cert study site</button>
+          <button class="tab" data-tab="riposte">Riposte</button>
+          <button class="tab" data-tab="trips">OurTrips</button>
+          <button class="tab" data-tab="site">This site</button>
+          <button class="tab" data-tab="small">Small tools</button>
+        </div>
+
+        <div class="tab-pane is-on" data-pane="lumi">
+          <div class="case-meta"><span class="tag">product</span><span class="tag">front-end</span><span class="tag">AWS</span><span class="tag">n8n</span></div>
+          <h3>Lumi — pitch-call training simulator</h3>
+          <p>Built at Amazon to practise seller pitch calls against a simulated counterpart. I designed the user flow, conversation structure and scoring framework, built the front-end, automated the workflows in n8n, and integrated AWS services for speech, knowledge-base retrieval and near real-time dialogue.</p>
+          <ul class="bullets">
+            <li>Front-end: HTML/CSS/JS, UI prototype through to working tool</li>
+            <li>Back-end: n8n workflows orchestrating AWS speech + knowledge base</li>
+            <li>Scoring: rubric-based feedback after every simulated call</li>
+          </ul>
+        </div>
+
+        <div class="tab-pane" data-pane="certhub">
+          <div class="case-meta"><span class="tag">side project</span><span class="tag">teaching</span><span class="tag">plain JS</span></div>
+          <h3>Certification study site — a side project for my team</h3>
+          <p>A personal side project, not an official AWS resource: I built it in my own time so colleagues had one place to prepare for AWS certifications. Cheat sheets, quizzes, a flashcard study app and the slide decks from sessions I ran in person. Covers Cloud Practitioner, AI Practitioner, Solutions Architect Associate and Professional, and AI Business Strategist.</p>
+          <ul class="bullets">
+            <li>Flashcard and quiz app with spaced repetition, no backend, works offline</li>
+            <li>Cheat sheets per exam domain, written from my own prep notes</li>
+            <li>Presentations delivered live to the team, then published on the site</li>
+          </ul>
+          <p class="links"><a href="https://charlymae0811.github.io/AIPractitioner/" target="_blank" rel="noopener">open the site ↗</a><a href="https://github.com/CharlyMae0811/AIPractitioner" target="_blank" rel="noopener">code ↗</a></p>
+        </div>
+
+        <div class="tab-pane" data-pane="riposte">
+          <div class="case-meta"><span class="tag">product research</span><span class="tag">ML concept</span><span class="tag">UX interviews</span></div>
+          <h3>Riposte — analytics for fencers and coaches</h3>
+          <p>Co-founder, product and research lead, 2023–2025. An AI-based feedback tool for fencers: pose estimation on bout footage (MediaPipe / OpenPose), PyTorch action classification, a Python/OpenCV pipeline in Docker on cloud infrastructure. I shaped the concept and use cases, ran interviews with fencers and coaches, and structured how keypoint data becomes metrics a coach can read.</p>
+          <div class="flow">
+            <span>pose data</span><i>→</i><span>movement metrics</span><i>→</i><span>tactical insight</span><i>→</i><span>a decision</span>
+          </div>
+        </div>
+
+        <div class="tab-pane" data-pane="trips">
+          <div class="case-meta"><span class="tag">plain JS</span><span class="tag">PWA</span><span class="tag">maps</span></div>
+          <h3>OurTrips — one small site per trip</h3>
+          <p>Route map, hotel options with picks, food, a drag-and-drop day-by-day plan with Google Maps links, and a shared packing list. Installable PWA with a service worker, no build step, shared logic across trips.</p>
+          <p class="links"><a href="https://github.com/CharlyMae0811/OurTrips" target="_blank" rel="noopener">code ↗</a></p>
+        </div>
+
+        <div class="tab-pane" data-pane="site">
+          <div class="case-meta"><span class="tag">SVG</span><span class="tag">vanilla JS</span><span class="tag">no framework</span></div>
+          <h3>This website</h3>
+          <p>One hand-drawn SVG room. Scroll progress drives a keyframed day: ~25 colour variables, sun and moon paths, two cats with three poses each, rain, city lights, a lamp. Interpolation is smoothstep between keyframes, smoothed again per frame. Everything is plain HTML, CSS and JS served from GitHub Pages.</p>
+          <p class="small">There are at least five easter eggs. The console has a hint.</p>
+        </div>
+
+        <div class="tab-pane" data-pane="small">
+          <h3>Tools I made for myself</h3>
+          <ul class="bullets">
+            <li><strong>Meal planner</strong>: weekly plan + shopping list, local-first.</li>
+            <li><strong>Event site</strong> for the German team fencing championships in Koblenz.</li>
+            <li><strong>Instagram unfollowers</strong>: a Python script, because the app wouldn't tell me.</li>
+          </ul>
+          <p class="links"><a href="https://github.com/CharlyMae0811" target="_blank" rel="noopener">all repos ↗</a></p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- ================= 04 ROLES ================= -->
+    <!-- ================= 05 SKILLS ================= -->
   <section class="chapter" data-chapter="5" data-time="16:30" data-label="RAIN · SKILLS">
     <article class="panel wide">
       <header class="panel-head">LEVEL 05 · 16:30 · SKILLS</header>
@@ -917,6 +917,6 @@
 
 <script src="js/scene.js?v=5"></script>
 <script src="js/widgets.js?v=3"></script>
-<script src="js/main.js?v=8"></script>
+<script src="js/main.js?v=9"></script>
 </body>
 </html>
