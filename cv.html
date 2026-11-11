@@ -109,7 +109,7 @@
     <h2>Skills</h2>
     <div class="skills">
       <p><b>Data &amp; statistics</b><span>Python (pandas, NumPy, SciPy, Matplotlib), R, SQL, Jupyter · hypothesis testing, t-tests, non-parametric tests, descriptive statistics, A/B testing, root cause analysis, survey design, data cleaning and pipelines</span></p>
-      <p><b>Machine learning &amp; AI</b><span>PyTorch (custom action classifier), pose estimation (MediaPipe, OpenPose), OpenCV, computer vision; agentic AI tools (Kiro) for workflow automation, generative AI integration</span></p>
+      <p><b>Machine learning &amp; AI</b><span>PyTorch (custom action classifiers, semi-self-supervised training), pose estimation (ViTPose, MediaPipe), Kalman filtering, OCR, OpenCV, computer vision; agentic AI tools (Kiro) for workflow automation, generative AI integration</span></p>
       <p><b>Software &amp; cloud</b><span>Python, C, C++, JavaScript, HTML/CSS, x86 assembly, Linux · AWS (S3, Cognito, IAM, KMS, EC2, VPC), networking, Docker, Git, n8n</span></p>
       <p><b>Languages</b><span>English and German (native), French (B1), Italian (basic)</span></p>
     </div>
@@ -169,9 +169,9 @@
     <article class="job">
       <div class="job-head"><span><span class="job-title">Co-Founder, Product &amp; Research Lead</span> <span class="job-org">· Riposte, fencing analytics</span></span><span class="job-when">Apr 2023 – Jul 2025</span></div>
       <ul>
-        <li>Shaped the product concept and use cases for an AI fencing-feedback tool; interviews with fencers and coaches drove feature prioritisation and UX decisions.</li>
-        <li>Structured how raw pose keypoints become interpretable metrics (distance, tempo, lunge depth and speed) and coach-readable feedback, with smoothing, normalisation and significance checks.</li>
-        <li>Trained a custom PyTorch action-classification model on annotated footage over MediaPipe/OpenPose pose estimation; Python/OpenCV pipeline, Docker, cloud deployment; market and competitor research.</li>
+        <li>Shaped the product concept and use cases (distance and tempo analysis, pattern recognition, opponent scouting from public video); interviews with fencers and coaches drove feature prioritisation and UX.</li>
+        <li>Custom PyTorch action classifiers trained semi-self-supervised on ~100 h of public footage and fine-tuned on 2 h of labelled data; separate arm and footwork models for multi-action classification.</li>
+        <li>Pipeline: ViTPose pose estimation, Kalman filtering for smoothing, OCR on the scoreboard overlay to detect live bouts; Python/OpenCV, Docker, cloud deployment. Market and competitor research.</li>
       </ul>
     </article>
 

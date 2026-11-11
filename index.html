@@ -352,7 +352,7 @@
         <li><span class="now">Now</span><span class="t"><strong>Cloud Support Engineer at AWS</strong>, European Sovereign Cloud: root-causing customer issues across AWS services; automating repetitive work with AI agents; mentor and trusted contact for the team.</span></li>
         <li><span class="k">Before</span><span class="t"><strong>Account Manager at Amazon</strong>: revenue, ad and inventory analytics for a seller portfolio.</span></li>
         <li><span class="k">Research</span><span class="t"><strong>Preregistered study, n = 982</strong>, and a <strong>USENIX paper</strong>. Two years in a behavioural security lab.</span></li>
-        <li><span class="k">Start-ups</span><span class="t"><strong>Riposte</strong>, custom-trained ML coaching model for fencers, and <strong><a href="https://fechtklingen.de/en" target="_blank" rel="noopener">Fechtklingen.de</a></strong>, an online blade shop.</span></li>
+        <li><span class="k">Start-ups</span><span class="t"><strong>Riposte</strong>, custom-trained ML models for fencing analytics, and <strong><a href="https://fechtklingen.de/en" target="_blank" rel="noopener">Fechtklingen.de</a></strong>, an online blade shop.</span></li>
         <li><span class="k">Degree</span><span class="t"><strong>M.Sc. Computer Science, with honours</strong>. Four years teaching systems courses.</span></li>
       </ul>
       <div class="tiles">
@@ -444,18 +444,19 @@
           <button class="role-head" aria-expanded="false">
             <span class="role-when">Apr 2023 — Jul 2025</span>
             <span class="role-what"><strong>Co-Founder, Product &amp; Research Lead</strong> · Riposte</span>
-            <span class="role-line">Custom-trained ML model for fencing feedback: pose estimation to tactical insight; product concept, user research, data pipeline</span>
+            <span class="role-line">Custom-trained ML models for fencing analytics: pose estimation, action classification, opponent scouting</span>
             <span class="role-toggle">+</span>
           </button>
           <div class="role-body">
             <ul class="bullets">
-              <li><strong>Product concept:</strong> shaped the early direction, defined use cases and where data-driven feedback adds value in fencing training; prioritised features and UX decisions from research findings</li>
-              <li><strong>User research:</strong> interviews with fencers and coaches on workflows, pain points and expectations; recorded and annotated bouts as training and validation data</li>
-              <li><strong>Data to metrics:</strong> structured how raw pose keypoints become interpretable metrics (distance, tempo, lunge depth and speed) and coach-readable feedback; smoothing, per-athlete normalisation and significance checks to separate real change from noise</li>
-              <li><strong>Custom ML model:</strong> trained our own PyTorch action-classification model on annotated fencing footage, on top of MediaPipe / OpenPose pose estimation; Python/OpenCV pipeline, Docker for containerisation and cloud deployment; supported early prototyping</li>
+              <li><strong>Product concept:</strong> shaped the early direction and use cases: distance and tempo analysis, tactical analysis and pattern recognition, opponent scouting from publicly available bout videos</li>
+              <li><strong>User research:</strong> interviews with fencers and coaches on workflows, pain points and expectations; findings drove feature prioritisation and UX decisions</li>
+              <li><strong>Custom ML models:</strong> PyTorch action classifiers trained semi-self-supervised on ~100 h of public fencing video and fine-tuned on 2 h of labelled footage, because labelling is expensive; separate arm-movement and footwork classifiers for multi-action classification, with a reduced action-set matrix</li>
+              <li><strong>Pipeline:</strong> ViTPose for pose estimation (MediaPipe in the earlier version, better for edge devices), Kalman filtering for pose smoothing, OCR on the overlay scoreboard to detect whether a bout is live; Python/OpenCV, Docker, cloud deployment</li>
+              <li><strong>Data to metrics:</strong> structured how keypoint time series become interpretable metrics and coach-readable feedback, with significance checks to separate real change from noise</li>
               <li><strong>Market research:</strong> competitor and customer analysis for fencing analytics</li>
             </ul>
-            <div class="case-meta"><span class="tag ghost">pose estimation</span><span class="tag ghost">pytorch</span><span class="tag ghost">opencv</span><span class="tag ghost">docker</span><span class="tag ghost">user research</span></div>
+            <div class="case-meta"><span class="tag ghost">pytorch</span><span class="tag ghost">self-supervised</span><span class="tag ghost">vitpose</span><span class="tag ghost">kalman filter</span><span class="tag ghost">ocr</span><span class="tag ghost">user research</span></div>
           </div>
         </li>
         <li class="role">
@@ -607,7 +608,7 @@
         <div class="tab-pane" data-pane="riposte">
           <div class="case-meta"><span class="tag">product research</span><span class="tag">ML concept</span><span class="tag">UX interviews</span></div>
           <h3>Riposte — analytics for fencers and coaches</h3>
-          <p>Co-founder, product and research lead, 2023–2025. An AI feedback tool for fencers built on a <strong>custom-trained PyTorch action-classification model</strong>: pose estimation on bout footage (MediaPipe / OpenPose) feeds a classifier we trained on our own annotated data, in a Python/OpenCV pipeline, Dockerised on cloud infrastructure. I shaped the concept and use cases, ran interviews with fencers and coaches, and structured how keypoint data becomes metrics a coach can read.</p>
+          <p>Co-founder, product and research lead, 2023–2025. Fencing analytics from video: <strong>custom PyTorch action classifiers</strong> trained semi-self-supervised on ~100 h of public bout footage and fine-tuned on 2 h of labelled data, separate arm and footwork models, ViTPose pose estimation with Kalman smoothing, OCR on the scoreboard to detect live bouts. Outputs: distance and tempo analysis, pattern recognition, opponent scouting. I shaped the concept and use cases, ran the fencer and coach interviews, and structured how keypoint data becomes feedback a coach can read.</p>
           <div class="flow">
             <span>pose data</span><i>→</i><span>movement metrics</span><i>→</i><span>tactical insight</span><i>→</i><span>a decision</span>
           </div>
@@ -666,7 +667,7 @@
             <span class="skill" data-w="data:2 eng:0 product:1 cloud:0 sales:0" data-tip="Comfortable; I reach for Python first.">R</span>
             <span class="skill" data-w="data:3 eng:2 product:1 cloud:1 sales:2" data-tip="Cleaning, joins, aggregations. Writes itself after enough Likert scales.">SQL</span>
             <span class="skill" data-w="data:3 eng:1 product:1 cloud:0 sales:2" data-tip="pandas, matplotlib, seaborn. Charts people can read without me in the room.">pandas · matplotlib</span>
-            <span class="skill" data-w="data:2 eng:1 product:1 cloud:0 sales:0" data-tip="Coursework in ML, visual and audio data analysis; applied in the Riposte concept.">Machine learning</span>
+            <span class="skill" data-w="data:3 eng:2 product:1 cloud:0 sales:0" data-tip="Riposte: PyTorch action classifiers, semi-self-supervised on 100 h of video, fine-tuned on 2 h labelled. Plus CV and audio coursework.">Machine learning</span>
             <span class="skill" data-w="data:3 eng:0 product:3 cloud:0 sales:2" data-tip="Surveys, experiments, interviews. Preregistered when it counts.">Research methods</span>
           </div>
         </div>
