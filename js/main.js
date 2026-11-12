@@ -62,7 +62,7 @@ window.SUDOKU = {
     award:   { label: 'award', title: 'Awards & certifications', body: '<p><strong>FS-ISAC Scholarship</strong>, Women in Cybersecurity, 2023.</p><p><strong>Hans-Riegel-Fachpreis</strong>, 2nd place in Physics, University of Bonn, 2017.</p><p><strong>AWS Certified AI Practitioner</strong> and <strong>AWS Certified AI Business Strategist</strong>.</p>' },
     cooking: { label: 'the pan · cooking', title: 'Cooking', body: '<p>Cooking blog is work in progress. Current status: fermenting.</p>' },
     sudoku:  { label: 'newspaper · sudoku', modal: 'modal-sudoku' },
-    laptop:  { label: 'laptop · data', title: 'The laptop', body: '<p>Thesis analysis lives here: preregistered survey, n = 982, 12 confirmatory + 16 exploratory hypotheses, pandas, scipy, a lot of Likert scales.</p><p><a href="https://github.com/CharlyMae0811/MasterThesis-StatisticalAnalysis" target="_blank" rel="noopener">Notebook on GitHub →</a></p><p class="small">The full interactive chart is in the 11:30 chapter.</p>' },
+    laptop:  { label: 'laptop · data', title: 'The laptop', body: '<p>Thesis analysis lives here: preregistered survey, n = 982, 12 confirmatory + 16 exploratory hypotheses, pandas, scipy, a lot of Likert scales.</p><p><a href="https://github.com/CharlyMae0811/MasterThesis-StatisticalAnalysis" target="_blank" rel="noopener">Notebook on GitHub →</a></p><p class="small">The full interactive chart is in the 12:30 chapter.</p>' },
     poetry:  { label: 'notebook · poetry', title: 'Quiet Syntax', body: '<p>Poetry is where I put the thoughts that don\'t belong in spreadsheets. Tiny scenes, strange metaphors, half-finished thoughts that sound better in the dark.</p><p><a href="https://charlymae0811.github.io/PoetryBlog/" target="_blank" rel="noopener">Open the notebook →</a></p>' },
   };
   const inventory = new Set();
@@ -208,7 +208,7 @@ window.SUDOKU = {
     document.documentElement.classList.add('no-anim');
     chapters.forEach((c, i) => { if (i !== jump) c.style.display = 'none'; });
     $$('.panel').forEach(p => p.classList.add('in'));
-    const times = [0, 0.11, 0.3, 0.44, 0.55, 0.66, 0.78, 0.86, 0.93, 1];
+    const times = [0, 0.11, 0.22, 0.33, 0.44, 0.55, 0.66, 0.78, 0.86, 1];
     Scene.force && Scene.force(times[jump] ?? 0);
   }
 

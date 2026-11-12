@@ -341,10 +341,9 @@
     </div>
   </section>
 
-  <!-- ================= 01 ABOUT ================= -->
   <section class="chapter" data-chapter="1" data-time="07:30" data-label="MORNING · IN SHORT">
     <article class="panel">
-      <header class="panel-head">LEVEL 01 · 07:30 · ABOUT</header>
+      <header class="panel-head">LEVEL 01 · 07:30 · IN SHORT</header>
       <h2>In short</h2>
       <figure class="portrait"><img src="images/portrait.jpg?v=2" alt="Charlotte with Ddos" onerror="this.closest('figure').remove()"></figure>
       <p class="lede">Computer scientist who turns <strong>messy human data into decisions</strong>.</p>
@@ -377,10 +376,83 @@
     </article>
   </section>
 
-  <!-- ================= 02 DATA ================= -->
-  <section class="chapter" data-chapter="2" data-time="09:00" data-label="MORNING · ROLES">
+  <section class="chapter" data-chapter="2" data-time="09:00" data-label="MORNING · SKILLS">
     <article class="panel wide">
-      <header class="panel-head">LEVEL 02 · 09:00 · ROLES</header>
+      <header class="panel-head">LEVEL 02 · 09:00 · SKILLS</header>
+      <h2>Lens</h2>
+      <p class="lede">Pick the role you're hiring for. Hover any skill for an honest sentence.</p>
+
+      <div class="lens-tabs" role="tablist">
+        <button class="ltab is-on" data-lens="all">everything</button>
+        <button class="ltab" data-lens="data">data science</button>
+        <button class="ltab" data-lens="eng">engineering</button>
+        <button class="ltab" data-lens="product">product</button>
+        <button class="ltab" data-lens="cloud">cloud</button>
+        <button class="ltab" data-lens="sales">sales</button>
+      </div>
+
+      <div class="skill-groups" id="skills">
+        <div class="skill-group">
+          <h4>Analysis & statistics</h4>
+          <div class="skill-row">
+            <span class="skill" data-w="data:3 eng:1 product:2 cloud:1 sales:1" data-tip="Daily driver. pandas, numpy, scipy, notebooks, small tools end to end.">Python</span>
+            <span class="skill" data-w="data:3 eng:0 product:1 cloud:0 sales:2" data-tip="Survey analysis, non-parametric tests, post-hoc corrections. I read the assumptions first.">Hypothesis testing</span>
+            <span class="skill" data-w="data:3 eng:1 product:3 cloud:0 sales:3" data-tip="Design, power, and the discipline not to peek.">A/B testing</span>
+            <span class="skill" data-w="data:2 eng:0 product:1 cloud:0 sales:0" data-tip="Comfortable; I reach for Python first.">R</span>
+            <span class="skill" data-w="data:3 eng:2 product:1 cloud:1 sales:2" data-tip="Cleaning, joins, aggregations. Writes itself after enough Likert scales.">SQL</span>
+            <span class="skill" data-w="data:3 eng:1 product:1 cloud:0 sales:2" data-tip="pandas, matplotlib, seaborn. Charts people can read without me in the room.">pandas · matplotlib</span>
+            <span class="skill" data-w="data:3 eng:2 product:1 cloud:0 sales:0" data-tip="Riposte: PyTorch action classifiers, semi-self-supervised on 100 h of video, fine-tuned on 2 h labelled. Plus CV and audio coursework.">Machine learning</span>
+            <span class="skill" data-w="data:3 eng:0 product:3 cloud:0 sales:2" data-tip="Surveys, experiments, interviews. Preregistered when it counts.">Research methods</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Engineering</h4>
+          <div class="skill-row">
+            <span class="skill" data-w="data:1 eng:3 product:1 cloud:1 sales:0" data-tip="This site, Lumi, OurTrips. I like knowing what every line does.">HTML · CSS · JS</span>
+            <span class="skill" data-w="data:0 eng:2 product:0 cloud:0 sales:0" data-tip="Systems coursework, robotics, and four years teaching it.">C++</span>
+            <span class="skill" data-w="data:0 eng:2 product:0 cloud:1 sales:0" data-tip="Taught computer organisation. Can read a stack frame without crying.">x86 · systems</span>
+            <span class="skill" data-w="data:0 eng:2 product:0 cloud:0 sales:0" data-tip="Robotics and intelligent systems coursework.">ROS</span>
+            <span class="skill" data-w="data:1 eng:3 product:1 cloud:3 sales:1" data-tip="Built the cert study site end to end on it (S3, Cognito, IAM, KMS), now support it daily. I know how it fails and how to set it up right.">AWS</span>
+            <span class="skill" data-w="data:0 eng:3 product:1 cloud:3 sales:0" data-tip="Cognito user pools, IAM roles and policies, KMS keys. Least privilege by default.">Cognito · IAM · KMS</span>
+            <span class="skill" data-w="data:0 eng:3 product:1 cloud:3 sales:0" data-tip="EC2, VPC, IAM, S3 and friends. Finding the one misconfigured route table.">Cloud troubleshooting</span>
+            <span class="skill" data-w="data:0 eng:3 product:0 cloud:3 sales:0" data-tip="VPCs, subnets, security groups, DNS, peering. Packets have to go somewhere.">Networking</span>
+            <span class="skill" data-w="data:1 eng:2 product:0 cloud:2 sales:0" data-tip="Comfortable with containers for reproducible analysis and small services.">Docker</span>
+            <span class="skill" data-w="data:1 eng:2 product:1 cloud:1 sales:0" data-tip="Branches, rebases, and commit messages a stranger could follow.">Git</span>
+            <span class="skill" data-w="data:1 eng:2 product:2 cloud:1 sales:2" data-tip="Built Lumi's workflows in it. Automation that non-engineers can read.">n8n · automation</span>
+            <span class="skill" data-w="data:2 eng:3 product:2 cloud:3 sales:1" data-tip="Daily driver at AWS: steering docs, custom agents, automated repetitive support and documentation work.">AI agents · Kiro</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Product & people</h4>
+          <div class="skill-row">
+            <span class="skill" data-w="data:2 eng:0 product:3 cloud:0 sales:2" data-tip="Interviews, surveys, usability. Finding what people ask for vs what they need.">UX research</span>
+            <span class="skill" data-w="data:1 eng:1 product:3 cloud:1 sales:2" data-tip="Riposte, Lumi: framing, scoping, trade-offs.">Product framing</span>
+            <span class="skill" data-w="data:1 eng:1 product:3 cloud:3 sales:3" data-tip="Account management, then cloud support. Explaining hard things to busy people.">Customer facing</span>
+            <span class="skill" data-w="data:1 eng:1 product:3 cloud:2 sales:3" data-tip="Business reviews with sellers, advocating for engineers to leadership, aligning co-founders and coaches at Riposte.">Stakeholder management</span>
+            <span class="skill" data-w="data:1 eng:1 product:3 cloud:2 sales:2" data-tip="Advertising, catalogue and fulfilment teams at Amazon; facilities and partner teams for campus events.">Cross-functional work</span>
+            <span class="skill" data-w="data:3 eng:0 product:3 cloud:1 sales:3" data-tip="Keyword and revenue analysis, lead identification, stock planning. Numbers that decide what to do next.">Business analytics</span>
+            <span class="skill" data-w="data:2 eng:0 product:3 cloud:0 sales:3" data-tip="Riposte and Fechtklingen: who buys, why, and what the competition does.">Market research</span>
+            <span class="skill" data-w="data:2 eng:1 product:3 cloud:2 sales:3" data-tip="Four years of tutorials. If I can't explain it, I don't understand it yet.">Teaching & explaining</span>
+            <span class="skill" data-w="data:2 eng:0 product:2 cloud:2 sales:0" data-tip="User-centric security, behavioural security research, translating risk into decisions.">Security & privacy</span>
+            <span class="skill" data-w="data:1 eng:0 product:2 cloud:0 sales:3" data-tip="Portfolio strategy, category expansion, supplier relations at Fechtklingen.">Strategy</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Languages</h4>
+          <div class="skill-row">
+            <span class="skill lang" data-w="data:1 eng:1 product:1 cloud:1 sales:1" data-tip="Native.">English</span>
+            <span class="skill lang" data-w="data:1 eng:1 product:1 cloud:1 sales:1" data-tip="Native.">German</span>
+            <span class="skill lang" data-w="data:1 eng:1 product:1 cloud:1 sales:1" data-tip="B1. Can chat, can travel, can confidently order food.">French</span>
+            <span class="skill lang" data-w="data:1 eng:1 product:1 cloud:1 sales:1" data-tip="Basics.">Italian</span>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="chapter" data-chapter="3" data-time="10:30" data-label="WORK · ROLES">
+    <article class="panel wide">
+      <header class="panel-head">LEVEL 03 · 10:30 · ROLES</header>
       <h2>Where I've worked</h2>
       <p class="lede">One line each. Open a row for the detail.</p>
 
@@ -522,9 +594,9 @@
     </article>
   </section>
 
-  <section class="chapter" data-chapter="3" data-time="11:30" data-label="WORK · DATA">
+  <section class="chapter" data-chapter="4" data-time="12:30" data-label="WORK · DATA">
     <article class="panel wide">
-      <header class="panel-head">LEVEL 03 · 11:30 · DATA</header>
+      <header class="panel-head">LEVEL 04 · 12:30 · DATA</header>
       <h2>Research I've done</h2>
 
       <div class="case">
@@ -566,10 +638,53 @@
     </article>
   </section>
 
-  <!-- ================= 03 BUILD ================= -->
-  <section class="chapter" data-chapter="4" data-time="14:00" data-label="WORK · BUILD">
+  <section class="chapter" data-chapter="5" data-time="14:30" data-label="AFTERNOON · PATH">
     <article class="panel wide">
-      <header class="panel-head">LEVEL 04 · 14:00 · BUILD</header>
+      <header class="panel-head">LEVEL 05 · 14:30 · PATH</header>
+      <h2>Path</h2>
+
+      <p class="small muted">Grades are on the German scale: 1.0 is best, 4.0 is a pass.</p>
+      <div class="path">
+        <div class="path-item">
+          <span class="path-when">2023 — 2025</span>
+          <div>
+            <strong>M.Sc. Computer Science</strong> · University of Bonn · <span class="grade">GPA 1.3 · with honours</span>
+            <p>Focus: cybersecurity. Thesis in the Behavioural Security Group. Coursework across theoretical CS, robotics and intelligent systems, hardware and software design, visual and audio data analysis.</p>
+          </div>
+        </div>
+        <div class="path-item">
+          <span class="path-when">2018 — 2023</span>
+          <div>
+            <strong>B.Sc. Computer Science, minor in Physics</strong> · University of Bonn · <span class="grade">GPA 2.0</span>
+            <p>Physics minor with an astrophysics lean. Elected student body member. Peer tutor.</p>
+          </div>
+        </div>
+        <div class="path-item">
+          <span class="path-when">2010 — 2018</span>
+          <div>
+            <strong>Abitur</strong> · Sankt Adelheid Gymnasium, Bonn · <span class="grade">GPA 1.1</span>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="sub">Certifications</h3>
+      <div class="awards certs">
+        <div class="award"><span class="award-year">AWS</span><strong>AI Practitioner</strong><span>AWS Certified AI Practitioner</span></div>
+        <div class="award"><span class="award-year">AWS</span><strong>AI Business Strategist</strong><span>AWS Certified AI Business Strategist</span></div>
+        <div class="award next"><span class="award-year">next</span><strong>Solutions Architect</strong><span>Associate, in preparation</span></div>
+      </div>
+
+      <h3 class="sub">Recognition</h3>
+      <div class="awards">
+        <div class="award"><span class="award-year">2023</span><strong>FS-ISAC Scholarship</strong><span>Women in Cybersecurity</span></div>
+        <div class="award"><span class="award-year">2017</span><strong>Hans-Riegel-Fachpreis</strong><span>2nd place, Physics · University of Bonn</span></div>
+      </div>
+    </article>
+  </section>
+
+  <section class="chapter" data-chapter="6" data-time="16:30" data-label="WORK · BUILD">
+    <article class="panel wide">
+      <header class="panel-head">LEVEL 06 · 16:30 · BUILD</header>
       <h2>Things I've built</h2>
       <p class="lede">Mostly solo, mostly plain HTML/CSS/JS, always end to end.</p>
 
@@ -641,128 +756,6 @@
     </article>
   </section>
 
-  <!-- ================= 04 ROLES ================= -->
-    <!-- ================= 05 SKILLS ================= -->
-  <section class="chapter" data-chapter="5" data-time="16:30" data-label="RAIN · SKILLS">
-    <article class="panel wide">
-      <header class="panel-head">LEVEL 05 · 16:30 · SKILLS</header>
-      <h2>Lens</h2>
-      <p class="lede">Pick the role you're hiring for. Hover any skill for an honest sentence.</p>
-
-      <div class="lens-tabs" role="tablist">
-        <button class="ltab is-on" data-lens="all">everything</button>
-        <button class="ltab" data-lens="data">data science</button>
-        <button class="ltab" data-lens="eng">engineering</button>
-        <button class="ltab" data-lens="product">product</button>
-        <button class="ltab" data-lens="cloud">cloud</button>
-        <button class="ltab" data-lens="sales">sales</button>
-      </div>
-
-      <div class="skill-groups" id="skills">
-        <div class="skill-group">
-          <h4>Analysis & statistics</h4>
-          <div class="skill-row">
-            <span class="skill" data-w="data:3 eng:1 product:2 cloud:1 sales:1" data-tip="Daily driver. pandas, numpy, scipy, notebooks, small tools end to end.">Python</span>
-            <span class="skill" data-w="data:3 eng:0 product:1 cloud:0 sales:2" data-tip="Survey analysis, non-parametric tests, post-hoc corrections. I read the assumptions first.">Hypothesis testing</span>
-            <span class="skill" data-w="data:3 eng:1 product:3 cloud:0 sales:3" data-tip="Design, power, and the discipline not to peek.">A/B testing</span>
-            <span class="skill" data-w="data:2 eng:0 product:1 cloud:0 sales:0" data-tip="Comfortable; I reach for Python first.">R</span>
-            <span class="skill" data-w="data:3 eng:2 product:1 cloud:1 sales:2" data-tip="Cleaning, joins, aggregations. Writes itself after enough Likert scales.">SQL</span>
-            <span class="skill" data-w="data:3 eng:1 product:1 cloud:0 sales:2" data-tip="pandas, matplotlib, seaborn. Charts people can read without me in the room.">pandas · matplotlib</span>
-            <span class="skill" data-w="data:3 eng:2 product:1 cloud:0 sales:0" data-tip="Riposte: PyTorch action classifiers, semi-self-supervised on 100 h of video, fine-tuned on 2 h labelled. Plus CV and audio coursework.">Machine learning</span>
-            <span class="skill" data-w="data:3 eng:0 product:3 cloud:0 sales:2" data-tip="Surveys, experiments, interviews. Preregistered when it counts.">Research methods</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4>Engineering</h4>
-          <div class="skill-row">
-            <span class="skill" data-w="data:1 eng:3 product:1 cloud:1 sales:0" data-tip="This site, Lumi, OurTrips. I like knowing what every line does.">HTML · CSS · JS</span>
-            <span class="skill" data-w="data:0 eng:2 product:0 cloud:0 sales:0" data-tip="Systems coursework, robotics, and four years teaching it.">C++</span>
-            <span class="skill" data-w="data:0 eng:2 product:0 cloud:1 sales:0" data-tip="Taught computer organisation. Can read a stack frame without crying.">x86 · systems</span>
-            <span class="skill" data-w="data:0 eng:2 product:0 cloud:0 sales:0" data-tip="Robotics and intelligent systems coursework.">ROS</span>
-            <span class="skill" data-w="data:1 eng:3 product:1 cloud:3 sales:1" data-tip="Built the cert study site end to end on it (S3, Cognito, IAM, KMS), now support it daily. I know how it fails and how to set it up right.">AWS</span>
-            <span class="skill" data-w="data:0 eng:3 product:1 cloud:3 sales:0" data-tip="Cognito user pools, IAM roles and policies, KMS keys. Least privilege by default.">Cognito · IAM · KMS</span>
-            <span class="skill" data-w="data:0 eng:3 product:1 cloud:3 sales:0" data-tip="EC2, VPC, IAM, S3 and friends. Finding the one misconfigured route table.">Cloud troubleshooting</span>
-            <span class="skill" data-w="data:0 eng:3 product:0 cloud:3 sales:0" data-tip="VPCs, subnets, security groups, DNS, peering. Packets have to go somewhere.">Networking</span>
-            <span class="skill" data-w="data:1 eng:2 product:0 cloud:2 sales:0" data-tip="Comfortable with containers for reproducible analysis and small services.">Docker</span>
-            <span class="skill" data-w="data:1 eng:2 product:1 cloud:1 sales:0" data-tip="Branches, rebases, and commit messages a stranger could follow.">Git</span>
-            <span class="skill" data-w="data:1 eng:2 product:2 cloud:1 sales:2" data-tip="Built Lumi's workflows in it. Automation that non-engineers can read.">n8n · automation</span>
-            <span class="skill" data-w="data:2 eng:3 product:2 cloud:3 sales:1" data-tip="Daily driver at AWS: steering docs, custom agents, automated repetitive support and documentation work.">AI agents · Kiro</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4>Product & people</h4>
-          <div class="skill-row">
-            <span class="skill" data-w="data:2 eng:0 product:3 cloud:0 sales:2" data-tip="Interviews, surveys, usability. Finding what people ask for vs what they need.">UX research</span>
-            <span class="skill" data-w="data:1 eng:1 product:3 cloud:1 sales:2" data-tip="Riposte, Lumi: framing, scoping, trade-offs.">Product framing</span>
-            <span class="skill" data-w="data:1 eng:1 product:3 cloud:3 sales:3" data-tip="Account management, then cloud support. Explaining hard things to busy people.">Customer facing</span>
-            <span class="skill" data-w="data:1 eng:1 product:3 cloud:2 sales:3" data-tip="Business reviews with sellers, advocating for engineers to leadership, aligning co-founders and coaches at Riposte.">Stakeholder management</span>
-            <span class="skill" data-w="data:1 eng:1 product:3 cloud:2 sales:2" data-tip="Advertising, catalogue and fulfilment teams at Amazon; facilities and partner teams for campus events.">Cross-functional work</span>
-            <span class="skill" data-w="data:3 eng:0 product:3 cloud:1 sales:3" data-tip="Keyword and revenue analysis, lead identification, stock planning. Numbers that decide what to do next.">Business analytics</span>
-            <span class="skill" data-w="data:2 eng:0 product:3 cloud:0 sales:3" data-tip="Riposte and Fechtklingen: who buys, why, and what the competition does.">Market research</span>
-            <span class="skill" data-w="data:2 eng:1 product:3 cloud:2 sales:3" data-tip="Four years of tutorials. If I can't explain it, I don't understand it yet.">Teaching & explaining</span>
-            <span class="skill" data-w="data:2 eng:0 product:2 cloud:2 sales:0" data-tip="User-centric security, behavioural security research, translating risk into decisions.">Security & privacy</span>
-            <span class="skill" data-w="data:1 eng:0 product:2 cloud:0 sales:3" data-tip="Portfolio strategy, category expansion, supplier relations at Fechtklingen.">Strategy</span>
-          </div>
-        </div>
-        <div class="skill-group">
-          <h4>Languages</h4>
-          <div class="skill-row">
-            <span class="skill lang" data-w="data:1 eng:1 product:1 cloud:1 sales:1" data-tip="Native.">English</span>
-            <span class="skill lang" data-w="data:1 eng:1 product:1 cloud:1 sales:1" data-tip="Native.">German</span>
-            <span class="skill lang" data-w="data:1 eng:1 product:1 cloud:1 sales:1" data-tip="B1. Can chat, can travel, can confidently order food.">French</span>
-            <span class="skill lang" data-w="data:1 eng:1 product:1 cloud:1 sales:1" data-tip="Basics.">Italian</span>
-          </div>
-        </div>
-      </div>
-    </article>
-  </section>
-
-  <!-- ================= 06 PATH ================= -->
-  <section class="chapter" data-chapter="6" data-time="18:30" data-label="DUSK · PATH">
-    <article class="panel wide">
-      <header class="panel-head">LEVEL 06 · 18:30 · PATH</header>
-      <h2>Path</h2>
-
-      <p class="small muted">Grades are on the German scale: 1.0 is best, 4.0 is a pass.</p>
-      <div class="path">
-        <div class="path-item">
-          <span class="path-when">2023 — 2025</span>
-          <div>
-            <strong>M.Sc. Computer Science</strong> · University of Bonn · <span class="grade">GPA 1.3 · with honours</span>
-            <p>Focus: cybersecurity. Thesis in the Behavioural Security Group. Coursework across theoretical CS, robotics and intelligent systems, hardware and software design, visual and audio data analysis.</p>
-          </div>
-        </div>
-        <div class="path-item">
-          <span class="path-when">2018 — 2023</span>
-          <div>
-            <strong>B.Sc. Computer Science, minor in Physics</strong> · University of Bonn · <span class="grade">GPA 2.0</span>
-            <p>Physics minor with an astrophysics lean. Elected student body member. Peer tutor.</p>
-          </div>
-        </div>
-        <div class="path-item">
-          <span class="path-when">2010 — 2018</span>
-          <div>
-            <strong>Abitur</strong> · Sankt Adelheid Gymnasium, Bonn · <span class="grade">GPA 1.1</span>
-          </div>
-        </div>
-      </div>
-
-      <h3 class="sub">Certifications</h3>
-      <div class="awards certs">
-        <div class="award"><span class="award-year">AWS</span><strong>AI Practitioner</strong><span>AWS Certified AI Practitioner</span></div>
-        <div class="award"><span class="award-year">AWS</span><strong>AI Business Strategist</strong><span>AWS Certified AI Business Strategist</span></div>
-        <div class="award next"><span class="award-year">next</span><strong>Solutions Architect</strong><span>Associate, in preparation</span></div>
-      </div>
-
-      <h3 class="sub">Recognition</h3>
-      <div class="awards">
-        <div class="award"><span class="award-year">2023</span><strong>FS-ISAC Scholarship</strong><span>Women in Cybersecurity</span></div>
-        <div class="award"><span class="award-year">2017</span><strong>Hans-Riegel-Fachpreis</strong><span>2nd place, Physics · University of Bonn</span></div>
-      </div>
-    </article>
-  </section>
-
-  <!-- ================= 07 STATS ================= -->
   <section class="chapter" data-chapter="7" data-time="20:00" data-label="NIGHT · STATISTICS">
     <article class="panel wide">
       <header class="panel-head">LEVEL 07 · 20:00 · FAVOURITE STATISTICS</header>
@@ -830,7 +823,6 @@
     </article>
   </section>
 
-  <!-- ================= 08 ELSEWHERE ================= -->
   <section class="chapter" data-chapter="8" data-time="21:30" data-label="NIGHT · ELSEWHERE">
     <article class="panel wide">
       <header class="panel-head">LEVEL 08 · 21:30 · ELSEWHERE</header>
@@ -878,7 +870,6 @@
     </article>
   </section>
 
-  <!-- ================= 09 CONTACT ================= -->
   <section class="chapter last" data-chapter="9" data-time="23:40" data-label="LATE · SAVE GAME">
     <article class="panel">
       <header class="panel-head">LEVEL 09 · 23:40 · SAVE GAME?</header>
@@ -928,8 +919,8 @@
   </form>
 </dialog>
 
-<script src="js/scene.js?v=5"></script>
+<script src="js/scene.js?v=6"></script>
 <script src="js/widgets.js?v=3"></script>
-<script src="js/main.js?v=10"></script>
+<script src="js/main.js?v=11"></script>
 </body>
 </html>
